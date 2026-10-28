@@ -8,10 +8,10 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Custom Fonts & Tailwind Config -->
+  <!-- Fonts: Space Grotesk & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
   
   <script>
     tailwind.config = {
@@ -24,12 +24,12 @@
               card: '#12141C',
               border: '#1E2230',
               accent: '#3B82F6', // Electric Blue
-              accentGlow: 'rgba(59, 130, 246, 0.15)',
+              accentGlow: 'rgba(59, 130, 246, 0.2)',
               textMuted: '#94A3B8'
             }
           },
           fontFamily: {
-            syne: ['Syne', 'sans-serif'],
+            heading: ['Space Grotesk', 'sans-serif'],
             sans: ['Plus Jakarta Sans', 'sans-serif']
           }
         }
@@ -45,7 +45,24 @@
     .animate-marquee {
       display: flex;
       width: 200%;
-      animation: marquee 20s linear infinite;
+      animation: marquee 22s linear infinite;
+    }
+    
+    /* 3D Card Flip Perspective */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+    .group:hover .group-hover-rotate-y-180 {
+      transform: rotateY(180deg);
     }
   </style>
 </head>
@@ -54,57 +71,62 @@
   <!-- NAVIGATION -->
   <nav class="fixed top-0 left-0 w-full z-50 bg-brand-bg/80 backdrop-blur-md border-b border-brand-border/50">
     <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="#" class="font-syne text-xl font-bold tracking-tight">
+      <a href="#" class="font-heading text-xl font-extrabold tracking-tight">
         HIY<span class="text-brand-accent">.</span>
       </a>
       <div class="flex items-center gap-6 text-sm font-medium">
         <a href="#work" class="text-brand-textMuted hover:text-white transition">Work</a>
-        <a href="#services" class="text-brand-textMuted hover:text-white transition">Services</a>
-        <a href="#about" class="text-brand-textMuted hover:text-white transition">About</a>
-        <a href="#contact" class="px-4 py-2 bg-brand-accent text-white rounded-full font-semibold hover:bg-blue-600 transition">Contact</a>
+        <a href="#specialized" class="text-brand-textMuted hover:text-white transition">Specialized</a>
+        <a href="#contact" class="px-5 py-2.5 bg-brand-accent text-white rounded-full font-semibold hover:bg-blue-600 transition shadow-lg shadow-brand-accent/20">Let's Talk</a>
       </div>
     </div>
   </nav>
 
   <!-- HERO SECTION -->
   <section class="pt-36 pb-20 px-6 max-w-6xl mx-auto">
-    <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12">
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
       
       <!-- Left Content -->
       <div class="max-w-2xl">
-        <!-- Status Badge -->
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-card border border-brand-border text-xs font-semibold mb-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-card border border-brand-border text-xs font-semibold mb-6">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           <span class="text-brand-textMuted">Available for Full-Time & Freelance</span>
         </div>
         
-        <h1 class="font-syne text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight mb-6">
+        <h1 class="font-heading text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight mb-6">
           Hatiful Ihsan Yosa<span class="text-brand-accent">.</span>
         </h1>
         
         <p class="text-lg lg:text-xl text-brand-textMuted leading-relaxed mb-8">
-          Digital Creator & Visual Content Specialist. Crafting high-impact visuals, 3D assets, photo retouching, and performance-driven marketing visuals.
+          Digital Creator & Visual Content Specialist. Crafting high-impact visuals, 3D assets, photo retouching, and performance-driven marketing campaigns.
         </p>
         
         <div class="flex flex-wrap items-center gap-4">
-          <a href="#contact" class="px-6 py-3.5 bg-brand-accent text-white font-semibold rounded-xl hover:bg-blue-600 transition shadow-lg shadow-brand-accent/25">
+          <a href="#contact" class="px-7 py-3.5 bg-brand-accent text-white font-semibold rounded-xl hover:bg-blue-600 transition shadow-lg shadow-brand-accent/30">
             Let's Talk
           </a>
-          <a href="#" target="_blank" class="px-6 py-3.5 bg-brand-card text-white font-semibold rounded-xl border border-brand-border hover:border-brand-accent/50 transition">
+          <a href="#" target="_blank" class="px-7 py-3.5 bg-brand-card text-white font-semibold rounded-xl border border-brand-border hover:border-brand-accent/50 transition">
             Download CV (PDF)
           </a>
         </div>
       </div>
 
-      <!-- Right Visual Preview -->
-      <div class="w-full lg:w-80 h-80 bg-brand-card rounded-2xl border border-brand-border relative overflow-hidden flex items-center justify-center group">
-        <div class="absolute inset-0 bg-gradient-to-tr from-brand-accent/20 to-transparent opacity-50"></div>
-        <div class="text-center p-6 relative z-10">
-          <div class="w-24 h-24 rounded-full bg-brand-accent/20 border-2 border-brand-accent mx-auto mb-4 flex items-center justify-center font-syne text-3xl font-bold text-brand-accent">
-            HIY
+      <!-- Right Photo Card (Interactive Stack) -->
+      <div class="relative w-72 h-88 group">
+        <div class="absolute inset-0 bg-brand-accent/20 rounded-2xl blur-xl group-hover:bg-brand-accent/30 transition"></div>
+        <div class="relative w-full h-full bg-brand-card border border-brand-border rounded-2xl p-4 flex flex-col justify-between overflow-hidden shadow-2xl transition transform group-hover:-translate-y-2">
+          <!-- Image Container -->
+          <div class="w-full h-64 bg-neutral-900 rounded-xl overflow-hidden relative border border-brand-border/50 flex items-center justify-center">
+            <!-- Ganti src di bawah dengan URL foto kamu -->
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Hatiful" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" />
+            <div class="absolute bottom-2 left-2 px-2.5 py-1 bg-black/70 backdrop-blur-md rounded-md text-[10px] font-mono text-brand-textMuted">
+              Yogyakarta, ID
+            </div>
           </div>
-          <p class="font-semibold text-sm">Visual & Content Creator</p>
-          <p class="text-xs text-brand-textMuted mt-1">Based in Yogyakarta, ID</p>
+          <div class="mt-3">
+            <h4 class="font-heading font-bold text-sm">Hatiful Ihsan Yosa</h4>
+            <p class="text-xs text-brand-textMuted">Visual & Content Creator</p>
+          </div>
         </div>
       </div>
 
@@ -115,158 +137,254 @@
   <section class="border-y border-brand-border/60 bg-brand-card/40 py-8 px-6">
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
       <div class="p-4 border-b md:border-b-0 md:border-r border-brand-border/60">
-        <p class="font-syne text-3xl font-bold text-brand-accent mb-1">2x Contest Winner</p>
+        <p class="font-heading text-3xl font-bold text-brand-accent mb-1">2x Contest Winner</p>
         <p class="text-xs text-brand-textMuted uppercase tracking-wider font-semibold">Freelancer.com Graphic Design</p>
       </div>
       <div class="p-4 border-b md:border-b-0 md:border-r border-brand-border/60">
-        <p class="font-syne text-3xl font-bold text-brand-accent mb-1">Editor's Choice</p>
+        <p class="font-heading text-3xl font-bold text-brand-accent mb-1">Editor's Choice</p>
         <p class="text-xs text-brand-textMuted uppercase tracking-wider font-semibold">Pixabay Active Contributor</p>
       </div>
       <div class="p-4">
-        <p class="font-syne text-3xl font-bold text-brand-accent mb-1">Featured Work</p>
+        <p class="font-heading text-3xl font-bold text-brand-accent mb-1">Featured Work</p>
         <p class="text-xs text-brand-textMuted uppercase tracking-wider font-semibold">UXDesign.cc & Unsplash</p>
       </div>
     </div>
   </section>
 
   <!-- MARQUEE TEXT -->
-  <div class="overflow-hidden whitespace-nowrap py-6 bg-brand-accent/5 border-b border-brand-border/40 text-brand-accent font-syne font-bold text-sm tracking-widest uppercase">
+  <div class="overflow-hidden whitespace-nowrap py-5 bg-brand-accent/5 border-b border-brand-border/40 text-brand-accent font-heading font-bold text-xs tracking-widest uppercase">
     <div class="animate-marquee gap-8">
       <span>• Visual Design • Photo Retouching • 3D Render • Brand Identity • Meta Ads • Content Strategy • Video Editing</span>
       <span>• Visual Design • Photo Retouching • 3D Render • Brand Identity • Meta Ads • Content Strategy • Video Editing</span>
     </div>
   </div>
 
-  <!-- HALL OF FAME (BENTO SHOWCASE) -->
+  <!-- HALL OF FAME (3D CARD FLIP SHOWCASE) -->
   <section id="work" class="py-24 px-6 max-w-6xl mx-auto">
     <div class="mb-12">
-      <h2 class="font-syne text-3xl lg:text-4xl font-extrabold mb-3">Hall of Fame<span class="text-brand-accent">.</span></h2>
-      <p class="text-brand-textMuted">Karya unggulan dan pencapaian yang pernah diakui publik.</p>
+      <h2 class="font-heading text-3xl lg:text-4xl font-extrabold mb-3">Hall of Fame<span class="text-brand-accent">.</span></h2>
+      <p class="text-brand-textMuted">Hover kartu di bawah untuk melihat detail hasil & karya 3D interaktif.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       
       <!-- Card 1: 3D Semangka -->
-      <div class="bg-brand-card rounded-2xl border border-brand-border p-6 hover:border-brand-accent/60 transition group flex flex-col justify-between">
-        <div class="h-48 bg-neutral-900 rounded-xl mb-6 overflow-hidden relative flex items-center justify-center">
-          <span class="text-brand-textMuted text-xs">[ Ganti dengan Gambar Semangka 3D ]</span>
-          <span class="absolute top-3 right-3 bg-brand-accent/90 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
-            ★ Editor's Choice
-          </span>
-        </div>
-        <div>
-          <h3 class="font-syne text-xl font-bold mb-2 group-hover:text-brand-accent transition">Fruit 3D Render Series</h3>
-          <p class="text-xs text-brand-textMuted leading-relaxed">Penyusunan visual 3D buah-buahan dengan lighting & tekstur yang terpilih masuk Editor's Choice Pixabay.</p>
+      <div class="group perspective-1000 h-96">
+        <div class="relative w-full h-full duration-700 transform-style-3d group-hover-rotate-y-180">
+          <!-- Front Side -->
+          <div class="absolute inset-0 w-full h-full bg-brand-card border border-brand-border rounded-2xl p-6 flex flex-col justify-between backface-hidden">
+            <div>
+              <span class="inline-block px-3 py-1 bg-brand-accent/20 text-brand-accent text-xs font-bold rounded-full mb-4">★ Editor's Choice</span>
+              <h3 class="font-heading text-2xl font-bold mb-2">Fruit 3D Render Series</h3>
+              <p class="text-xs text-brand-textMuted leading-relaxed">Visual 3D Semangka dengan pencahayaan realistis & tekstur mendetail.</p>
+            </div>
+            <div class="h-44 bg-neutral-900 rounded-xl flex items-center justify-center border border-brand-border/50">
+              <span class="text-xs text-brand-textMuted">[ Preview Semangka 3D ]</span>
+            </div>
+          </div>
+          <!-- Back Side (Revealed on Hover) -->
+          <div class="absolute inset-0 w-full h-full bg-brand-accent text-white rounded-2xl p-6 flex flex-col justify-between rotate-y-180 backface-hidden shadow-2xl">
+            <div>
+              <span class="inline-block px-3 py-1 bg-black/30 text-white text-xs font-bold rounded-full mb-4">Pixabay Featured</span>
+              <h3 class="font-heading text-2xl font-bold mb-2">Achievement Details</h3>
+              <p class="text-sm leading-relaxed mb-4">Terpilih sebagai Pixabay Editor's Choice dan diunduh oleh puluhan ribu desainer secara global.</p>
+            </div>
+            <div class="border-t border-white/20 pt-4">
+              <p class="text-xs font-mono">Tools: Blender • Cycles • Photoshop</p>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Card 2: 3D Donut -->
-      <div class="bg-brand-card rounded-2xl border border-brand-border p-6 hover:border-brand-accent/60 transition group flex flex-col justify-between">
-        <div class="h-48 bg-neutral-900 rounded-xl mb-6 overflow-hidden relative flex items-center justify-center">
-          <span class="text-brand-textMuted text-xs">[ Ganti dengan Gambar Donat 3D ]</span>
-          <span class="absolute top-3 right-3 bg-brand-accent/90 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
-            Featured on UXDesign
-          </span>
-        </div>
-        <div>
-          <h3 class="font-syne text-xl font-bold mb-2 group-hover:text-brand-accent transition">3D Donut Product Visual</h3>
-          <p class="text-xs text-brand-textMuted leading-relaxed">Render produk 3D realistis yang dijadikan rujukan visual di artikel publikasi UXDesign.cc.</p>
+      <div class="group perspective-1000 h-96">
+        <div class="relative w-full h-full duration-700 transform-style-3d group-hover-rotate-y-180">
+          <!-- Front Side -->
+          <div class="absolute inset-0 w-full h-full bg-brand-card border border-brand-border rounded-2xl p-6 flex flex-col justify-between backface-hidden">
+            <div>
+              <span class="inline-block px-3 py-1 bg-brand-accent/20 text-brand-accent text-xs font-bold rounded-full mb-4">Featured on UXDesign</span>
+              <h3 class="font-heading text-2xl font-bold mb-2">3D Donut Product Visual</h3>
+              <p class="text-xs text-brand-textMuted leading-relaxed">Render produk 3D dengan studio lighting khusus untuk aset digital.</p>
+            </div>
+            <div class="h-44 bg-neutral-900 rounded-xl flex items-center justify-center border border-brand-border/50">
+              <span class="text-xs text-brand-textMuted">[ Preview Donut 3D ]</span>
+            </div>
+          </div>
+          <!-- Back Side -->
+          <div class="absolute inset-0 w-full h-full bg-brand-accent text-white rounded-2xl p-6 flex flex-col justify-between rotate-y-180 backface-hidden shadow-2xl">
+            <div>
+              <span class="inline-block px-3 py-1 bg-black/30 text-white text-xs font-bold rounded-full mb-4">Publication Highlight</span>
+              <h3 class="font-heading text-2xl font-bold mb-2">UXDesign.cc Case</h3>
+              <p class="text-sm leading-relaxed mb-4">Dijadikan sebagai sampel rujukan materi visual render dalam artikel desain internasional.</p>
+            </div>
+            <div class="border-t border-white/20 pt-4">
+              <p class="text-xs font-mono">Tools: 3D Render • Studio Lighting</p>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Card 3: Branding Alaleef -->
-      <div class="bg-brand-card rounded-2xl border border-brand-border p-6 hover:border-brand-accent/60 transition group flex flex-col justify-between">
-        <div class="h-48 bg-neutral-900 rounded-xl mb-6 overflow-hidden relative flex items-center justify-center">
-          <span class="text-brand-textMuted text-xs">[ Ganti dengan Mockup Alaleef ]</span>
-          <span class="absolute top-3 right-3 bg-brand-accent/90 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
-            1st Place Winner
-          </span>
+      <div class="group perspective-1000 h-96">
+        <div class="relative w-full h-full duration-700 transform-style-3d group-hover-rotate-y-180">
+          <!-- Front Side -->
+          <div class="absolute inset-0 w-full h-full bg-brand-card border border-brand-border rounded-2xl p-6 flex flex-col justify-between backface-hidden">
+            <div>
+              <span class="inline-block px-3 py-1 bg-brand-accent/20 text-brand-accent text-xs font-bold rounded-full mb-4">1st Place Contest Winner</span>
+              <h3 class="font-heading text-2xl font-bold mb-2">Alaleef Brand Identity</h3>
+              <p class="text-xs text-brand-textMuted leading-relaxed">Identitas visual profesional & stationery kit untuk klien internasional.</p>
+            </div>
+            <div class="h-44 bg-neutral-900 rounded-xl flex items-center justify-center border border-brand-border/50">
+              <span class="text-xs text-brand-textMuted">[ Preview Branding Alaleef ]</span>
+            </div>
+          </div>
+          <!-- Back Side -->
+          <div class="absolute inset-0 w-full h-full bg-brand-accent text-white rounded-2xl p-6 flex flex-col justify-between rotate-y-180 backface-hidden shadow-2xl">
+            <div>
+              <span class="inline-block px-3 py-1 bg-black/30 text-white text-xs font-bold rounded-full mb-4">Freelancer.com Winner</span>
+              <h3 class="font-heading text-2xl font-bold mb-2">Contest Winner</h3>
+              <p class="text-sm leading-relaxed mb-4">Memenangkan kompetisi desain grafis melawan puluhan desainer global.</p>
+            </div>
+            <div class="border-t border-white/20 pt-4">
+              <p class="text-xs font-mono">Tools: Illustrator • Photoshop Mockup</p>
+            </div>
+          </div>
         </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SPECIALIZED WORKS (CUSTOM DYNAMIC DISPLAYS) -->
+  <section id="specialized" class="py-20 px-6 max-w-6xl mx-auto border-t border-brand-border/50">
+    <div class="mb-14">
+      <h2 class="font-heading text-3xl lg:text-4xl font-extrabold mb-3">Specialized Works<span class="text-brand-accent">.</span></h2>
+      <p class="text-brand-textMuted">Setiap bidang keahlian dikemas dengan format interaktif yang berbeda.</p>
+    </div>
+
+    <!-- 01. Photo Retouching (Interactive Before / After) -->
+    <div class="mb-20 bg-brand-card border border-brand-border rounded-2xl p-8">
+      <div class="mb-6 flex items-center justify-between">
         <div>
-          <h3 class="font-syne text-xl font-bold mb-2 group-hover:text-brand-accent transition">Alaleef Brand Identity</h3>
-          <p class="text-xs text-brand-textMuted leading-relaxed">Desain identitas visual dan kop surat profesional yang memenangkan kontes internasional Freelancer.com.</p>
+          <h3 class="font-heading text-xl font-bold text-brand-accent">01. Photo Retouching & Color Grading</h3>
+          <p class="text-xs text-brand-textMuted mt-1">Geser slider di bawah untuk melihat perbedaan Before vs After.</p>
+        </div>
+        <span class="px-3 py-1 bg-brand-border text-xs rounded-md text-brand-textMuted">Interactive Slider</span>
+      </div>
+
+      <!-- BEFORE / AFTER SLIDER WIDGET -->
+      <div class="relative w-full h-80 sm:h-96 rounded-xl overflow-hidden select-none" id="beforeAfterSlider">
+        <!-- After Image (Background) -->
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-900 to-indigo-900 flex items-center justify-center text-white font-bold text-lg">
+          [ AFTER: Retouched & Color Graded Image ]
+        </div>
+        <!-- Before Image (Clipped Overlay) -->
+        <div class="absolute inset-0 bg-neutral-800 flex items-center justify-center text-neutral-400 font-bold text-lg overflow-hidden border-r-2 border-brand-accent" id="beforeImage" style="width: 50%;">
+          <span class="whitespace-nowrap">[ BEFORE: Raw Original Photo ]</span>
+        </div>
+        <!-- Range Input Controller -->
+        <input type="range" min="0" max="100" value="50" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20" oninput="document.getElementById('beforeImage').style.width = this.value + '%'" />
+      </div>
+    </div>
+
+    <!-- 02. Graphic & Branding Assets (Smooth Transition Grid) -->
+    <div class="mb-20">
+      <h3 class="font-heading text-xl font-bold mb-6 text-brand-accent">02. Graphic & Branding Assets</h3>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+        <div class="h-44 bg-brand-card rounded-xl border border-brand-border p-3 hover:border-brand-accent/60 hover:-translate-y-1 transition duration-300 flex items-center justify-center text-xs text-brand-textMuted">Desain 1</div>
+        <div class="h-44 bg-brand-card rounded-xl border border-brand-border p-3 hover:border-brand-accent/60 hover:-translate-y-1 transition duration-300 flex items-center justify-center text-xs text-brand-textMuted">Desain 2</div>
+        <div class="h-44 bg-brand-card rounded-xl border border-brand-border p-3 hover:border-brand-accent/60 hover:-translate-y-1 transition duration-300 flex items-center justify-center text-xs text-brand-textMuted">Desain 3</div>
+        <div class="h-44 bg-brand-card rounded-xl border border-brand-border p-3 hover:border-brand-accent/60 hover:-translate-y-1 transition duration-300 flex items-center justify-center text-xs text-brand-textMuted">Desain 4</div>
+        <div class="h-44 bg-brand-card rounded-xl border border-brand-border p-3 hover:border-brand-accent/60 hover:-translate-y-1 transition duration-300 flex items-center justify-center text-xs text-brand-textMuted">Desain 5</div>
+      </div>
+    </div>
+
+    <!-- 03. Motion & Short Video (Video Play Loop Cards) -->
+    <div class="mb-20">
+      <h3 class="font-heading text-xl font-bold mb-6 text-brand-accent">03. Motion & Short Video</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="h-52 bg-brand-card rounded-xl border border-brand-border p-4 relative overflow-hidden group flex flex-col justify-between">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-brand-accent">● Reel / Short</span>
+            <span class="text-[10px] text-brand-textMuted">00:15</span>
+          </div>
+          <div class="text-center text-xs text-brand-textMuted">[ Motion Preview 1 ]</div>
+          <div class="text-xs font-semibold">Video Edit Campaign #1</div>
+        </div>
+        <div class="h-52 bg-brand-card rounded-xl border border-brand-border p-4 relative overflow-hidden group flex flex-col justify-between">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-brand-accent">● Reel / Short</span>
+            <span class="text-[10px] text-brand-textMuted">00:30</span>
+          </div>
+          <div class="text-center text-xs text-brand-textMuted">[ Motion Preview 2 ]</div>
+          <div class="text-xs font-semibold">Video Edit Campaign #2</div>
+        </div>
+        <div class="h-52 bg-brand-card rounded-xl border border-brand-border p-4 relative overflow-hidden group flex flex-col justify-between">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-brand-accent">● Reel / Short</span>
+            <span class="text-[10px] text-brand-textMuted">00:20</span>
+          </div>
+          <div class="text-center text-xs text-brand-textMuted">[ Motion Preview 3 ]</div>
+          <div class="text-xs font-semibold">Video Edit Campaign #3</div>
         </div>
       </div>
-
-    </div>
-  </section>
-
-  <!-- SPECIALIZED WORKS (5 PHOTOS PER CATEGORY PLACEHOLDERS) -->
-  <section class="py-16 px-6 max-w-6xl mx-auto border-t border-brand-border/50">
-    <div class="mb-12">
-      <h2 class="font-syne text-3xl font-extrabold mb-3">Specialized Works<span class="text-brand-accent">.</span></h2>
-      <p class="text-brand-textMuted">Koleksi karya pilihan yang dikelompokkan berdasarkan bidang keahlian.</p>
     </div>
 
-    <!-- Category 1: Retouching & Photo -->
-    <div class="mb-16">
-      <h3 class="font-syne text-xl font-bold mb-6 text-brand-accent">01. Photo Retouching & Editing</h3>
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-        <div class="h-40 bg-brand-card rounded-xl border border-brand-border flex items-center justify-center text-xs text-brand-textMuted">Foto 1</div>
-        <div class="h-40 bg-brand-card rounded-xl border border-brand-border flex items-center justify-center text-xs text-brand-textMuted">Foto 2</div>
-        <div class="h-40 bg-brand-card rounded-xl border border-brand-border flex items-center justify-center text-xs text-brand-textMuted">Foto 3</div>
-        <div class="h-40 bg-brand-card rounded-xl border border-brand-border flex items-center justify-center text-xs text-brand-textMuted">Foto 4</div>
-        <div class="h-40 bg-brand-card rounded-xl border border-brand-border flex items-center justify-center text-xs text-brand-textMuted">Foto 5</div>
-      </div>
-    </div>
-
-    <!-- Category 2: Graphic Design -->
-    <div class="mb-16">
-      <h3 class="font-syne text-xl font-bold mb-6 text-brand-accent">02. Graphic & Branding Assets</h3>
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-        <div class="h-40 bg-brand-card rounded-xl border border-brand-border flex items-center justify-center text-xs text-brand-textMuted">Desain 1</div>
-        <div class="h-40 bg-brand-card rounded-xl border border-brand-border flex items-center justify-center text-xs text-brand-textMuted">Desain 2</div>
-        <div class="h-40 bg-brand-card rounded-xl border border-brand-border flex items-center justify-center text-xs text-brand-textMuted">Desain 3</div>
-        <div class="h-40 bg-brand-card rounded-xl border border-brand-border flex items-center justify-center text-xs text-brand-textMuted">Desain 4</div>
-        <div class="h-40 bg-brand-card rounded-xl border border-brand-border flex items-center justify-center text-xs text-brand-textMuted">Desain 5</div>
-      </div>
-    </div>
-
-    <!-- Category 3: Motion & Video -->
-    <div class="mb-16">
-      <h3 class="font-syne text-xl font-bold mb-6 text-brand-accent">03. Motion & Short Video</h3>
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-        <div class="h-40 bg-brand-card rounded-xl border border-brand-border flex items-center justify-center text-xs text-brand-textMuted">Video 1</div>
-        <div class="h-40 bg-brand-card rounded-xl border border-brand-border flex items-center justify-center text-xs text-brand-textMuted">Video 2</div>
-        <div class="h-40 bg-brand-card rounded-xl border border-brand-border flex items-center justify-center text-xs text-brand-textMuted">Video 3</div>
-        <div class="h-40 bg-brand-card rounded-xl border border-brand-border flex items-center justify-center text-xs text-brand-textMuted">Video 4</div>
-        <div class="h-40 bg-brand-card rounded-xl border border-brand-border flex items-center justify-center text-xs text-brand-textMuted">Video 5</div>
-      </div>
-    </div>
-
-    <!-- Category 4: Meta Ads -->
+    <!-- 04. Meta Ads (Performance Metric Cards) -->
     <div>
-      <h3 class="font-syne text-xl font-bold mb-6 text-brand-accent">04. Meta Ads & Performance Visuals</h3>
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-        <div class="h-40 bg-brand-card rounded-xl border border-brand-border flex items-center justify-center text-xs text-brand-textMuted">Ads 1</div>
-        <div class="h-40 bg-brand-card rounded-xl border border-brand-border flex items-center justify-center text-xs text-brand-textMuted">Ads 2</div>
-        <div class="h-40 bg-brand-card rounded-xl border border-brand-border flex items-center justify-center text-xs text-brand-textMuted">Ads 3</div>
-        <div class="h-40 bg-brand-card rounded-xl border border-brand-border flex items-center justify-center text-xs text-brand-textMuted">Ads 4</div>
-        <div class="h-40 bg-brand-card rounded-xl border border-brand-border flex items-center justify-center text-xs text-brand-textMuted">Ads 5</div>
+      <h3 class="font-heading text-xl font-bold mb-6 text-brand-accent">04. Meta Ads & Performance Visuals</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="bg-brand-card border border-brand-border rounded-xl p-6 flex flex-col justify-between hover:border-brand-accent/50 transition">
+          <div class="h-36 bg-neutral-900 rounded-lg mb-4 flex items-center justify-center text-xs text-brand-textMuted">[ Creative Ads Image 1 ]</div>
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 text-xs font-bold rounded">CTR 4.8%</span>
+              <span class="px-2 py-0.5 bg-brand-accent/20 text-brand-accent text-xs font-bold rounded">ROAS 3.2x</span>
+            </div>
+            <h4 class="font-heading font-bold text-sm">E-commerce Meta Ad Creative</h4>
+          </div>
+        </div>
+
+        <div class="bg-brand-card border border-brand-border rounded-xl p-6 flex flex-col justify-between hover:border-brand-accent/50 transition">
+          <div class="h-36 bg-neutral-900 rounded-lg mb-4 flex items-center justify-center text-xs text-brand-textMuted">[ Creative Ads Image 2 ]</div>
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 text-xs font-bold rounded">CTR 5.1%</span>
+              <span class="px-2 py-0.5 bg-brand-accent/20 text-brand-accent text-xs font-bold rounded">Reach 100k+</span>
+            </div>
+            <h4 class="font-heading font-bold text-sm">Lead Gen Campaign Ad</h4>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER / CALL TO ACTION -->
-  <footer id="contact" class="py-20 px-6 border-t border-brand-border bg-brand-card/30">
+  <!-- DYNAMIC FOOTER / CALL TO ACTION -->
+  <footer id="contact" class="py-24 px-6 border-t border-brand-border bg-gradient-to-b from-brand-bg to-brand-card">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="font-syne text-4xl lg:text-5xl font-extrabold mb-6">Have a project in mind?</h2>
-      <p class="text-brand-textMuted mb-8 max-w-xl mx-auto">
-        Terbuka untuk posisi full-time, kontrak, maupun proyek freelance. Yuk berdiskusi tentang ide visual kamu!
+      <span class="px-3 py-1 bg-brand-accent/10 border border-brand-accent/30 text-brand-accent text-xs font-bold rounded-full uppercase tracking-wider">Let's Work Together</span>
+      
+      <h2 class="font-heading text-4xl lg:text-6xl font-extrabold my-6 leading-tight">
+        Have a project in mind?
+      </h2>
+      <p class="text-brand-textMuted mb-10 max-w-lg mx-auto text-base">
+        Terbuka untuk posisi full-time, remote contract, maupun proyek kolaborasi freelance.
       </p>
       
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-        <a href="mailto:hatifulihsanyosa@gmail.com" class="px-8 py-4 bg-brand-accent text-white font-bold rounded-xl hover:bg-blue-600 transition shadow-lg shadow-brand-accent/20">
-          hatifulihsanyosa@gmail.com
-        </a>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <button onclick="navigator.clipboard.writeText('hatifulihsanyosa@gmail.com'); alert('Email berhasil disalin!')" class="px-8 py-4 bg-brand-accent text-white font-bold rounded-xl hover:bg-blue-600 transition shadow-lg shadow-brand-accent/30 flex items-center gap-2">
+          <span>hatifulihsanyosa@gmail.com</span>
+          <span class="text-xs bg-white/20 px-2 py-0.5 rounded">Copy</span>
+        </button>
         <a href="https://instagram.com/hatifulihsanyosa" target="_blank" class="px-8 py-4 bg-brand-card border border-brand-border font-semibold rounded-xl hover:border-brand-accent/50 transition">
-          Instagram
+          Instagram ↗
         </a>
       </div>
 
-      <p class="text-xs text-brand-textMuted">
-        © 2026 Hatiful Ihsan Yosa. All rights reserved. Built with Netlify & Tailwind CSS.
-      </p>
+      <div class="border-t border-brand-border/60 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-brand-textMuted gap-4">
+        <p>© 2026 Hatiful Ihsan Yosa. All rights reserved.</p>
+        <p>Built with Netlify & Tailwind CSS.</p>
+      </div>
     </div>
   </footer>
 
