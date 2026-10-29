@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,32 +8,29 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- GSAP & Lenis Smooth Scroll CDN -->
+  <!-- GSAP CDN for Bombastic Scroll Animations -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
   
-  <!-- Fonts: Space Grotesk & Plus Jakarta Sans -->
+  <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans, Permanent Marker (Graffiti) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
   
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           colors: {
-            mono: {
-              bg: '#FFFFFF',
-              surface: '#F8F9FA',
-              border: '#E5E7EB',
-              dark: '#0A0A0A',
-              muted: '#6B7280'
+            brand: {
+              accent: '#3B82F6', // Electric Blue
             }
           },
           fontFamily: {
             heading: ['Space Grotesk', 'sans-serif'],
-            sans: ['Plus Jakarta Sans', 'sans-serif']
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            graffiti: ['Permanent Marker', 'cursive']
           }
         }
       }
@@ -41,39 +38,47 @@
   </script>
   
   <style>
-    /* Custom Cursor */
-    body { cursor: default; }
+    /* Custom Cursor Performance Optimization */
     #custom-cursor {
       pointer-events: none;
       position: fixed;
       top: 0; left: 0;
-      width: 20px; height: 20px;
+      width: 22px; height: 22px;
       border-radius: 50%;
-      background-color: rgba(10, 10, 10, 0.15);
-      border: 1px solid rgba(10, 10, 10, 0.4);
+      background-color: rgba(59, 130, 246, 0.2);
+      border: 1.5px solid #3B82F6;
       z-index: 9999;
-      transition: transform 0.15s ease-out, background-color 0.2s, width 0.2s, height 0.2s;
       transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
+      will-change: transform;
     }
     .cursor-active {
-      width: 50px !important;
-      height: 50px !important;
-      background-color: rgba(10, 10, 10, 0.05) !important;
-      border-color: #0A0A0A !important;
+      width: 55px !important;
+      height: 55px !important;
+      background-color: rgba(59, 130, 246, 0.1) !important;
+      border-color: #3B82F6 !important;
     }
 
-    /* Marquee Animation */
+    /* Marquee Infinite Loop */
     @keyframes marquee {
-      0% { transform: translateX(0%); }
-      100% { transform: translateX(-50%); }
+      0% { transform: translate3d(0%, 0, 0); }
+      100% { transform: translate3d(-50%, 0, 0); }
     }
     .animate-marquee {
       display: flex;
       width: 200%;
-      animation: marquee 25s linear infinite;
+      animation: marquee 20s linear infinite;
+      will-change: transform;
     }
 
-    /* 3D Perspective Card */
+    /* 3D Tilt Card Perspective */
+    .tilt-card {
+      transform-style: preserve-3d;
+      transition: transform 0.15s ease-out;
+      will-change: transform;
+    }
+
+    /* 3D Flip Card */
     .perspective-1000 { perspective: 1000px; }
     .transform-style-3d { transform-style: preserve-3d; }
     .backface-hidden { backface-visibility: hidden; }
@@ -81,21 +86,33 @@
     .group:hover .group-hover-rotate-y-180 { transform: rotateY(180deg); }
   </style>
 </head>
-<body class="bg-mono-bg text-mono-dark font-sans antialiased selection:bg-mono-dark selection:text-white">
+<body id="top" class="bg-white dark:bg-[#0B0C10] text-neutral-900 dark:text-white font-sans antialiased selection:bg-brand-accent selection:text-white transition-colors duration-300">
 
-  <!-- CUSTOM CURSOR FOLLOWER -->
+  <!-- OPTIMIZED CUSTOM CURSOR -->
   <div id="custom-cursor"></div>
 
-  <!-- NAVIGATION -->
-  <nav class="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-mono-border">
+  <!-- NAVIGATION BAR -->
+  <nav class="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-[#0B0C10]/80 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800 transition-colors duration-300">
     <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="#" class="font-heading text-2xl font-extrabold tracking-tighter hover-trigger">
-        HIY<span class="text-mono-muted">.</span>
+      
+      <!-- GRAFFITI LOGO (Clickable to Top) -->
+      <a href="#top" class="font-graffiti text-3xl tracking-wide text-neutral-900 dark:text-white hover:text-brand-accent dark:hover:text-brand-accent transition hover-trigger">
+        HIY<span class="text-brand-accent">.</span>
       </a>
-      <div class="flex items-center gap-8 text-sm font-semibold">
-        <a href="#work" class="hover:text-mono-muted transition hover-trigger">Work</a>
-        <a href="#specialized" class="hover:text-mono-muted transition hover-trigger">Specialized</a>
-        <a href="#contact" class="px-5 py-2.5 bg-mono-dark text-white rounded-full font-medium hover:bg-neutral-800 transition shadow-md hover-trigger">Let's Talk</a>
+
+      <!-- NAV LINKS & THEME TOGGLE -->
+      <div class="flex items-center gap-6 text-sm font-semibold">
+        <a href="#work" class="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition hover-trigger">Work</a>
+        <a href="#specialized" class="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition hover-trigger">Specialized</a>
+        
+        <!-- Theme Switcher Button -->
+        <button id="theme-toggle" class="p-2.5 rounded-full border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition hover-trigger" title="Switch Theme">
+          <span id="theme-icon" class="text-base">🌙</span>
+        </button>
+
+        <a href="#contact" class="px-5 py-2.5 bg-brand-accent text-white rounded-full font-bold hover:bg-blue-600 transition shadow-lg shadow-brand-accent/25 hover-trigger">
+          Let's Talk
+        </a>
       </div>
     </div>
   </nav>
@@ -104,50 +121,50 @@
   <section class="pt-36 pb-20 px-6 max-w-6xl mx-auto">
     <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
       
-      <!-- Left Content -->
-      <div class="max-w-2xl">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mono-surface border border-mono-border text-xs font-semibold mb-6">
+      <!-- Left Hero Content -->
+      <div class="max-w-2xl reveal-gsap">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-xs font-semibold mb-6">
           <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>Available for Full-Time & Freelance</span>
+          <span class="text-neutral-600 dark:text-neutral-400">Available for Full-Time & Freelance</span>
         </div>
         
         <h1 class="font-heading text-6xl lg:text-8xl font-extrabold leading-[1.05] tracking-tight mb-6">
-          Hatiful Ihsan Yosa<span class="text-mono-muted">.</span>
+          Hatiful Ihsan Yosa<span class="text-brand-accent">.</span>
         </h1>
         
-        <p class="text-lg lg:text-xl text-mono-muted leading-relaxed mb-8">
+        <p class="text-lg lg:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8">
           Digital Creator & Visual Specialist. Menghasilkan aset visual 3D, retouching foto, desain grafis, dan eksekusi materi promosi media sosial.
         </p>
 
-        <!-- Meta Ads Minimalist Experience Badge -->
-        <div class="mb-8 p-4 bg-mono-surface border border-mono-border rounded-xl flex items-center gap-3">
-          <span class="p-2 bg-mono-dark text-white rounded-lg text-xs font-mono font-bold">META ADS</span>
-          <p class="text-xs text-mono-dark font-medium">Berpengalaman merancang & mengelola visual iklan Meta Ads untuk kampanye digital.</p>
+        <!-- Minimalist Meta Ads Badge -->
+        <div class="mb-8 p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl flex items-center gap-3">
+          <span class="p-2 bg-brand-accent text-white rounded-lg text-xs font-mono font-bold">META ADS</span>
+          <p class="text-xs font-medium text-neutral-700 dark:text-neutral-300">Pengalaman: Pernah merancang & mengelola aset visual iklan Meta Ads.</p>
         </div>
         
         <div class="flex flex-wrap items-center gap-4">
-          <a href="#contact" class="px-8 py-4 bg-mono-dark text-white font-bold rounded-xl hover:bg-neutral-800 transition shadow-lg hover-trigger">
+          <a href="#contact" class="px-8 py-4 bg-brand-accent text-white font-bold rounded-xl hover:bg-blue-600 transition shadow-lg shadow-brand-accent/30 hover-trigger">
             Let's Talk
           </a>
-          <a href="#" target="_blank" class="px-8 py-4 bg-white text-mono-dark font-bold rounded-xl border border-mono-dark hover:bg-mono-surface transition hover-trigger">
+          <a href="#" target="_blank" class="px-8 py-4 bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-white font-bold rounded-xl border border-neutral-300 dark:border-neutral-800 hover:border-brand-accent transition hover-trigger">
             Download CV (PDF)
           </a>
         </div>
       </div>
 
-      <!-- Right Photo Stack (Interactive Hover) -->
-      <div class="relative w-72 h-96 hover-trigger">
-        <div class="absolute inset-0 bg-mono-dark/5 rounded-2xl transform rotate-3 scale-105 border border-mono-border"></div>
-        <div class="relative w-full h-full bg-white border-2 border-mono-dark rounded-2xl p-4 flex flex-col justify-between shadow-2xl transition duration-500 hover:-translate-y-2">
-          <div class="w-full h-72 bg-mono-surface rounded-xl overflow-hidden relative border border-mono-border">
+      <!-- Right Interactive Photo Card (3D Tilt Effect) -->
+      <div class="relative w-72 h-96 hover-trigger tilt-card">
+        <div class="absolute inset-0 bg-brand-accent/20 rounded-2xl blur-xl"></div>
+        <div class="relative w-full h-full bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-4 flex flex-col justify-between shadow-2xl">
+          <div class="w-full h-72 bg-neutral-200 dark:bg-neutral-800 rounded-xl overflow-hidden relative border border-neutral-300 dark:border-neutral-700">
             <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Hatiful" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700" />
-            <div class="absolute bottom-3 left-3 px-3 py-1 bg-mono-dark text-white rounded-md text-[10px] font-mono">
+            <div class="absolute bottom-3 left-3 px-3 py-1 bg-black text-white rounded-md text-[10px] font-mono">
               Yogyakarta, ID
             </div>
           </div>
           <div class="mt-2">
             <h4 class="font-heading font-bold text-sm">Hatiful Ihsan Yosa</h4>
-            <p class="text-xs text-mono-muted">Visual & Content Creator</p>
+            <p class="text-xs text-neutral-500">Visual & Content Creator</p>
           </div>
         </div>
       </div>
@@ -155,37 +172,37 @@
     </div>
   </section>
 
-  <!-- METRIC / PROOF STRIP -->
-  <section class="border-y border-mono-border bg-mono-surface py-10 px-6">
+  <!-- PROOF METRIC STRIP -->
+  <section class="border-y border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 py-10 px-6">
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-      <div class="p-2 border-b md:border-b-0 md:border-r border-mono-border">
-        <p class="font-heading text-4xl font-extrabold text-mono-dark mb-1">2x Winner</p>
-        <p class="text-xs text-mono-muted uppercase tracking-wider font-bold">Freelancer.com Contest Winner</p>
+      <div class="p-2 border-b md:border-b-0 md:border-r border-neutral-200 dark:border-neutral-800">
+        <p class="font-heading text-4xl font-extrabold text-brand-accent mb-1">2x Winner</p>
+        <p class="text-xs text-neutral-500 uppercase tracking-wider font-bold">Freelancer.com Contest Winner</p>
       </div>
-      <div class="p-2 border-b md:border-b-0 md:border-r border-mono-border">
-        <p class="font-heading text-4xl font-extrabold text-mono-dark mb-1">Editor's Choice</p>
-        <p class="text-xs text-mono-muted uppercase tracking-wider font-bold">Pixabay Active Contributor</p>
+      <div class="p-2 border-b md:border-b-0 md:border-r border-neutral-200 dark:border-neutral-800">
+        <p class="font-heading text-4xl font-extrabold text-brand-accent mb-1">Editor's Choice</p>
+        <p class="text-xs text-neutral-500 uppercase tracking-wider font-bold">Pixabay Active Contributor</p>
       </div>
       <div class="p-2">
-        <p class="font-heading text-4xl font-extrabold text-mono-dark mb-1">Featured</p>
-        <p class="text-xs text-mono-muted uppercase tracking-wider font-bold">UXDesign.cc & Unsplash</p>
+        <p class="font-heading text-4xl font-extrabold text-brand-accent mb-1">Featured</p>
+        <p class="text-xs text-neutral-500 uppercase tracking-wider font-bold">UXDesign.cc & Unsplash</p>
       </div>
     </div>
   </section>
 
-  <!-- MARQUEE TEXT -->
-  <div class="overflow-hidden whitespace-nowrap py-5 bg-mono-dark text-white font-heading font-bold text-xs tracking-widest uppercase">
+  <!-- MARQUEE RUNNING TEXT -->
+  <div class="overflow-hidden whitespace-nowrap py-5 bg-brand-accent text-white font-heading font-bold text-xs tracking-widest uppercase shadow-inner">
     <div class="animate-marquee gap-8">
-      <span>• Visual Design • Photo Retouching • 3D Render • Brand Identity • Meta Ads Management • Content Strategy • Video Editing</span>
-      <span>• Visual Design • Photo Retouching • 3D Render • Brand Identity • Meta Ads Management • Content Strategy • Video Editing</span>
+      <span>• Visual Design • Photo Retouching • 3D Render • Brand Identity • Meta Ads Experience • Content Strategy • Video Editing</span>
+      <span>• Visual Design • Photo Retouching • 3D Render • Brand Identity • Meta Ads Experience • Content Strategy • Video Editing</span>
     </div>
   </div>
 
-  <!-- HALL OF FAME (3D CARD FLIP SHOWCASE) -->
+  <!-- HALL OF FAME (3D FLIP SHOWCASE) -->
   <section id="work" class="py-24 px-6 max-w-6xl mx-auto">
-    <div class="mb-14">
-      <h2 class="font-heading text-4xl lg:text-5xl font-extrabold mb-3">Hall of Fame<span class="text-mono-muted">.</span></h2>
-      <p class="text-mono-muted">Pencapaian utama & karya 3D pilihan (Hover kartu untuk detail).</p>
+    <div class="mb-14 reveal-gsap">
+      <h2 class="font-heading text-4xl lg:text-5xl font-extrabold mb-3">Hall of Fame<span class="text-brand-accent">.</span></h2>
+      <p class="text-neutral-500">Pencapaian utama & karya 3D pilihan (Hover kartu untuk detail).</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -193,23 +210,23 @@
       <!-- Card 1 -->
       <div class="group perspective-1000 h-[420px] hover-trigger">
         <div class="relative w-full h-full duration-700 transform-style-3d group-hover-rotate-y-180">
-          <div class="absolute inset-0 w-full h-full bg-white border-2 border-mono-dark rounded-2xl p-6 flex flex-col justify-between backface-hidden shadow-md">
+          <div class="absolute inset-0 w-full h-full bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-6 flex flex-col justify-between backface-hidden shadow-md">
             <div>
-              <span class="inline-block px-3 py-1 bg-mono-dark text-white text-[10px] font-bold uppercase rounded-full mb-4">★ Editor's Choice</span>
+              <span class="inline-block px-3 py-1 bg-brand-accent/20 text-brand-accent text-[10px] font-bold uppercase rounded-full mb-4">★ Editor's Choice</span>
               <h3 class="font-heading text-2xl font-bold mb-2">Fruit 3D Render Series</h3>
-              <p class="text-xs text-mono-muted leading-relaxed">Visual 3D Semangka dengan lighting & tekstur realistis.</p>
+              <p class="text-xs text-neutral-500 leading-relaxed">Visual 3D Semangka dengan lighting & tekstur realistis.</p>
             </div>
-            <div class="h-48 bg-mono-surface rounded-xl flex items-center justify-center border border-mono-border">
-              <span class="text-xs text-mono-muted font-mono">[ Preview Semangka 3D ]</span>
+            <div class="h-48 bg-neutral-200 dark:bg-neutral-800 rounded-xl flex items-center justify-center border border-neutral-300 dark:border-neutral-700">
+              <span class="text-xs text-neutral-500 font-mono">[ Preview Semangka 3D ]</span>
             </div>
           </div>
-          <div class="absolute inset-0 w-full h-full bg-mono-dark text-white rounded-2xl p-6 flex flex-col justify-between rotate-y-180 backface-hidden shadow-2xl">
+          <div class="absolute inset-0 w-full h-full bg-brand-accent text-white rounded-2xl p-6 flex flex-col justify-between rotate-y-180 backface-hidden shadow-2xl">
             <div>
-              <span class="inline-block px-3 py-1 bg-white/20 text-white text-xs font-bold rounded-full mb-4">Pixabay Highlight</span>
+              <span class="inline-block px-3 py-1 bg-black/30 text-white text-xs font-bold rounded-full mb-4">Pixabay Highlight</span>
               <h3 class="font-heading text-2xl font-bold mb-2">Achievement Details</h3>
-              <p class="text-sm leading-relaxed mb-4 text-neutral-300">Terpilih sebagai Pixabay Editor's Choice dan diunduh puluhan ribu kali.</p>
+              <p class="text-sm leading-relaxed mb-4 text-white/90">Terpilih sebagai Pixabay Editor's Choice dan diunduh puluhan ribu kali.</p>
             </div>
-            <div class="border-t border-white/20 pt-4 text-xs font-mono text-neutral-400">
+            <div class="border-t border-white/20 pt-4 text-xs font-mono text-white/80">
               Tools: Blender • Cycles • Photoshop
             </div>
           </div>
@@ -219,23 +236,23 @@
       <!-- Card 2 -->
       <div class="group perspective-1000 h-[420px] hover-trigger">
         <div class="relative w-full h-full duration-700 transform-style-3d group-hover-rotate-y-180">
-          <div class="absolute inset-0 w-full h-full bg-white border-2 border-mono-dark rounded-2xl p-6 flex flex-col justify-between backface-hidden shadow-md">
+          <div class="absolute inset-0 w-full h-full bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-6 flex flex-col justify-between backface-hidden shadow-md">
             <div>
-              <span class="inline-block px-3 py-1 bg-mono-dark text-white text-[10px] font-bold uppercase rounded-full mb-4">Featured Publication</span>
+              <span class="inline-block px-3 py-1 bg-brand-accent/20 text-brand-accent text-[10px] font-bold uppercase rounded-full mb-4">Featured Publication</span>
               <h3 class="font-heading text-2xl font-bold mb-2">3D Donut Product Visual</h3>
-              <p class="text-xs text-mono-muted leading-relaxed">Render 3D produk makanan dengan studio lighting presisi.</p>
+              <p class="text-xs text-neutral-500 leading-relaxed">Render 3D produk makanan dengan studio lighting presisi.</p>
             </div>
-            <div class="h-48 bg-mono-surface rounded-xl flex items-center justify-center border border-mono-border">
-              <span class="text-xs text-mono-muted font-mono">[ Preview Donut 3D ]</span>
+            <div class="h-48 bg-neutral-200 dark:bg-neutral-800 rounded-xl flex items-center justify-center border border-neutral-300 dark:border-neutral-700">
+              <span class="text-xs text-neutral-500 font-mono">[ Preview Donut 3D ]</span>
             </div>
           </div>
-          <div class="absolute inset-0 w-full h-full bg-mono-dark text-white rounded-2xl p-6 flex flex-col justify-between rotate-y-180 backface-hidden shadow-2xl">
+          <div class="absolute inset-0 w-full h-full bg-brand-accent text-white rounded-2xl p-6 flex flex-col justify-between rotate-y-180 backface-hidden shadow-2xl">
             <div>
-              <span class="inline-block px-3 py-1 bg-white/20 text-white text-xs font-bold rounded-full mb-4">UXDesign.cc</span>
+              <span class="inline-block px-3 py-1 bg-black/30 text-white text-xs font-bold rounded-full mb-4">UXDesign.cc</span>
               <h3 class="font-heading text-2xl font-bold mb-2">Publication Spotlight</h3>
-              <p class="text-sm leading-relaxed mb-4 text-neutral-300">Dijadikan rujukan sampel visual render dalam artikel desain internasional.</p>
+              <p class="text-sm leading-relaxed mb-4 text-white/90">Dijadikan rujukan sampel visual render dalam artikel desain internasional.</p>
             </div>
-            <div class="border-t border-white/20 pt-4 text-xs font-mono text-neutral-400">
+            <div class="border-t border-white/20 pt-4 text-xs font-mono text-white/80">
               Tools: 3D Render • Studio Lighting
             </div>
           </div>
@@ -245,23 +262,23 @@
       <!-- Card 3 -->
       <div class="group perspective-1000 h-[420px] hover-trigger">
         <div class="relative w-full h-full duration-700 transform-style-3d group-hover-rotate-y-180">
-          <div class="absolute inset-0 w-full h-full bg-white border-2 border-mono-dark rounded-2xl p-6 flex flex-col justify-between backface-hidden shadow-md">
+          <div class="absolute inset-0 w-full h-full bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-6 flex flex-col justify-between backface-hidden shadow-md">
             <div>
-              <span class="inline-block px-3 py-1 bg-mono-dark text-white text-[10px] font-bold uppercase rounded-full mb-4">1st Place Winner</span>
+              <span class="inline-block px-3 py-1 bg-brand-accent/20 text-brand-accent text-[10px] font-bold uppercase rounded-full mb-4">1st Place Winner</span>
               <h3 class="font-heading text-2xl font-bold mb-2">Alaleef Brand Identity</h3>
-              <p class="text-xs text-mono-muted leading-relaxed">Identitas visual & desain kop surat untuk klien internasional.</p>
+              <p class="text-xs text-neutral-500 leading-relaxed">Identitas visual & desain kop surat untuk klien internasional.</p>
             </div>
-            <div class="h-48 bg-mono-surface rounded-xl flex items-center justify-center border border-mono-border">
-              <span class="text-xs text-mono-muted font-mono">[ Preview Branding Alaleef ]</span>
+            <div class="h-48 bg-neutral-200 dark:bg-neutral-800 rounded-xl flex items-center justify-center border border-neutral-300 dark:border-neutral-700">
+              <span class="text-xs text-neutral-500 font-mono">[ Preview Branding Alaleef ]</span>
             </div>
           </div>
-          <div class="absolute inset-0 w-full h-full bg-mono-dark text-white rounded-2xl p-6 flex flex-col justify-between rotate-y-180 backface-hidden shadow-2xl">
+          <div class="absolute inset-0 w-full h-full bg-brand-accent text-white rounded-2xl p-6 flex flex-col justify-between rotate-y-180 backface-hidden shadow-2xl">
             <div>
-              <span class="inline-block px-3 py-1 bg-white/20 text-white text-xs font-bold rounded-full mb-4">Freelancer.com</span>
+              <span class="inline-block px-3 py-1 bg-black/30 text-white text-xs font-bold rounded-full mb-4">Freelancer.com</span>
               <h3 class="font-heading text-2xl font-bold mb-2">Contest Winner</h3>
-              <p class="text-sm leading-relaxed mb-4 text-neutral-300">Memenangkan kompetisi desain branding mengalahkan desainer global.</p>
+              <p class="text-sm leading-relaxed mb-4 text-white/90">Memenangkan kompetisi desain branding mengalahkan desainer global.</p>
             </div>
-            <div class="border-t border-white/20 pt-4 text-xs font-mono text-neutral-400">
+            <div class="border-t border-white/20 pt-4 text-xs font-mono text-white/80">
               Tools: Illustrator • Photoshop Mockup
             </div>
           </div>
@@ -272,27 +289,27 @@
   </section>
 
   <!-- SPECIALIZED WORKS -->
-  <section id="specialized" class="py-20 px-6 max-w-6xl mx-auto border-t border-mono-border">
-    <div class="mb-14">
-      <h2 class="font-heading text-4xl lg:text-5xl font-extrabold mb-3">Specialized Works<span class="text-mono-muted">.</span></h2>
-      <p class="text-mono-muted">Portofolio karya visual berdasarkan bidang keahlian spesifik.</p>
+  <section id="specialized" class="py-20 px-6 max-w-6xl mx-auto border-t border-neutral-200 dark:border-neutral-800">
+    <div class="mb-14 reveal-gsap">
+      <h2 class="font-heading text-4xl lg:text-5xl font-extrabold mb-3">Specialized Works<span class="text-brand-accent">.</span></h2>
+      <p class="text-neutral-500">Portofolio karya visual berdasarkan bidang keahlian spesifik.</p>
     </div>
 
-    <!-- 01. Photo Retouching (Interactive Before/After) -->
-    <div class="mb-20 bg-mono-surface border border-mono-border rounded-2xl p-8 shadow-sm">
+    <!-- 01. Photo Retouching (Interactive Before/After Slider) -->
+    <div class="mb-20 bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-8 shadow-sm">
       <div class="mb-6 flex items-center justify-between">
         <div>
-          <h3 class="font-heading text-2xl font-bold">01. Photo Retouching & Color Grading</h3>
-          <p class="text-xs text-mono-muted mt-1">Geser slider untuk melihat perbandingan Before vs After.</p>
+          <h3 class="font-heading text-2xl font-bold text-brand-accent">01. Photo Retouching & Color Grading</h3>
+          <p class="text-xs text-neutral-500 mt-1">Geser slider untuk melihat perbandingan Before vs After.</p>
         </div>
-        <span class="px-3 py-1 bg-mono-dark text-white text-xs rounded-md font-mono">Interactive Slider</span>
+        <span class="px-3 py-1 bg-brand-accent text-white text-xs rounded-md font-mono">Interactive Slider</span>
       </div>
 
-      <div class="relative w-full h-80 sm:h-[450px] rounded-xl overflow-hidden select-none border border-mono-border hover-trigger" id="beforeAfterSlider">
-        <div class="absolute inset-0 bg-mono-dark text-white flex items-center justify-center font-bold text-xl">
+      <div class="relative w-full h-80 sm:h-[450px] rounded-xl overflow-hidden select-none border border-neutral-300 dark:border-neutral-700 hover-trigger" id="beforeAfterSlider">
+        <div class="absolute inset-0 bg-neutral-900 text-white flex items-center justify-center font-bold text-xl">
           [ AFTER: Retouched & Color Graded Image ]
         </div>
-        <div class="absolute inset-0 bg-neutral-200 text-neutral-600 flex items-center justify-center font-bold text-xl overflow-hidden border-r-4 border-mono-dark" id="beforeImage" style="width: 50%;">
+        <div class="absolute inset-0 bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 flex items-center justify-center font-bold text-xl overflow-hidden border-r-4 border-brand-accent" id="beforeImage" style="width: 50%;">
           <span class="whitespace-nowrap">[ BEFORE: Raw Original Photo ]</span>
         </div>
         <input type="range" min="0" max="100" value="50" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20" oninput="document.getElementById('beforeImage').style.width = this.value + '%'" />
@@ -301,42 +318,42 @@
 
     <!-- 02. Graphic & Branding Assets -->
     <div class="mb-20">
-      <h3 class="font-heading text-2xl font-bold mb-6">02. Graphic & Branding Assets</h3>
+      <h3 class="font-heading text-2xl font-bold mb-6 text-brand-accent">02. Graphic & Branding Assets</h3>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-        <div class="h-48 bg-mono-surface rounded-xl border border-mono-border p-4 hover:border-mono-dark hover:-translate-y-1 transition duration-300 flex items-center justify-center text-xs text-mono-muted font-mono hover-trigger">Desain 1</div>
-        <div class="h-48 bg-mono-surface rounded-xl border border-mono-border p-4 hover:border-mono-dark hover:-translate-y-1 transition duration-300 flex items-center justify-center text-xs text-mono-muted font-mono hover-trigger">Desain 2</div>
-        <div class="h-48 bg-mono-surface rounded-xl border border-mono-border p-4 hover:border-mono-dark hover:-translate-y-1 transition duration-300 flex items-center justify-center text-xs text-mono-muted font-mono hover-trigger">Desain 3</div>
-        <div class="h-48 bg-mono-surface rounded-xl border border-mono-border p-4 hover:border-mono-dark hover:-translate-y-1 transition duration-300 flex items-center justify-center text-xs text-mono-muted font-mono hover-trigger">Desain 4</div>
-        <div class="h-48 bg-mono-surface rounded-xl border border-mono-border p-4 hover:border-mono-dark hover:-translate-y-1 transition duration-300 flex items-center justify-center text-xs text-mono-muted font-mono hover-trigger">Desain 5</div>
+        <div class="h-48 bg-neutral-100 dark:bg-neutral-900 rounded-xl border border-neutral-300 dark:border-neutral-800 p-4 hover:border-brand-accent hover:-translate-y-2 transition duration-300 flex items-center justify-center text-xs text-neutral-500 font-mono hover-trigger">Desain 1</div>
+        <div class="h-48 bg-neutral-100 dark:bg-neutral-900 rounded-xl border border-neutral-300 dark:border-neutral-800 p-4 hover:border-brand-accent hover:-translate-y-2 transition duration-300 flex items-center justify-center text-xs text-neutral-500 font-mono hover-trigger">Desain 2</div>
+        <div class="h-48 bg-neutral-100 dark:bg-neutral-900 rounded-xl border border-neutral-300 dark:border-neutral-800 p-4 hover:border-brand-accent hover:-translate-y-2 transition duration-300 flex items-center justify-center text-xs text-neutral-500 font-mono hover-trigger">Desain 3</div>
+        <div class="h-48 bg-neutral-100 dark:bg-neutral-900 rounded-xl border border-neutral-300 dark:border-neutral-800 p-4 hover:border-brand-accent hover:-translate-y-2 transition duration-300 flex items-center justify-center text-xs text-neutral-500 font-mono hover-trigger">Desain 4</div>
+        <div class="h-48 bg-neutral-100 dark:bg-neutral-900 rounded-xl border border-neutral-300 dark:border-neutral-800 p-4 hover:border-brand-accent hover:-translate-y-2 transition duration-300 flex items-center justify-center text-xs text-neutral-500 font-mono hover-trigger">Desain 5</div>
       </div>
     </div>
 
     <!-- 03. Motion & Short Video -->
     <div>
-      <h3 class="font-heading text-2xl font-bold mb-6">03. Motion & Short Video</h3>
+      <h3 class="font-heading text-2xl font-bold mb-6 text-brand-accent">03. Motion & Short Video</h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <div class="h-60 bg-mono-surface rounded-xl border border-mono-border p-5 flex flex-col justify-between hover:border-mono-dark transition hover-trigger">
+        <div class="h-60 bg-neutral-100 dark:bg-neutral-900 rounded-xl border border-neutral-300 dark:border-neutral-800 p-5 flex flex-col justify-between hover:border-brand-accent transition hover-trigger">
           <div class="flex items-center justify-between text-xs font-mono">
-            <span class="font-bold">● REEL / SHORT</span>
-            <span class="text-mono-muted">00:15</span>
+            <span class="font-bold text-brand-accent">● REEL / SHORT</span>
+            <span class="text-neutral-500">00:15</span>
           </div>
-          <div class="text-center text-xs text-mono-muted font-mono">[ Video Motion Preview 1 ]</div>
+          <div class="text-center text-xs text-neutral-500 font-mono">[ Video Motion Preview 1 ]</div>
           <div class="text-sm font-bold">Short Video Edit Campaign #1</div>
         </div>
-        <div class="h-60 bg-mono-surface rounded-xl border border-mono-border p-5 flex flex-col justify-between hover:border-mono-dark transition hover-trigger">
+        <div class="h-60 bg-neutral-100 dark:bg-neutral-900 rounded-xl border border-neutral-300 dark:border-neutral-800 p-5 flex flex-col justify-between hover:border-brand-accent transition hover-trigger">
           <div class="flex items-center justify-between text-xs font-mono">
-            <span class="font-bold">● REEL / SHORT</span>
-            <span class="text-mono-muted">00:30</span>
+            <span class="font-bold text-brand-accent">● REEL / SHORT</span>
+            <span class="text-neutral-500">00:30</span>
           </div>
-          <div class="text-center text-xs text-mono-muted font-mono">[ Video Motion Preview 2 ]</div>
+          <div class="text-center text-xs text-neutral-500 font-mono">[ Video Motion Preview 2 ]</div>
           <div class="text-sm font-bold">Short Video Edit Campaign #2</div>
         </div>
-        <div class="h-60 bg-mono-surface rounded-xl border border-mono-border p-5 flex flex-col justify-between hover:border-mono-dark transition hover-trigger">
+        <div class="h-60 bg-neutral-100 dark:bg-neutral-900 rounded-xl border border-neutral-300 dark:border-neutral-800 p-5 flex flex-col justify-between hover:border-brand-accent transition hover-trigger">
           <div class="flex items-center justify-between text-xs font-mono">
-            <span class="font-bold">● REEL / SHORT</span>
-            <span class="text-mono-muted">00:20</span>
+            <span class="font-bold text-brand-accent">● REEL / SHORT</span>
+            <span class="text-neutral-500">00:20</span>
           </div>
-          <div class="text-center text-xs text-mono-muted font-mono">[ Video Motion Preview 3 ]</div>
+          <div class="text-center text-xs text-neutral-500 font-mono">[ Video Motion Preview 3 ]</div>
           <div class="text-sm font-bold">Short Video Edit Campaign #3</div>
         </div>
       </div>
@@ -344,59 +361,101 @@
   </section>
 
   <!-- FOOTER / CALL TO ACTION -->
-  <footer id="contact" class="py-28 px-6 border-t border-mono-border bg-mono-surface">
-    <div class="max-w-4xl mx-auto text-center">
-      <span class="px-4 py-1.5 bg-mono-dark text-white text-xs font-mono rounded-full uppercase tracking-widest">Let's Work Together</span>
+  <footer id="contact" class="py-28 px-6 border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50">
+    <div class="max-w-4xl mx-auto text-center reveal-gsap">
+      <span class="px-4 py-1.5 bg-brand-accent text-white text-xs font-mono rounded-full uppercase tracking-widest">Let's Work Together</span>
       
       <h2 class="font-heading text-5xl lg:text-7xl font-extrabold my-8 tracking-tight">
         Have a project in mind?
       </h2>
-      <p class="text-mono-muted mb-10 max-w-lg mx-auto text-base">
+      <p class="text-neutral-500 mb-10 max-w-lg mx-auto text-base">
         Terbuka untuk posisi full-time, remote contract, maupun proyek kolaborasi freelance.
       </p>
       
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
-        <button onclick="navigator.clipboard.writeText('hatifulihsanyosa@gmail.com'); alert('Email berhasil disalin!')" class="px-9 py-4 bg-mono-dark text-white font-bold rounded-xl hover:bg-neutral-800 transition shadow-lg flex items-center gap-3 hover-trigger">
+        <button onclick="navigator.clipboard.writeText('hatifulihsanyosa@gmail.com'); alert('Email berhasil disalin!')" class="px-9 py-4 bg-brand-accent text-white font-bold rounded-xl hover:bg-blue-600 transition shadow-lg shadow-brand-accent/30 flex items-center gap-3 hover-trigger">
           <span>hatifulihsanyosa@gmail.com</span>
           <span class="text-xs bg-white/20 px-2 py-0.5 rounded font-mono">Copy</span>
         </button>
-        <a href="https://instagram.com/hatifulihsanyosa" target="_blank" class="px-9 py-4 bg-white text-mono-dark border border-mono-dark font-bold rounded-xl hover:bg-mono-surface transition hover-trigger">
+        <a href="https://instagram.com/hatifulihsanyosa" target="_blank" class="px-9 py-4 bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white border border-neutral-300 dark:border-neutral-700 font-bold rounded-xl hover:border-brand-accent transition hover-trigger">
           Instagram ↗
         </a>
       </div>
 
-      <div class="border-t border-mono-border pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-mono-muted gap-4 font-mono">
+      <div class="border-t border-neutral-200 dark:border-neutral-800 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-4 font-mono">
         <p>© 2026 Hatiful Ihsan Yosa. All rights reserved.</p>
-        <p>Built with Netlify, GSAP & Lenis.</p>
+        <p>Built with Netlify, GSAP & Tailwind CSS.</p>
       </div>
     </div>
   </footer>
 
-  <!-- ANIMATION SCRIPTS (GSAP + LENIS + CURSOR) -->
+  <!-- LIGHTWEIGHT HIGH-PERFORMANCE INTERACTIVE SCRIPTS -->
   <script>
-    // 1. Initialize Lenis Smooth Scroll
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smooth: true
-    });
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+    // 1. Light/Dark Mode Switcher Logic
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const htmlEl = document.documentElement;
 
-    // 2. Custom Cursor Script
-    const cursor = document.getElementById('custom-cursor');
-    document.addEventListener('mousemove', (e) => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
+    themeToggleBtn.addEventListener('click', () => {
+      htmlEl.classList.toggle('dark');
+      if (htmlEl.classList.contains('dark')) {
+        themeIcon.textContent = '🌙';
+      } else {
+        themeIcon.textContent = '☀️';
+      }
     });
+
+    // 2. High-Performance RAF Custom Cursor
+    const cursor = document.getElementById('custom-cursor');
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function animateCursor() {
+      cursorX += (mouseX - cursorX) * 0.2;
+      cursorY += (mouseY - cursorY) * 0.2;
+      cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
 
     const hoverTriggers = document.querySelectorAll('.hover-trigger');
     hoverTriggers.forEach(trigger => {
       trigger.addEventListener('mouseenter', () => cursor.classList.add('cursor-active'));
       trigger.addEventListener('mouseleave', () => cursor.classList.remove('cursor-active'));
+    });
+
+    // 3. 3D Tilt Card Effect (Mousemove)
+    const tiltCard = document.querySelector('.tilt-card');
+    if (tiltCard) {
+      tiltCard.addEventListener('mousemove', (e) => {
+        const rect = tiltCard.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        tiltCard.style.transform = `perspective(1000px) rotateX(${-y / 15}deg) rotateY(${x / 15}deg)`;
+      });
+      tiltCard.addEventListener('mouseleave', () => {
+        tiltCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+      });
+    }
+
+    // 4. GSAP ScrollTrigger Animations
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('.reveal-gsap').forEach(el => {
+      gsap.from(el, {
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%"
+        }
+      });
     });
   </script>
 
