@@ -70,17 +70,49 @@
       background-color: rgba(255, 255, 255, 0.1) !important;
     }
 
-    /* Smooth Hover Glow Lighting */
-    .smooth-glow {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* CLOCKWISE RUNNING BORDER LIGHTING ANIMATION */
+    @keyframes rotateClockwise {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
     }
-    .smooth-glow:hover {
-      border-color: #0A0A0A !important;
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15);
+
+    .running-border-card {
+      position: relative;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      padding: 1.5px;
     }
-    .dark .smooth-glow:hover {
-      border-color: #FFFFFF !important;
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.12);
+
+    .running-border-card::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300%;
+      height: 300%;
+      background: conic-gradient(
+        transparent 0deg,
+        transparent 270deg,
+        rgba(0, 0, 0, 0.85) 360deg
+      );
+      animation: rotateClockwise 3.5s linear infinite;
+      z-index: 0;
+    }
+
+    .dark .running-border-card::before {
+      background: conic-gradient(
+        transparent 0deg,
+        transparent 270deg,
+        rgba(255, 255, 255, 0.95) 360deg
+      );
+    }
+
+    .running-border-content {
+      position: relative;
+      z-index: 10;
+      border-radius: 1.15rem;
+      height: 100%;
+      width: 100%;
     }
 
     /* Animated Zoom Pan for Graphic Preview */
@@ -207,45 +239,50 @@
           Digital Creator & Visual Specialist. Menghasilkan aset visual 3D, retouching foto, desain grafis, dan eksekusi materi promosi media sosial.
         </p>
 
-        <!-- AUTOMATIC LOOPING FLIP BADGE (META ADS / 4 YEARS EXPERIENCE) -->
+        <!-- AUTOMATIC LOOPING FLIP BADGE (WITH RUNNING LIGHT BORDER) -->
         <div class="mb-8 flip-container h-16 w-full max-w-md hover-trigger">
           <div id="badge-flipper" class="flip-inner relative w-full h-full">
             <!-- Front: Meta Ads -->
-            <div class="flip-front absolute inset-0 bg-neutral-100 dark:bg-neutral-900/90 border border-neutral-200 dark:border-neutral-800 rounded-xl p-4 flex items-center gap-3 smooth-glow">
-              <span class="px-2.5 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded text-xs font-mono font-bold whitespace-nowrap">META ADS</span>
-              <p class="text-xs font-medium text-neutral-700 dark:text-neutral-300">Pengalaman merancang & mengelola aset visual iklan Meta Ads.</p>
+            <div class="flip-front absolute inset-0 running-border-card">
+              <div class="running-border-content bg-neutral-100 dark:bg-neutral-900/90 border border-neutral-200 dark:border-neutral-800 p-4 flex items-center gap-3">
+                <span class="px-2.5 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded text-xs font-mono font-bold whitespace-nowrap">META ADS</span>
+                <p class="text-xs font-medium text-neutral-700 dark:text-neutral-300">Pengalaman merancang & mengelola aset visual iklan Meta Ads.</p>
+              </div>
             </div>
             <!-- Back: 4 Years Experience -->
-            <div class="flip-back absolute inset-0 bg-neutral-100 dark:bg-neutral-900/90 border border-neutral-200 dark:border-neutral-800 rounded-xl p-4 flex items-center gap-3 smooth-glow">
-              <span class="px-2.5 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded text-xs font-mono font-bold whitespace-nowrap">4+ YEARS EXP</span>
-              <p class="text-xs font-medium text-neutral-700 dark:text-neutral-300">4+ tahun pengalaman di bidang visual design & digital content.</p>
+            <div class="flip-back absolute inset-0 running-border-card">
+              <div class="running-border-content bg-neutral-100 dark:bg-neutral-900/90 border border-neutral-200 dark:border-neutral-800 p-4 flex items-center gap-3">
+                <span class="px-2.5 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded text-xs font-mono font-bold whitespace-nowrap">4+ YEARS EXP</span>
+                <p class="text-xs font-medium text-neutral-700 dark:text-neutral-300">4+ tahun pengalaman di bidang visual design & digital content.</p>
+              </div>
             </div>
           </div>
         </div>
         
         <div class="flex flex-wrap items-center gap-4">
-          <a href="#contact" class="px-8 py-4 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-bold rounded-xl hover:opacity-90 transition shadow-lg hover-trigger smooth-glow">
+          <a href="#contact" class="px-8 py-4 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-bold rounded-xl hover:opacity-90 transition shadow-lg hover-trigger">
             Let's Talk
           </a>
-          <a href="#" target="_blank" class="px-8 py-4 bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-white font-bold rounded-xl border border-neutral-300 dark:border-neutral-800 hover:border-neutral-900 dark:hover:border-white transition hover-trigger smooth-glow">
+          <a href="#" target="_blank" class="px-8 py-4 bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-white font-bold rounded-xl border border-neutral-300 dark:border-neutral-800 hover:border-neutral-900 dark:hover:border-white transition hover-trigger">
             Download CV (PDF)
           </a>
         </div>
       </div>
 
-      <!-- Right Photo Card (Grayscale to Full Color Hover) -->
+      <!-- Right Photo Card (CLOCKWISE RUNNING BORDER LIGHT + COLOR HOVER) -->
       <div class="relative w-72 h-96 hover-trigger gsap-hero-right tilt-card group">
-        <div class="absolute inset-0 bg-neutral-900/10 dark:bg-white/10 rounded-2xl blur-xl"></div>
-        <div class="relative w-full h-full bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-4 flex flex-col justify-between shadow-2xl smooth-glow">
-          <div class="w-full h-72 bg-neutral-200 dark:bg-neutral-800 rounded-xl overflow-hidden relative border border-neutral-300 dark:border-neutral-700">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Hatiful Ihsan Yosa" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500 scale-100 group-hover:scale-105" />
-            <div class="absolute bottom-3 left-3 px-3 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-md text-[10px] font-mono">
-              Yogyakarta, ID
+        <div class="running-border-card w-full h-full">
+          <div class="running-border-content bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 p-4 flex flex-col justify-between shadow-2xl">
+            <div class="w-full h-72 bg-neutral-200 dark:bg-neutral-800 rounded-xl overflow-hidden relative border border-neutral-300 dark:border-neutral-700">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Hatiful Ihsan Yosa" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500 scale-100 group-hover:scale-105" />
+              <div class="absolute bottom-3 left-3 px-3 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-md text-[10px] font-mono">
+                Yogyakarta, ID
+              </div>
             </div>
-          </div>
-          <div class="mt-2">
-            <h4 class="font-heading font-bold text-sm">Hatiful Ihsan Yosa</h4>
-            <p class="text-xs text-neutral-500">Visual & Content Creator</p>
+            <div class="mt-2">
+              <h4 class="font-heading font-bold text-sm">Hatiful Ihsan Yosa</h4>
+              <p class="text-xs text-neutral-500">Visual & Content Creator</p>
+            </div>
           </div>
         </div>
       </div>
@@ -291,14 +328,16 @@
       <!-- Card 1 -->
       <div class="group perspective-1000 h-[420px] hover-trigger">
         <div class="relative w-full h-full duration-700 transform-style-3d group-hover-rotate-y-180">
-          <div class="absolute inset-0 w-full h-full bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-6 flex flex-col justify-between backface-hidden shadow-md smooth-glow">
-            <div>
-              <span class="inline-block px-3 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-[10px] font-bold uppercase rounded-full mb-4">★ Editor's Choice</span>
-              <h3 class="font-heading text-2xl font-bold mb-2">Fruit 3D Render Series</h3>
-              <p class="text-xs text-neutral-500 leading-relaxed">Visual 3D Semangka dengan lighting & tekstur realistis.</p>
-            </div>
-            <div class="h-48 bg-neutral-200 dark:bg-neutral-800 rounded-xl flex items-center justify-center border border-neutral-300 dark:border-neutral-700">
-              <span class="text-xs text-neutral-500 font-mono">[ Preview Semangka 3D ]</span>
+          <div class="absolute inset-0 w-full h-full running-border-card">
+            <div class="running-border-content bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 p-6 flex flex-col justify-between backface-hidden shadow-md">
+              <div>
+                <span class="inline-block px-3 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-[10px] font-bold uppercase rounded-full mb-4">★ Editor's Choice</span>
+                <h3 class="font-heading text-2xl font-bold mb-2">Fruit 3D Render Series</h3>
+                <p class="text-xs text-neutral-500 leading-relaxed">Visual 3D Semangka dengan lighting & tekstur realistis.</p>
+              </div>
+              <div class="h-48 bg-neutral-200 dark:bg-neutral-800 rounded-xl flex items-center justify-center border border-neutral-300 dark:border-neutral-700">
+                <span class="text-xs text-neutral-500 font-mono">[ Preview Semangka 3D ]</span>
+              </div>
             </div>
           </div>
           <div class="absolute inset-0 w-full h-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-2xl p-6 flex flex-col justify-between rotate-y-180 backface-hidden shadow-2xl">
@@ -317,14 +356,16 @@
       <!-- Card 2 -->
       <div class="group perspective-1000 h-[420px] hover-trigger">
         <div class="relative w-full h-full duration-700 transform-style-3d group-hover-rotate-y-180">
-          <div class="absolute inset-0 w-full h-full bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-6 flex flex-col justify-between backface-hidden shadow-md smooth-glow">
-            <div>
-              <span class="inline-block px-3 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-[10px] font-bold uppercase rounded-full mb-4">Featured Publication</span>
-              <h3 class="font-heading text-2xl font-bold mb-2">3D Donut Product Visual</h3>
-              <p class="text-xs text-neutral-500 leading-relaxed">Render 3D produk makanan dengan studio lighting presisi.</p>
-            </div>
-            <div class="h-48 bg-neutral-200 dark:bg-neutral-800 rounded-xl flex items-center justify-center border border-neutral-300 dark:border-neutral-700">
-              <span class="text-xs text-neutral-500 font-mono">[ Preview Donut 3D ]</span>
+          <div class="absolute inset-0 w-full h-full running-border-card">
+            <div class="running-border-content bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 p-6 flex flex-col justify-between backface-hidden shadow-md">
+              <div>
+                <span class="inline-block px-3 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-[10px] font-bold uppercase rounded-full mb-4">Featured Publication</span>
+                <h3 class="font-heading text-2xl font-bold mb-2">3D Donut Product Visual</h3>
+                <p class="text-xs text-neutral-500 leading-relaxed">Render 3D produk makanan dengan studio lighting presisi.</p>
+              </div>
+              <div class="h-48 bg-neutral-200 dark:bg-neutral-800 rounded-xl flex items-center justify-center border border-neutral-300 dark:border-neutral-700">
+                <span class="text-xs text-neutral-500 font-mono">[ Preview Donut 3D ]</span>
+              </div>
             </div>
           </div>
           <div class="absolute inset-0 w-full h-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-2xl p-6 flex flex-col justify-between rotate-y-180 backface-hidden shadow-2xl">
@@ -343,14 +384,16 @@
       <!-- Card 3 -->
       <div class="group perspective-1000 h-[420px] hover-trigger">
         <div class="relative w-full h-full duration-700 transform-style-3d group-hover-rotate-y-180">
-          <div class="absolute inset-0 w-full h-full bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-6 flex flex-col justify-between backface-hidden shadow-md smooth-glow">
-            <div>
-              <span class="inline-block px-3 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-[10px] font-bold uppercase rounded-full mb-4">1st Place Winner</span>
-              <h3 class="font-heading text-2xl font-bold mb-2">Alaleef Brand Identity</h3>
-              <p class="text-xs text-neutral-500 leading-relaxed">Identitas visual & desain kop surat untuk klien internasional.</p>
-            </div>
-            <div class="h-48 bg-neutral-200 dark:bg-neutral-800 rounded-xl flex items-center justify-center border border-neutral-300 dark:border-neutral-700">
-              <span class="text-xs text-neutral-500 font-mono">[ Preview Branding Alaleef ]</span>
+          <div class="absolute inset-0 w-full h-full running-border-card">
+            <div class="running-border-content bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 p-6 flex flex-col justify-between backface-hidden shadow-md">
+              <div>
+                <span class="inline-block px-3 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-[10px] font-bold uppercase rounded-full mb-4">1st Place Winner</span>
+                <h3 class="font-heading text-2xl font-bold mb-2">Alaleef Brand Identity</h3>
+                <p class="text-xs text-neutral-500 leading-relaxed">Identitas visual & desain kop surat untuk klien internasional.</p>
+              </div>
+              <div class="h-48 bg-neutral-200 dark:bg-neutral-800 rounded-xl flex items-center justify-center border border-neutral-300 dark:border-neutral-700">
+                <span class="text-xs text-neutral-500 font-mono">[ Preview Branding Alaleef ]</span>
+              </div>
             </div>
           </div>
           <div class="absolute inset-0 w-full h-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-2xl p-6 flex flex-col justify-between rotate-y-180 backface-hidden shadow-2xl">
@@ -377,7 +420,7 @@
     </div>
 
     <!-- 01. Photo Retouching (5 PHOTO SELECTOR + BEFORE/AFTER SLIDER) -->
-    <div class="mb-20 bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-8 shadow-sm gsap-scroll smooth-glow">
+    <div class="mb-20 bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-8 shadow-sm gsap-scroll">
       <div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h3 class="font-heading text-2xl font-bold">01. Photo Retouching & Color Grading</h3>
@@ -417,34 +460,34 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
         <!-- Interactive List (Left) -->
         <div class="lg:col-span-5 flex flex-col justify-between space-y-3">
-          <div onclick="switchDesign('Aset Branding Banner #1', 'Design Asset 01 Details')" onmouseenter="switchDesign('Aset Branding Banner #1', 'Design Asset 01 Details')" class="design-item p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger smooth-glow">
+          <div onclick="switchDesign('Aset Branding Banner #1', 'Design Asset 01 Details')" onmouseenter="switchDesign('Aset Branding Banner #1', 'Design Asset 01 Details')" class="design-item p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger">
             <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest block mb-1">01 / Branding</span>
             <h4 class="font-heading font-bold text-base">Aset Branding Banner #1</h4>
           </div>
 
-          <div onclick="switchDesign('Poster Event Visual #2', 'Design Asset 02 Details')" onmouseenter="switchDesign('Poster Event Visual #2', 'Design Asset 02 Details')" class="design-item p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger smooth-glow">
+          <div onclick="switchDesign('Poster Event Visual #2', 'Design Asset 02 Details')" onmouseenter="switchDesign('Poster Event Visual #2', 'Design Asset 02 Details')" class="design-item p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger">
             <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest block mb-1">02 / Promotional</span>
             <h4 class="font-heading font-bold text-base">Poster Event Visual #2</h4>
           </div>
 
-          <div onclick="switchDesign('Social Media Feed Kit #3', 'Design Asset 03 Details')" onmouseenter="switchDesign('Social Media Feed Kit #3', 'Design Asset 03 Details')" class="design-item p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger smooth-glow">
+          <div onclick="switchDesign('Social Media Feed Kit #3', 'Design Asset 03 Details')" onmouseenter="switchDesign('Social Media Feed Kit #3', 'Design Asset 03 Details')" class="design-item p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger">
             <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest block mb-1">03 / Social Assets</span>
             <h4 class="font-heading font-bold text-base">Social Media Feed Kit #3</h4>
           </div>
 
-          <div onclick="switchDesign('Packaging & Mockup Design #4', 'Design Asset 04 Details')" onmouseenter="switchDesign('Packaging & Mockup Design #4', 'Design Asset 04 Details')" class="design-item p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger smooth-glow">
+          <div onclick="switchDesign('Packaging & Mockup Design #4', 'Design Asset 04 Details')" onmouseenter="switchDesign('Packaging & Mockup Design #4', 'Design Asset 04 Details')" class="design-item p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger">
             <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest block mb-1">04 / Packaging</span>
             <h4 class="font-heading font-bold text-base">Packaging & Mockup #4</h4>
           </div>
 
-          <div onclick="switchDesign('Vector Illustration & Logo #5', 'Design Asset 05 Details')" onmouseenter="switchDesign('Vector Illustration & Logo #5', 'Design Asset 05 Details')" class="design-item p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger smooth-glow">
+          <div onclick="switchDesign('Vector Illustration & Logo #5', 'Design Asset 05 Details')" onmouseenter="switchDesign('Vector Illustration & Logo #5', 'Design Asset 05 Details')" class="design-item p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger">
             <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest block mb-1">05 / Identity</span>
             <h4 class="font-heading font-bold text-base">Vector Illustration & Logo #5</h4>
           </div>
         </div>
 
         <!-- Live Display Frame with Animated Zoom/Pan Effect (Right) -->
-        <div class="lg:col-span-7 bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-6 flex flex-col justify-between min-h-[380px] hover-trigger smooth-glow group overflow-hidden" onclick="openLightbox()">
+        <div class="lg:col-span-7 bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-6 flex flex-col justify-between min-h-[380px] hover-trigger group overflow-hidden" onclick="openLightbox()">
           <div class="w-full h-64 bg-neutral-200 dark:bg-neutral-800 rounded-xl flex items-center justify-center border border-neutral-300 dark:border-neutral-700 overflow-hidden relative">
             <div class="w-full h-full flex items-center justify-center preview-zoom-pan">
               <span class="text-sm font-mono text-neutral-500" id="design-display-title">[ Preview Aset Branding Banner #1 ]</span>
@@ -466,7 +509,7 @@
       </div>
 
       <!-- Main Video Screen -->
-      <div class="bg-neutral-900 text-white rounded-2xl p-6 mb-6 border border-neutral-800 shadow-2xl smooth-glow">
+      <div class="bg-neutral-900 text-white rounded-2xl p-6 mb-6 border border-neutral-800 shadow-2xl">
         <div class="flex items-center justify-between mb-4 border-b border-neutral-800 pb-3 text-xs font-mono">
           <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span> CINEMATIC STUDIO PLAYER</span>
           <span id="video-now-playing" class="text-neutral-400">NOW PLAYING: Reel Campaign #1</span>
@@ -479,31 +522,31 @@
 
       <!-- 5 Video Selector Carousel -->
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-        <div onclick="playVideo('Reel Campaign #1', 'Short Motion Reel 15s')" class="p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger flex flex-col justify-between smooth-glow">
+        <div onclick="playVideo('Reel Campaign #1', 'Short Motion Reel 15s')" class="p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger flex flex-col justify-between">
           <span class="text-[10px] font-mono text-neutral-500 block mb-2">00:15</span>
           <h4 class="font-heading font-bold text-xs mb-2">Reel Campaign #1</h4>
           <span class="text-[10px] font-mono">▶ Play</span>
         </div>
 
-        <div onclick="playVideo('Promo Commercial #2', 'Motion Graphic Ad 30s')" class="p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger flex flex-col justify-between smooth-glow">
+        <div onclick="playVideo('Promo Commercial #2', 'Motion Graphic Ad 30s')" class="p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger flex flex-col justify-between">
           <span class="text-[10px] font-mono text-neutral-500 block mb-2">00:30</span>
           <h4 class="font-heading font-bold text-xs mb-2">Promo Commercial #2</h4>
           <span class="text-[10px] font-mono">▶ Play</span>
         </div>
 
-        <div onclick="playVideo('TikTok Visual Edit #3', 'Vertical Video Edit 20s')" class="p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger flex flex-col justify-between smooth-glow">
+        <div onclick="playVideo('TikTok Visual Edit #3', 'Vertical Video Edit 20s')" class="p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger flex flex-col justify-between">
           <span class="text-[10px] font-mono text-neutral-500 block mb-2">00:20</span>
           <h4 class="font-heading font-bold text-xs mb-2">TikTok Visual #3</h4>
           <span class="text-[10px] font-mono">▶ Play</span>
         </div>
 
-        <div onclick="playVideo('Motion Intro Animation #4', 'Intro Logo Motion 12s')" class="p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger flex flex-col justify-between smooth-glow">
+        <div onclick="playVideo('Motion Intro Animation #4', 'Intro Logo Motion 12s')" class="p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger flex flex-col justify-between">
           <span class="text-[10px] font-mono text-neutral-500 block mb-2">00:12</span>
           <h4 class="font-heading font-bold text-xs mb-2">Motion Intro #4</h4>
           <span class="text-[10px] font-mono">▶ Play</span>
         </div>
 
-        <div onclick="playVideo('Product Teaser Video #5', '3D Product Teaser 25s')" class="p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger flex flex-col justify-between smooth-glow col-span-2 sm:col-span-1">
+        <div onclick="playVideo('Product Teaser Video #5', '3D Product Teaser 25s')" class="p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger flex flex-col justify-between col-span-2 sm:col-span-1">
           <span class="text-[10px] font-mono text-neutral-500 block mb-2">00:25</span>
           <h4 class="font-heading font-bold text-xs mb-2">Product Teaser #5</h4>
           <span class="text-[10px] font-mono">▶ Play</span>
@@ -520,19 +563,19 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 gsap-scroll">
-      <div class="p-8 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl hover-trigger smooth-glow">
+      <div class="p-8 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl hover-trigger">
         <span class="font-mono text-2xl font-extrabold text-neutral-400 block mb-4">01.</span>
         <h3 class="font-heading text-xl font-bold mb-2">Brief & Research</h3>
         <p class="text-xs text-neutral-500 leading-relaxed">Menganalisis kebutuhan merek, gaya visual acuan, dan target audiens sebelum eksekusi.</p>
       </div>
 
-      <div class="p-8 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl hover-trigger smooth-glow">
+      <div class="p-8 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl hover-trigger">
         <span class="font-mono text-2xl font-extrabold text-neutral-400 block mb-4">02.</span>
         <h3 class="font-heading text-xl font-bold mb-2">Visual Execution</h3>
         <p class="text-xs text-neutral-500 leading-relaxed">Proses pengerjaan aset 3D, retouching, maupun motion design menggunakan software profesional.</p>
       </div>
 
-      <div class="p-8 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl hover-trigger smooth-glow">
+      <div class="p-8 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl hover-trigger">
         <span class="font-mono text-2xl font-extrabold text-neutral-400 block mb-4">03.</span>
         <h3 class="font-heading text-xl font-bold mb-2">Final Polish & Delivery</h3>
         <p class="text-xs text-neutral-500 leading-relaxed">Penyempurnaan detail warna, ekspor format siap pakai, dan penyerahan aset lengkap.</p>
@@ -540,7 +583,7 @@
     </div>
   </section>
 
-  <!-- FOOTER / CONTACT SECTION (CONCISE & CLEAN BADGES) -->
+  <!-- FOOTER / CONTACT SECTION (MINIMALIST VECTOR ICONS) -->
   <footer id="contact" class="py-24 px-6 bg-neutral-50 dark:bg-neutral-900/50">
     <div class="max-w-4xl mx-auto text-center gsap-scroll">
       <span class="px-4 py-1.5 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-xs font-mono rounded-full uppercase tracking-widest">Get In Touch</span>
@@ -552,35 +595,50 @@
         Terbuka untuk posisi full-time, remote contract, maupun kolaborasi proyek visual.
       </p>
       
-      <!-- CONTACT ICON BADGES -->
+      <!-- MINIMALIST VECTOR ICON BADGES -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mb-16">
-        <!-- Email -->
-        <button onclick="copyEmail()" class="p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl flex flex-col items-center justify-center gap-2 transition hover-trigger smooth-glow group">
-          <svg class="w-6 h-6 text-neutral-800 dark:text-neutral-200 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        
+        <!-- Email Icon -->
+        <button onclick="copyEmail()" class="p-5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl flex flex-col items-center justify-center gap-2 transition hover-trigger group hover:border-neutral-900 dark:hover:border-white">
+          <svg class="w-5 h-5 text-neutral-800 dark:text-neutral-200 group-hover:scale-110 transition duration-300" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="M3 7l9 6 9-6"></path>
+          </svg>
           <span class="font-heading font-bold text-xs">Email</span>
           <span class="text-[10px] font-mono text-neutral-500">Copy Address</span>
         </button>
 
-        <!-- Instagram -->
-        <a href="https://instagram.com/hatifulihsanyosa" target="_blank" class="p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl flex flex-col items-center justify-center gap-2 transition hover-trigger smooth-glow group">
-          <svg class="w-6 h-6 text-neutral-800 dark:text-neutral-200 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        <!-- Instagram Icon -->
+        <a href="https://instagram.com/hatifulihsanyosa" target="_blank" class="p-5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl flex flex-col items-center justify-center gap-2 transition hover-trigger group hover:border-neutral-900 dark:hover:border-white">
+          <svg class="w-5 h-5 text-neutral-800 dark:text-neutral-200 group-hover:scale-110 transition duration-300" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
           <span class="font-heading font-bold text-xs">Instagram</span>
           <span class="text-[10px] font-mono text-neutral-500">@hatifulihsanyosa</span>
         </a>
 
-        <!-- WhatsApp -->
-        <a href="https://wa.me/6281234567890" target="_blank" class="p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl flex flex-col items-center justify-center gap-2 transition hover-trigger smooth-glow group">
-          <svg class="w-6 h-6 text-neutral-800 dark:text-neutral-200 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2C6.48 2 2 6.48 2 12c0 2.17.69 4.19 1.87 5.85L2 22l4.35-1.74C8.01 21.39 9.95 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/></svg>
+        <!-- WhatsApp Icon -->
+        <a href="https://wa.me/6281234567890" target="_blank" class="p-5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl flex flex-col items-center justify-center gap-2 transition hover-trigger group hover:border-neutral-900 dark:hover:border-white">
+          <svg class="w-5 h-5 text-neutral-800 dark:text-neutral-200 group-hover:scale-110 transition duration-300" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+          </svg>
           <span class="font-heading font-bold text-xs">WhatsApp</span>
-          <span class="text-[10px] font-mono text-neutral-500">Direct Chat</span>
+          <span class="text-[10px] font-mono text-neutral-500">Direct Message</span>
         </a>
 
-        <!-- LinkedIn -->
-        <a href="https://linkedin.com/in/hatifulihsanyosa" target="_blank" class="p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl flex flex-col items-center justify-center gap-2 transition hover-trigger smooth-glow group">
-          <svg class="w-6 h-6 text-neutral-800 dark:text-neutral-200 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg>
+        <!-- LinkedIn Icon -->
+        <a href="https://linkedin.com/in/hatifulihsanyosa" target="_blank" class="p-5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl flex flex-col items-center justify-center gap-2 transition hover-trigger group hover:border-neutral-900 dark:hover:border-white">
+          <svg class="w-5 h-5 text-neutral-800 dark:text-neutral-200 group-hover:scale-110 transition duration-300" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
           <span class="font-heading font-bold text-xs">LinkedIn</span>
-          <span class="text-[10px] font-mono text-neutral-500">Connect</span>
+          <span class="text-[10px] font-mono text-neutral-500">Profile</span>
         </a>
+
       </div>
 
       <div class="border-t border-neutral-200 dark:border-neutral-800 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-4 font-mono">
