@@ -70,18 +70,28 @@
       background-color: rgba(255, 255, 255, 0.1) !important;
     }
 
-    /* RGB Border Glow Keyframes */
-    @keyframes rgbGlow {
-      0% { border-color: #ff0000; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
-      33% { border-color: #00ff00; box-shadow: 0 0 15px rgba(0, 255, 0, 0.3); }
-      66% { border-color: #0088ff; box-shadow: 0 0 15px rgba(0, 136, 255, 0.3); }
-      100% { border-color: #ff0000; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
+    /* Smooth Hover Glow Lighting */
+    .smooth-glow {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .rgb-hover:hover {
-      animation: rgbGlow 3s linear infinite !important;
+    .smooth-glow:hover {
+      border-color: #0A0A0A !important;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15);
+    }
+    .dark .smooth-glow:hover {
+      border-color: #FFFFFF !important;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.12);
     }
 
-    /* Double Marquee Animations */
+    /* Animated Zoom Pan for Graphic Preview */
+    .preview-zoom-pan {
+      transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .group:hover .preview-zoom-pan {
+      transform: scale(1.08) translate(-1%, -1%);
+    }
+
+    /* Marquee Animations */
     @keyframes marqueeLeft {
       0% { transform: translate3d(0%, 0, 0); }
       100% { transform: translate3d(-50%, 0, 0); }
@@ -164,7 +174,6 @@
       <div class="flex items-center gap-6 text-sm font-semibold">
         <a href="#work" class="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition hover-trigger">Work</a>
         <a href="#specialized" class="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition hover-trigger">Specialized</a>
-        <a href="#tools" class="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition hover-trigger">Tools</a>
         <a href="#workflow" class="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition hover-trigger">Workflow</a>
         
         <!-- Theme Switcher -->
@@ -202,12 +211,12 @@
         <div class="mb-8 flip-container h-16 w-full max-w-md hover-trigger">
           <div id="badge-flipper" class="flip-inner relative w-full h-full">
             <!-- Front: Meta Ads -->
-            <div class="flip-front absolute inset-0 bg-neutral-100 dark:bg-neutral-900/90 border border-neutral-200 dark:border-neutral-800 rounded-xl p-4 flex items-center gap-3 rgb-hover transition-all">
+            <div class="flip-front absolute inset-0 bg-neutral-100 dark:bg-neutral-900/90 border border-neutral-200 dark:border-neutral-800 rounded-xl p-4 flex items-center gap-3 smooth-glow">
               <span class="px-2.5 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded text-xs font-mono font-bold whitespace-nowrap">META ADS</span>
               <p class="text-xs font-medium text-neutral-700 dark:text-neutral-300">Pengalaman merancang & mengelola aset visual iklan Meta Ads.</p>
             </div>
             <!-- Back: 4 Years Experience -->
-            <div class="flip-back absolute inset-0 bg-neutral-100 dark:bg-neutral-900/90 border border-neutral-200 dark:border-neutral-800 rounded-xl p-4 flex items-center gap-3 rgb-hover transition-all">
+            <div class="flip-back absolute inset-0 bg-neutral-100 dark:bg-neutral-900/90 border border-neutral-200 dark:border-neutral-800 rounded-xl p-4 flex items-center gap-3 smooth-glow">
               <span class="px-2.5 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded text-xs font-mono font-bold whitespace-nowrap">4+ YEARS EXP</span>
               <p class="text-xs font-medium text-neutral-700 dark:text-neutral-300">4+ tahun pengalaman di bidang visual design & digital content.</p>
             </div>
@@ -215,21 +224,21 @@
         </div>
         
         <div class="flex flex-wrap items-center gap-4">
-          <a href="#contact" class="px-8 py-4 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-bold rounded-xl hover:opacity-90 transition shadow-lg hover-trigger rgb-hover">
+          <a href="#contact" class="px-8 py-4 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-bold rounded-xl hover:opacity-90 transition shadow-lg hover-trigger smooth-glow">
             Let's Talk
           </a>
-          <a href="#" target="_blank" class="px-8 py-4 bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-white font-bold rounded-xl border border-neutral-300 dark:border-neutral-800 hover:border-neutral-900 dark:hover:border-white transition hover-trigger rgb-hover">
+          <a href="#" target="_blank" class="px-8 py-4 bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-white font-bold rounded-xl border border-neutral-300 dark:border-neutral-800 hover:border-neutral-900 dark:hover:border-white transition hover-trigger smooth-glow">
             Download CV (PDF)
           </a>
         </div>
       </div>
 
-      <!-- Right Photo Card (FIXED: PHOTO COLOR HOVER & RGB BORDER) -->
+      <!-- Right Photo Card (Grayscale to Full Color Hover) -->
       <div class="relative w-72 h-96 hover-trigger gsap-hero-right tilt-card group">
         <div class="absolute inset-0 bg-neutral-900/10 dark:bg-white/10 rounded-2xl blur-xl"></div>
-        <div class="relative w-full h-full bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-4 flex flex-col justify-between shadow-2xl rgb-hover transition-all">
+        <div class="relative w-full h-full bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-4 flex flex-col justify-between shadow-2xl smooth-glow">
           <div class="w-full h-72 bg-neutral-200 dark:bg-neutral-800 rounded-xl overflow-hidden relative border border-neutral-300 dark:border-neutral-700">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Hatiful" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500 scale-100 group-hover:scale-105" />
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Hatiful Ihsan Yosa" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500 scale-100 group-hover:scale-105" />
             <div class="absolute bottom-3 left-3 px-3 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-md text-[10px] font-mono">
               Yogyakarta, ID
             </div>
@@ -262,7 +271,7 @@
     </div>
   </section>
 
-  <!-- DUAL MARQUEE RUNNING TEXT -->
+  <!-- MARQUEE RUNNING TEXT -->
   <div class="overflow-hidden whitespace-nowrap py-4 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-heading font-bold text-xs tracking-widest uppercase border-y border-neutral-800">
     <div class="animate-marquee-left gap-8 mb-2">
       <span>• Visual Design • Photo Retouching • 3D Render • Brand Identity • Meta Ads Experience • Content Strategy • Video Editing</span>
@@ -282,7 +291,7 @@
       <!-- Card 1 -->
       <div class="group perspective-1000 h-[420px] hover-trigger">
         <div class="relative w-full h-full duration-700 transform-style-3d group-hover-rotate-y-180">
-          <div class="absolute inset-0 w-full h-full bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-6 flex flex-col justify-between backface-hidden shadow-md rgb-hover">
+          <div class="absolute inset-0 w-full h-full bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-6 flex flex-col justify-between backface-hidden shadow-md smooth-glow">
             <div>
               <span class="inline-block px-3 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-[10px] font-bold uppercase rounded-full mb-4">★ Editor's Choice</span>
               <h3 class="font-heading text-2xl font-bold mb-2">Fruit 3D Render Series</h3>
@@ -308,7 +317,7 @@
       <!-- Card 2 -->
       <div class="group perspective-1000 h-[420px] hover-trigger">
         <div class="relative w-full h-full duration-700 transform-style-3d group-hover-rotate-y-180">
-          <div class="absolute inset-0 w-full h-full bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-6 flex flex-col justify-between backface-hidden shadow-md rgb-hover">
+          <div class="absolute inset-0 w-full h-full bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-6 flex flex-col justify-between backface-hidden shadow-md smooth-glow">
             <div>
               <span class="inline-block px-3 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-[10px] font-bold uppercase rounded-full mb-4">Featured Publication</span>
               <h3 class="font-heading text-2xl font-bold mb-2">3D Donut Product Visual</h3>
@@ -334,7 +343,7 @@
       <!-- Card 3 -->
       <div class="group perspective-1000 h-[420px] hover-trigger">
         <div class="relative w-full h-full duration-700 transform-style-3d group-hover-rotate-y-180">
-          <div class="absolute inset-0 w-full h-full bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-6 flex flex-col justify-between backface-hidden shadow-md rgb-hover">
+          <div class="absolute inset-0 w-full h-full bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-6 flex flex-col justify-between backface-hidden shadow-md smooth-glow">
             <div>
               <span class="inline-block px-3 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-[10px] font-bold uppercase rounded-full mb-4">1st Place Winner</span>
               <h3 class="font-heading text-2xl font-bold mb-2">Alaleef Brand Identity</h3>
@@ -367,85 +376,97 @@
       <p class="text-neutral-500">Portofolio karya visual berdasarkan bidang keahlian spesifik.</p>
     </div>
 
-    <!-- 01. Photo Retouching (Interactive Before/After Slider) -->
-    <div class="mb-20 bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-8 shadow-sm gsap-scroll rgb-hover">
-      <div class="mb-6 flex items-center justify-between">
+    <!-- 01. Photo Retouching (5 PHOTO SELECTOR + BEFORE/AFTER SLIDER) -->
+    <div class="mb-20 bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-8 shadow-sm gsap-scroll smooth-glow">
+      <div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h3 class="font-heading text-2xl font-bold">01. Photo Retouching & Color Grading</h3>
-          <p class="text-xs text-neutral-500 mt-1">Geser slider untuk melihat perbandingan Before vs After.</p>
+          <p class="text-xs text-neutral-500 mt-1">Pilih foto 1–5 di bawah, lalu geser slider untuk perbandingan Before vs After.</p>
         </div>
-        <span class="px-3 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-xs rounded-md font-mono">Interactive Slider</span>
+        <span class="px-3 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-xs rounded-md font-mono self-start sm:self-auto">Interactive Slider</span>
       </div>
 
+      <!-- PHOTO SELECTOR TABS (PHOTO 1 - 5) -->
+      <div class="flex flex-wrap items-center gap-2 mb-6">
+        <button onclick="selectRetouchPhoto(1)" id="retouch-tab-1" class="retouch-tab px-4 py-2 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-xs font-mono font-bold rounded-lg transition hover-trigger">Photo 01</button>
+        <button onclick="selectRetouchPhoto(2)" id="retouch-tab-2" class="retouch-tab px-4 py-2 bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-xs font-mono font-bold rounded-lg transition hover-trigger">Photo 02</button>
+        <button onclick="selectRetouchPhoto(3)" id="retouch-tab-3" class="retouch-tab px-4 py-2 bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-xs font-mono font-bold rounded-lg transition hover-trigger">Photo 03</button>
+        <button onclick="selectRetouchPhoto(4)" id="retouch-tab-4" class="retouch-tab px-4 py-2 bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-xs font-mono font-bold rounded-lg transition hover-trigger">Photo 04</button>
+        <button onclick="selectRetouchPhoto(5)" id="retouch-tab-5" class="retouch-tab px-4 py-2 bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-xs font-mono font-bold rounded-lg transition hover-trigger">Photo 05</button>
+      </div>
+
+      <!-- SLIDER CANVAS -->
       <div class="relative w-full h-80 sm:h-[450px] rounded-xl overflow-hidden select-none border border-neutral-300 dark:border-neutral-700 hover-trigger" id="beforeAfterSlider">
-        <div class="absolute inset-0 bg-neutral-900 text-white flex items-center justify-center font-bold text-xl">
-          [ AFTER: Retouched & Color Graded Image ]
+        <div class="absolute inset-0 bg-neutral-900 text-white flex items-center justify-center font-bold text-xl" id="retouch-after-label">
+          [ AFTER: Retouched Photo #1 ]
         </div>
         <div class="absolute inset-0 bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 flex items-center justify-center font-bold text-xl overflow-hidden border-r-4 border-neutral-900 dark:border-white" id="beforeImage" style="width: 50%;">
-          <span class="whitespace-nowrap">[ BEFORE: Raw Original Photo ]</span>
+          <span class="whitespace-nowrap" id="retouch-before-label">[ BEFORE: Raw Original Photo #1 ]</span>
         </div>
         <input type="range" min="0" max="100" value="50" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20" oninput="document.getElementById('beforeImage').style.width = this.value + '%'" />
       </div>
     </div>
 
-    <!-- 02. Graphic & Branding Assets (SPLIT LIVE SHOWCASE + LIGHTBOX) -->
+    <!-- 02. Graphic & Branding Assets (ANIMATED SLIDESHOW ZOOM/PAN PREVIEW) -->
     <div class="mb-20 gsap-scroll">
       <div class="mb-6">
         <h3 class="font-heading text-2xl font-bold">02. Graphic & Branding Assets</h3>
-        <p class="text-xs text-neutral-500 mt-1">Arahkan kursor pada daftar di sebelah kiri untuk mengganti tampilan visual utama.</p>
+        <p class="text-xs text-neutral-500 mt-1">Arahkan kursor pada daftar di sebelah kiri untuk melihat preview animasi zoom/pan otomatis.</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
         <!-- Interactive List (Left) -->
         <div class="lg:col-span-5 flex flex-col justify-between space-y-3">
-          <div onclick="switchDesign('Aset Branding Banner #1', 'Design Asset 01 Details')" onmouseenter="switchDesign('Aset Branding Banner #1', 'Design Asset 01 Details')" class="design-item p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger rgb-hover">
+          <div onclick="switchDesign('Aset Branding Banner #1', 'Design Asset 01 Details')" onmouseenter="switchDesign('Aset Branding Banner #1', 'Design Asset 01 Details')" class="design-item p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger smooth-glow">
             <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest block mb-1">01 / Branding</span>
             <h4 class="font-heading font-bold text-base">Aset Branding Banner #1</h4>
           </div>
 
-          <div onclick="switchDesign('Poster Event Visual #2', 'Design Asset 02 Details')" onmouseenter="switchDesign('Poster Event Visual #2', 'Design Asset 02 Details')" class="design-item p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger rgb-hover">
+          <div onclick="switchDesign('Poster Event Visual #2', 'Design Asset 02 Details')" onmouseenter="switchDesign('Poster Event Visual #2', 'Design Asset 02 Details')" class="design-item p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger smooth-glow">
             <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest block mb-1">02 / Promotional</span>
             <h4 class="font-heading font-bold text-base">Poster Event Visual #2</h4>
           </div>
 
-          <div onclick="switchDesign('Social Media Feed Kit #3', 'Design Asset 03 Details')" onmouseenter="switchDesign('Social Media Feed Kit #3', 'Design Asset 03 Details')" class="design-item p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger rgb-hover">
+          <div onclick="switchDesign('Social Media Feed Kit #3', 'Design Asset 03 Details')" onmouseenter="switchDesign('Social Media Feed Kit #3', 'Design Asset 03 Details')" class="design-item p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger smooth-glow">
             <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest block mb-1">03 / Social Assets</span>
             <h4 class="font-heading font-bold text-base">Social Media Feed Kit #3</h4>
           </div>
 
-          <div onclick="switchDesign('Packaging & Mockup Design #4', 'Design Asset 04 Details')" onmouseenter="switchDesign('Packaging & Mockup Design #4', 'Design Asset 04 Details')" class="design-item p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger rgb-hover">
+          <div onclick="switchDesign('Packaging & Mockup Design #4', 'Design Asset 04 Details')" onmouseenter="switchDesign('Packaging & Mockup Design #4', 'Design Asset 04 Details')" class="design-item p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger smooth-glow">
             <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest block mb-1">04 / Packaging</span>
             <h4 class="font-heading font-bold text-base">Packaging & Mockup #4</h4>
           </div>
 
-          <div onclick="switchDesign('Vector Illustration & Logo #5', 'Design Asset 05 Details')" onmouseenter="switchDesign('Vector Illustration & Logo #5', 'Design Asset 05 Details')" class="design-item p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger rgb-hover">
+          <div onclick="switchDesign('Vector Illustration & Logo #5', 'Design Asset 05 Details')" onmouseenter="switchDesign('Vector Illustration & Logo #5', 'Design Asset 05 Details')" class="design-item p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger smooth-glow">
             <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest block mb-1">05 / Identity</span>
             <h4 class="font-heading font-bold text-base">Vector Illustration & Logo #5</h4>
           </div>
         </div>
 
-        <!-- Live Display Frame (Right) -->
-        <div class="lg:col-span-7 bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-6 flex flex-col justify-between min-h-[380px] hover-trigger rgb-hover" onclick="openLightbox()">
-          <div class="w-full h-64 bg-neutral-200 dark:bg-neutral-800 rounded-xl flex items-center justify-center border border-neutral-300 dark:border-neutral-700 transition" id="design-display-box">
-            <span class="text-sm font-mono text-neutral-500" id="design-display-title">[ Preview Aset Branding Banner #1 ]</span>
+        <!-- Live Display Frame with Animated Zoom/Pan Effect (Right) -->
+        <div class="lg:col-span-7 bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-6 flex flex-col justify-between min-h-[380px] hover-trigger smooth-glow group overflow-hidden" onclick="openLightbox()">
+          <div class="w-full h-64 bg-neutral-200 dark:bg-neutral-800 rounded-xl flex items-center justify-center border border-neutral-300 dark:border-neutral-700 overflow-hidden relative">
+            <div class="w-full h-full flex items-center justify-center preview-zoom-pan">
+              <span class="text-sm font-mono text-neutral-500" id="design-display-title">[ Preview Aset Branding Banner #1 ]</span>
+            </div>
           </div>
           <div class="mt-4 flex items-center justify-between border-t border-neutral-200 dark:border-neutral-800 pt-4">
-            <p class="text-xs font-mono text-neutral-500" id="design-display-desc">Klik area gambar untuk memperbesar modal view.</p>
-            <span class="text-xs font-bold uppercase tracking-wider">Click to Zoom 🔍</span>
+            <p class="text-xs font-mono text-neutral-500" id="design-display-desc">Hover untuk preview animasi zoom • Klik untuk memperbesar modal view.</p>
+            <span class="text-xs font-bold uppercase tracking-wider">Zoom View 🔍</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 03. Motion & Short Video (CINEMATIC THEATER PLAYER) -->
+    <!-- 03. Motion & Short Video (5 VIDEO SELECTOR) -->
     <div class="gsap-scroll">
       <div class="mb-6">
         <h3 class="font-heading text-2xl font-bold">03. Motion & Short Video</h3>
-        <p class="text-xs text-neutral-500 mt-1">Pilih video di bagian bawah untuk diputar pada layar studio utama.</p>
+        <p class="text-xs text-neutral-500 mt-1">Pilih salah satu dari 5 video di bawah untuk diputar pada studio player utama.</p>
       </div>
 
       <!-- Main Video Screen -->
-      <div class="bg-neutral-900 text-white rounded-2xl p-6 mb-6 border border-neutral-800 shadow-2xl rgb-hover">
+      <div class="bg-neutral-900 text-white rounded-2xl p-6 mb-6 border border-neutral-800 shadow-2xl smooth-glow">
         <div class="flex items-center justify-between mb-4 border-b border-neutral-800 pb-3 text-xs font-mono">
           <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span> CINEMATIC STUDIO PLAYER</span>
           <span id="video-now-playing" class="text-neutral-400">NOW PLAYING: Reel Campaign #1</span>
@@ -456,66 +477,37 @@
         </div>
       </div>
 
-      <!-- Video Selector Carousel -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div onclick="playVideo('Reel Campaign #1', 'Short Motion Reel 15s')" class="p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger flex items-center justify-between rgb-hover">
-          <div>
-            <span class="text-[10px] font-mono text-neutral-500 block">00:15</span>
-            <h4 class="font-heading font-bold text-sm">Reel Campaign #1</h4>
-          </div>
-          <span class="text-xs font-mono">▶ Play</span>
+      <!-- 5 Video Selector Carousel -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+        <div onclick="playVideo('Reel Campaign #1', 'Short Motion Reel 15s')" class="p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger flex flex-col justify-between smooth-glow">
+          <span class="text-[10px] font-mono text-neutral-500 block mb-2">00:15</span>
+          <h4 class="font-heading font-bold text-xs mb-2">Reel Campaign #1</h4>
+          <span class="text-[10px] font-mono">▶ Play</span>
         </div>
 
-        <div onclick="playVideo('Promo Commercial #2', 'Motion Graphic Ad 30s')" class="p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger flex items-center justify-between rgb-hover">
-          <div>
-            <span class="text-[10px] font-mono text-neutral-500 block">00:30</span>
-            <h4 class="font-heading font-bold text-sm">Promo Commercial #2</h4>
-          </div>
-          <span class="text-xs font-mono">▶ Play</span>
+        <div onclick="playVideo('Promo Commercial #2', 'Motion Graphic Ad 30s')" class="p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger flex flex-col justify-between smooth-glow">
+          <span class="text-[10px] font-mono text-neutral-500 block mb-2">00:30</span>
+          <h4 class="font-heading font-bold text-xs mb-2">Promo Commercial #2</h4>
+          <span class="text-[10px] font-mono">▶ Play</span>
         </div>
 
-        <div onclick="playVideo('TikTok Visual Edit #3', 'Vertical Video Edit 20s')" class="p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger flex items-center justify-between rgb-hover">
-          <div>
-            <span class="text-[10px] font-mono text-neutral-500 block">00:20</span>
-            <h4 class="font-heading font-bold text-sm">TikTok Visual Edit #3</h4>
-          </div>
-          <span class="text-xs font-mono">▶ Play</span>
+        <div onclick="playVideo('TikTok Visual Edit #3', 'Vertical Video Edit 20s')" class="p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger flex flex-col justify-between smooth-glow">
+          <span class="text-[10px] font-mono text-neutral-500 block mb-2">00:20</span>
+          <h4 class="font-heading font-bold text-xs mb-2">TikTok Visual #3</h4>
+          <span class="text-[10px] font-mono">▶ Play</span>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- TOOLS & TECH STACK SECTION -->
-  <section id="tools" class="py-24 px-6 max-w-6xl mx-auto border-b border-neutral-200 dark:border-neutral-800">
-    <div class="mb-14 gsap-scroll">
-      <h2 class="font-heading text-4xl lg:text-5xl font-extrabold mb-3">Tools & Software<span class="text-neutral-400">.</span></h2>
-      <p class="text-neutral-500">Perangkat lunak utama yang digunakan dalam pengerjaan visual sehari-hari.</p>
-    </div>
+        <div onclick="playVideo('Motion Intro Animation #4', 'Intro Logo Motion 12s')" class="p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger flex flex-col justify-between smooth-glow">
+          <span class="text-[10px] font-mono text-neutral-500 block mb-2">00:12</span>
+          <h4 class="font-heading font-bold text-xs mb-2">Motion Intro #4</h4>
+          <span class="text-[10px] font-mono">▶ Play</span>
+        </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4 gsap-scroll">
-      <div class="p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl text-center hover-trigger transition rgb-hover">
-        <span class="font-mono text-lg font-bold block mb-1">Ps</span>
-        <p class="text-xs text-neutral-500 font-mono">Photoshop</p>
-      </div>
-      <div class="p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl text-center hover-trigger transition rgb-hover">
-        <span class="font-mono text-lg font-bold block mb-1">Ai</span>
-        <p class="text-xs text-neutral-500 font-mono">Illustrator</p>
-      </div>
-      <div class="p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl text-center hover-trigger transition rgb-hover">
-        <span class="font-mono text-lg font-bold block mb-1">3D</span>
-        <p class="text-xs text-neutral-500 font-mono">Blender</p>
-      </div>
-      <div class="p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl text-center hover-trigger transition rgb-hover">
-        <span class="font-mono text-lg font-bold block mb-1">Pr</span>
-        <p class="text-xs text-neutral-500 font-mono">Premiere</p>
-      </div>
-      <div class="p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl text-center hover-trigger transition rgb-hover">
-        <span class="font-mono text-lg font-bold block mb-1">Ae</span>
-        <p class="text-xs text-neutral-500 font-mono">After Effects</p>
-      </div>
-      <div class="p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl text-center hover-trigger transition rgb-hover">
-        <span class="font-mono text-lg font-bold block mb-1">Meta</span>
-        <p class="text-xs text-neutral-500 font-mono">Ads Manager</p>
+        <div onclick="playVideo('Product Teaser Video #5', '3D Product Teaser 25s')" class="p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger flex flex-col justify-between smooth-glow col-span-2 sm:col-span-1">
+          <span class="text-[10px] font-mono text-neutral-500 block mb-2">00:25</span>
+          <h4 class="font-heading font-bold text-xs mb-2">Product Teaser #5</h4>
+          <span class="text-[10px] font-mono">▶ Play</span>
+        </div>
       </div>
     </div>
   </section>
@@ -528,19 +520,19 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 gsap-scroll">
-      <div class="p-8 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl hover-trigger rgb-hover">
+      <div class="p-8 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl hover-trigger smooth-glow">
         <span class="font-mono text-2xl font-extrabold text-neutral-400 block mb-4">01.</span>
         <h3 class="font-heading text-xl font-bold mb-2">Brief & Research</h3>
         <p class="text-xs text-neutral-500 leading-relaxed">Menganalisis kebutuhan merek, gaya visual acuan, dan target audiens sebelum eksekusi.</p>
       </div>
 
-      <div class="p-8 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl hover-trigger rgb-hover">
+      <div class="p-8 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl hover-trigger smooth-glow">
         <span class="font-mono text-2xl font-extrabold text-neutral-400 block mb-4">02.</span>
         <h3 class="font-heading text-xl font-bold mb-2">Visual Execution</h3>
         <p class="text-xs text-neutral-500 leading-relaxed">Proses pengerjaan aset 3D, retouching, maupun motion design menggunakan software profesional.</p>
       </div>
 
-      <div class="p-8 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl hover-trigger rgb-hover">
+      <div class="p-8 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl hover-trigger smooth-glow">
         <span class="font-mono text-2xl font-extrabold text-neutral-400 block mb-4">03.</span>
         <h3 class="font-heading text-xl font-bold mb-2">Final Polish & Delivery</h3>
         <p class="text-xs text-neutral-500 leading-relaxed">Penyempurnaan detail warna, ekspor format siap pakai, dan penyerahan aset lengkap.</p>
@@ -548,25 +540,46 @@
     </div>
   </section>
 
-  <!-- FOOTER / CALL TO ACTION -->
-  <footer id="contact" class="py-28 px-6 bg-neutral-50 dark:bg-neutral-900/50">
+  <!-- FOOTER / CONTACT SECTION (CONCISE & CLEAN BADGES) -->
+  <footer id="contact" class="py-24 px-6 bg-neutral-50 dark:bg-neutral-900/50">
     <div class="max-w-4xl mx-auto text-center gsap-scroll">
-      <span class="px-4 py-1.5 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-xs font-mono rounded-full uppercase tracking-widest">Let's Work Together</span>
+      <span class="px-4 py-1.5 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-xs font-mono rounded-full uppercase tracking-widest">Get In Touch</span>
       
-      <h2 class="font-heading text-5xl lg:text-7xl font-extrabold my-8 tracking-tight">
-        Have a project in mind?
+      <h2 class="font-heading text-4xl lg:text-6xl font-extrabold my-6 tracking-tight">
+        Let's create something iconic.
       </h2>
-      <p class="text-neutral-500 mb-10 max-w-lg mx-auto text-base">
-        Terbuka untuk posisi full-time, remote contract, maupun proyek kolaborasi freelance.
+      <p class="text-neutral-500 mb-10 max-w-md mx-auto text-sm">
+        Terbuka untuk posisi full-time, remote contract, maupun kolaborasi proyek visual.
       </p>
       
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
-        <button onclick="copyEmail()" class="px-9 py-4 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-bold rounded-xl hover:opacity-90 transition shadow-lg flex items-center gap-3 hover-trigger rgb-hover">
-          <span>hatifulihsanyosa@gmail.com</span>
-          <span class="text-xs bg-neutral-700 dark:bg-neutral-200 text-white dark:text-black px-2 py-0.5 rounded font-mono">Copy</span>
+      <!-- CONTACT ICON BADGES -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mb-16">
+        <!-- Email -->
+        <button onclick="copyEmail()" class="p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl flex flex-col items-center justify-center gap-2 transition hover-trigger smooth-glow group">
+          <svg class="w-6 h-6 text-neutral-800 dark:text-neutral-200 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <span class="font-heading font-bold text-xs">Email</span>
+          <span class="text-[10px] font-mono text-neutral-500">Copy Address</span>
         </button>
-        <a href="https://instagram.com/hatifulihsanyosa" target="_blank" class="px-9 py-4 bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white border border-neutral-300 dark:border-neutral-700 font-bold rounded-xl hover:border-neutral-900 dark:hover:border-white transition hover-trigger rgb-hover">
-          Instagram ↗
+
+        <!-- Instagram -->
+        <a href="https://instagram.com/hatifulihsanyosa" target="_blank" class="p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl flex flex-col items-center justify-center gap-2 transition hover-trigger smooth-glow group">
+          <svg class="w-6 h-6 text-neutral-800 dark:text-neutral-200 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <span class="font-heading font-bold text-xs">Instagram</span>
+          <span class="text-[10px] font-mono text-neutral-500">@hatifulihsanyosa</span>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/6281234567890" target="_blank" class="p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl flex flex-col items-center justify-center gap-2 transition hover-trigger smooth-glow group">
+          <svg class="w-6 h-6 text-neutral-800 dark:text-neutral-200 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2C6.48 2 2 6.48 2 12c0 2.17.69 4.19 1.87 5.85L2 22l4.35-1.74C8.01 21.39 9.95 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/></svg>
+          <span class="font-heading font-bold text-xs">WhatsApp</span>
+          <span class="text-[10px] font-mono text-neutral-500">Direct Chat</span>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://linkedin.com/in/hatifulihsanyosa" target="_blank" class="p-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl flex flex-col items-center justify-center gap-2 transition hover-trigger smooth-glow group">
+          <svg class="w-6 h-6 text-neutral-800 dark:text-neutral-200 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg>
+          <span class="font-heading font-bold text-xs">LinkedIn</span>
+          <span class="text-[10px] font-mono text-neutral-500">Connect</span>
         </a>
       </div>
 
@@ -640,14 +653,29 @@
       }, 3500);
     }
 
-    // 5. Graphic Design Dynamic Preview Switcher
+    // 5. Photo Retouching 5-Photo Selector
+    function selectRetouchPhoto(photoIndex) {
+      document.querySelectorAll('.retouch-tab').forEach(tab => {
+        tab.classList.remove('bg-neutral-900', 'dark:bg-white', 'text-white', 'dark:text-neutral-900');
+        tab.classList.add('bg-neutral-200', 'dark:bg-neutral-800', 'text-neutral-700', 'dark:text-neutral-300');
+      });
+      const activeTab = document.getElementById('retouch-tab-' + photoIndex);
+      if (activeTab) {
+        activeTab.classList.remove('bg-neutral-200', 'dark:bg-neutral-800', 'text-neutral-700', 'dark:text-neutral-300');
+        activeTab.classList.add('bg-neutral-900', 'dark:bg-white', 'text-white', 'dark:text-neutral-900');
+      }
+      document.getElementById('retouch-after-label').textContent = '[ AFTER: Retouched Photo #' + photoIndex + ' ]';
+      document.getElementById('retouch-before-label').textContent = '[ BEFORE: Raw Original Photo #' + photoIndex + ' ]';
+    }
+
+    // 6. Graphic Design Dynamic Preview Switcher
     function switchDesign(title, desc) {
       document.getElementById('design-display-title').textContent = '[ Preview ' + title + ' ]';
       document.getElementById('design-display-desc').textContent = desc;
       document.getElementById('lightbox-title').textContent = '[ Zoomed View: ' + title + ' ]';
     }
 
-    // 6. Lightbox Modal Toggle
+    // 7. Lightbox Modal Toggle
     function openLightbox() {
       const lightbox = document.getElementById('lightbox');
       lightbox.classList.remove('opacity-0', 'pointer-events-none');
@@ -657,13 +685,13 @@
       lightbox.classList.add('opacity-0', 'pointer-events-none');
     }
 
-    // 7. Motion & Video Theater Switcher
+    // 8. Motion & Video Theater Switcher
     function playVideo(title, info) {
       document.getElementById('video-now-playing').textContent = 'NOW PLAYING: ' + title;
       document.getElementById('video-screen-title').textContent = '[ Video Preview: ' + title + ' (' + info + ') ]';
     }
 
-    // 8. Toast Notification for Copy Email
+    // 9. Toast Notification for Copy Email
     function copyEmail() {
       navigator.clipboard.writeText('hatifulihsanyosa@gmail.com');
       const toast = document.getElementById('toast');
@@ -673,7 +701,7 @@
       }, 2500);
     }
 
-    // 9. GSAP Animations with ScrollTrigger
+    // 10. GSAP Animations with ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
 
     gsap.from('.gsap-hero-left', {
