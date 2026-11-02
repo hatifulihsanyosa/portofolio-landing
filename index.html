@@ -289,15 +289,15 @@
     ✓ Email successfully copied to clipboard!
   </div>
 
-  <!-- BACK TO TOP FLOATING BUTTON (DIPINDAH KE KIRI) -->
-  <button id="back-to-top" onclick="goToPage(0)" class="fixed bottom-6 left-6 z-50 p-3.5 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-full shadow-2xl border border-neutral-700 dark:border-neutral-200 opacity-0 pointer-events-none translate-y-4 transition-all duration-300 flex items-center justify-center hover:scale-110 hover-trigger" title="Back to Top">
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+  <!-- BACK TO TOP FLOATING BUTTON (RINGKAS & MINIMALIS, MUNCUL PAS DI PALING BAWAH) -->
+  <button id="back-to-top" onclick="goToPage(0)" class="fixed bottom-6 right-6 z-50 p-2.5 bg-neutral-900/80 dark:bg-white/80 backdrop-blur-md text-white dark:text-neutral-900 rounded-full shadow-lg border border-neutral-700/50 dark:border-neutral-200/50 opacity-0 pointer-events-none translate-y-4 transition-all duration-300 flex items-center justify-center hover:opacity-100 hover:scale-110 hover-trigger" title="Back to Top">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
     </svg>
   </button>
 
-  <!-- FLOATING PAGE COUNTER (DESKTOP ONLY - DIGESER BESIDE BACK-TO-TOP) -->
-  <div class="fixed left-20 bottom-7 z-40 font-mono text-xs font-bold tracking-widest text-neutral-400 dark:text-neutral-600 hidden md:flex items-center gap-2">
+  <!-- FLOATING PAGE COUNTER (DESKTOP ONLY) -->
+  <div class="fixed left-6 bottom-6 z-40 font-mono text-xs font-bold tracking-widest text-neutral-400 dark:text-neutral-600 hidden md:flex items-center gap-2">
     <span id="current-page-num" class="text-neutral-900 dark:text-white text-sm">01</span>
     <span>/</span>
     <span>08</span>
@@ -1134,7 +1134,8 @@
 
       if (pageNumEl) pageNumEl.textContent = String(currentSlide + 1).padStart(2, '0');
 
-      if (currentSlide > 0) {
+      // DESKTOP: MUNCUL HANYA DI SLIDE TERAKHIR (CONTACT SECTION / PAGE 8)
+      if (currentSlide === slides.length - 1) {
         backToTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
         backToTopBtn.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
       } else {
@@ -1168,10 +1169,13 @@
       }
     });
 
-    // Mobile Scroll Back To Top Button Visibility
+    // MOBILE: MUNCUL HANYA KETIKA SCROLL SUDAH MENYENTUH PALING BAWAH HALAMAN
     window.addEventListener('scroll', () => {
       if (window.innerWidth >= 768) return;
-      if (window.scrollY > 300) {
+      
+      const isAtBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 120);
+
+      if (isAtBottom) {
         backToTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
         backToTopBtn.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
       } else {
