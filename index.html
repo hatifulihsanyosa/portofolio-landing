@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hatiful Ihsan Yosa — Visual Specialist & Digital Creator</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230A0A0A'/%3E%3Cpath d='M18 16h8v12h20v8H26v12h-8V16zm20 0h8v10h-8V16zm0 22h8v10h-8V38z' fill='%23FFFFFF'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230B0F17'/%3E%3Cpath d='M18 16h8v12h20v8H26v12h-8V16zm20 0h8v10h-8V16zm0 22h8v10h-8V38z' fill='%23F1F5F9'/%3E%3C/svg%3E" />
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -23,6 +23,15 @@
             heading: ['Space Grotesk', 'sans-serif'],
             sans: ['Plus Jakarta Sans', 'sans-serif'],
             graffiti: ['Permanent Marker', 'cursive']
+          },
+          colors: {
+            obsidian: {
+              base: '#0B0F17',
+              surface: '#111722',
+              elevated: '#18202F',
+              deep: '#080B11',
+              border: '#1E293B'
+            }
           }
         }
       }
@@ -65,6 +74,23 @@
       will-change: transform, opacity;
       pointer-events: none;
       z-index: 10;
+    }
+
+    /* MOBILE & TABLET VERTICAL SCROLL SUPPORT INSIDE TALL SLIDES */
+    @media (max-width: 1023px) {
+      .page-slide {
+        justify-content: flex-start;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-y: contain;
+        padding-top: 5.25rem;
+        padding-bottom: 4.75rem;
+      }
+      .page-slide > div {
+        margin-top: auto;
+        margin-bottom: auto;
+      }
     }
 
     .page-slide.active {
@@ -117,39 +143,44 @@
 
     /* Minimalist Dot Grid Background Pattern */
     .bg-grid-pattern {
-      background-image: radial-gradient(rgba(0, 0, 0, 0.08) 1.5px, transparent 1.5px);
+      background-image: radial-gradient(rgba(15, 23, 42, 0.08) 1.5px, transparent 1.5px);
       background-size: 28px 28px;
     }
     .dark .bg-grid-pattern {
-      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 1.5px);
+      background-image: radial-gradient(rgba(148, 163, 184, 0.11) 1.5px, transparent 1.5px);
       background-size: 28px 28px;
     }
 
-    /* Custom Cursor Monochrome High-FPS */
+    /* Custom Cursor High-FPS (Desktop Pointer Only) */
     #custom-cursor {
       pointer-events: none;
       position: fixed;
       top: 0; left: 0;
       width: 22px; height: 22px;
       border-radius: 50%;
-      background-color: rgba(0, 0, 0, 0.1);
-      border: 1.5px solid #000000;
+      background-color: rgba(15, 23, 42, 0.1);
+      border: 1.5px solid #0F172A;
       z-index: 10005;
       transform: translate(-50%, -50%);
       transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), height 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease;
       will-change: transform, width, height;
     }
     .dark #custom-cursor {
-      background-color: rgba(255, 255, 255, 0.1);
-      border-color: #FFFFFF;
+      background-color: rgba(226, 232, 240, 0.1);
+      border-color: #E2E8F0;
     }
     .cursor-active {
       width: 64px !important;
       height: 64px !important;
-      background-color: rgba(0, 0, 0, 0.05) !important;
+      background-color: rgba(15, 23, 42, 0.05) !important;
     }
     .dark .cursor-active {
-      background-color: rgba(255, 255, 255, 0.12) !important;
+      background-color: rgba(148, 163, 184, 0.15) !important;
+    }
+    @media (hover: none), (pointer: coarse) {
+      #custom-cursor {
+        display: none !important;
+      }
     }
 
     /* Smooth Hover Glow Lighting */
@@ -157,12 +188,12 @@
       transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .smooth-glow:hover {
-      border-color: #0A0A0A !important;
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15);
+      border-color: #0F172A !important;
+      box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.15);
     }
     .dark .smooth-glow:hover {
-      border-color: #FFFFFF !important;
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.12);
+      border-color: #94A3B8 !important;
+      box-shadow: 0 0 28px rgba(56, 189, 248, 0.10);
     }
 
     /* CLOCKWISE RUNNING BORDER LIGHTING (HERO PHOTO) */
@@ -188,7 +219,7 @@
       background: conic-gradient(
         transparent 0deg,
         transparent 270deg,
-        rgba(0, 0, 0, 0.85) 360deg
+        rgba(15, 23, 42, 0.85) 360deg
       );
       animation: rotateClockwise 3.5s linear infinite;
       z-index: 0;
@@ -198,7 +229,7 @@
       background: conic-gradient(
         transparent 0deg,
         transparent 270deg,
-        rgba(255, 255, 255, 0.95) 360deg
+        rgba(226, 232, 240, 0.9) 360deg
       );
     }
 
@@ -271,6 +302,7 @@
     #beforeAfterSlider {
       --split: 50%;
       contain: layout paint;
+      touch-action: pan-y;
     }
     #beforeLayer {
       clip-path: inset(0 calc(100% - var(--split)) 0 0);
@@ -313,7 +345,7 @@
       left: 0;
       width: 100%;
       height: 4px;
-      background: rgba(120, 120, 120, 0.2);
+      background: rgba(148, 163, 184, 0.2);
       z-index: 9998;
       pointer-events: none;
       opacity: 0;
@@ -322,21 +354,21 @@
     #os-pull-bar {
       height: 100%;
       width: 0%;
-      background: #0a0a0a;
+      background: #0F172A;
       transition: width 0.08s linear;
     }
     .dark #os-pull-bar {
-      background: #ffffff;
-      box-shadow: 0 0 12px rgba(255, 255, 255, 0.85);
+      background: #E2E8F0;
+      box-shadow: 0 0 12px rgba(226, 232, 240, 0.75);
     }
 
     #os-white-canvas {
       position: fixed;
       inset: 0;
       background-color: #ffffff;
-      background-image: radial-gradient(rgba(0, 0, 0, 0.08) 1.5px, transparent 1.5px);
+      background-image: radial-gradient(rgba(15, 23, 42, 0.08) 1.5px, transparent 1.5px);
       background-size: 28px 28px;
-      color: #0a0a0a;
+      color: #0f172a;
       z-index: 9999;
       overflow-y: auto;
       overscroll-behavior: contain;
@@ -353,9 +385,9 @@
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     }
     .dark #os-white-canvas {
-      background-color: #0A0A0A;
-      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 1.5px);
-      color: #ffffff;
+      background-color: #0B0F17;
+      background-image: radial-gradient(rgba(148, 163, 184, 0.11) 1.5px, transparent 1.5px);
+      color: #f1f5f9;
     }
     #os-white-canvas.is-active {
       opacity: 1;
@@ -377,16 +409,16 @@
       will-change: transform, opacity;
       background: radial-gradient(
         circle at 50% 50%,
-        rgba(0, 0, 0, 0.16) 0%,
-        rgba(0, 0, 0, 0.07) 45%,
+        rgba(15, 23, 42, 0.16) 0%,
+        rgba(15, 23, 42, 0.07) 45%,
         transparent 75%
       );
     }
     .dark #os-wave-flicker {
       background: radial-gradient(
         circle at 50% 50%,
-        rgba(255, 255, 255, 0.22) 0%,
-        rgba(255, 255, 255, 0.08) 45%,
+        rgba(148, 163, 184, 0.22) 0%,
+        rgba(148, 163, 184, 0.08) 45%,
         transparent 75%
       );
     }
@@ -411,11 +443,11 @@
 
     /* Single Screen Flash on Text Reveal */
     @keyframes singleScreenFlashLight {
-      0%   { background-color: rgba(0, 0, 0, 0.065); }
+      0%   { background-color: rgba(15, 23, 42, 0.065); }
       100% { background-color: transparent; }
     }
     @keyframes singleScreenFlashDark {
-      0%   { background-color: rgba(255, 255, 255, 0.09); }
+      0%   { background-color: rgba(148, 163, 184, 0.09); }
       100% { background-color: transparent; }
     }
     .os-stage.wave-flash {
@@ -485,22 +517,22 @@
       font-weight: 800;
       letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: #525252;
+      color: #475569;
     }
     .dark .os-line-1 {
-      color: #a3a3a3;
+      color: #94a3b8;
     }
     .os-line-2 {
       font-family: 'Space Grotesk', sans-serif;
       font-size: clamp(1.6rem, 3.8vw, 2.85rem);
       font-weight: 800;
       letter-spacing: -0.025em;
-      color: #0a0a0a;
+      color: #0f172a;
       max-width: 24ch;
       line-height: 1.18;
     }
     .dark .os-line-2 {
-      color: #ffffff;
+      color: #f1f5f9;
     }
     .os-line-3 {
       font-family: 'Space Grotesk', sans-serif;
@@ -508,10 +540,10 @@
       font-weight: 900;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: #000000;
+      color: #0f172a;
     }
     .dark .os-line-3 {
-      color: #ffffff;
+      color: #f1f5f9;
     }
 
     .os-topbar {
@@ -522,8 +554,8 @@
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
-      padding: 1rem clamp(1.25rem, 4vw, 3.5rem);
+      gap: 0.75rem;
+      padding: 0.85rem clamp(1rem, 4vw, 3.5rem);
       background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(15, 23, 42, 0.08);
@@ -532,8 +564,8 @@
       transition: opacity 0.6s ease, background-color 0.4s ease, border-color 0.4s ease;
     }
     .dark .os-topbar {
-      background: rgba(10, 10, 10, 0.85);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(11, 15, 23, 0.86);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
     }
     #os-white-canvas.show-grid .os-topbar {
       opacity: 1;
@@ -545,9 +577,9 @@
       border: 1px solid #cbd5e1;
       background: #ffffff;
       color: #0f172a;
-      padding: 0.55rem 1.15rem;
+      padding: 0.5rem 1rem;
       border-radius: 999px;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -558,45 +590,46 @@
       border-color: #0f172a;
     }
     .dark .os-back-btn {
-      border-color: #333333;
-      background: #141414;
-      color: #ffffff;
+      border-color: #1e293b;
+      background: #111722;
+      color: #f1f5f9;
     }
     .dark .os-back-btn:hover {
-      background: #ffffff;
-      color: #0a0a0a;
-      border-color: #ffffff;
+      background: #f1f5f9;
+      color: #0b0f17;
+      border-color: #f1f5f9;
     }
 
     .os-filters {
       display: flex;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
     .os-filter-btn {
       appearance: none;
       border: 1px solid transparent;
       background: #f1f5f9;
       color: #475569;
-      padding: 0.45rem 1rem;
+      padding: 0.42rem 0.9rem;
       border-radius: 999px;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.2s ease;
     }
     .os-filter-btn.active,
     .os-filter-btn:hover {
-      background: #0a0a0a;
+      background: #0f172a;
       color: #ffffff;
     }
     .dark .os-filter-btn {
-      background: #171717;
-      color: #a3a3a3;
+      background: #111722;
+      color: #94a3b8;
+      border-color: #1e293b;
     }
     .dark .os-filter-btn.active,
     .dark .os-filter-btn:hover {
-      background: #ffffff;
-      color: #0a0a0a;
+      background: #f1f5f9;
+      color: #0b0f17;
     }
 
     .os-grid-wrap {
@@ -604,7 +637,7 @@
       z-index: 2;
       max-width: 1480px;
       margin: 0 auto;
-      padding: 1.5rem clamp(1.25rem, 4vw, 3.5rem) 5rem;
+      padding: 1.5rem clamp(1rem, 4vw, 3.5rem) 5rem;
       opacity: 0;
       pointer-events: none;
       transform: translateY(28px);
@@ -625,7 +658,7 @@
       padding: 2rem 0;
     }
     .dark .os-status {
-      color: #a3a3a3;
+      color: #94a3b8;
     }
 
     .os-grid {
@@ -663,8 +696,8 @@
       transition: border-color 0.35s ease, background-color 0.35s ease;
     }
     .dark .os-card {
-      background: #141414;
-      border-color: #262626;
+      background: #111722;
+      border-color: #1e293b;
     }
     .os-card img {
       width: 100%;
@@ -686,7 +719,7 @@
       height: 52px;
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.92);
-      color: #0a0a0a;
+      color: #0f172a;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -712,7 +745,7 @@
       padding: 1.5rem;
     }
     .dark #os-lightbox {
-      background: rgba(10, 10, 10, 0.95);
+      background: rgba(8, 11, 17, 0.95);
     }
     #os-lightbox.open {
       display: flex;
@@ -729,7 +762,7 @@
       border: none;
       border-radius: 14px;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.28);
-      background: #000;
+      background: #080B11;
     }
     #os-lightbox-close {
       position: fixed;
@@ -746,13 +779,13 @@
       z-index: 10001;
     }
     .dark #os-lightbox-close {
-      border-color: #333333;
-      background: #171717;
-      color: #ffffff;
+      border-color: #1e293b;
+      background: #111722;
+      color: #f1f5f9;
     }
   </style>
 </head>
-<body id="top" class="bg-white dark:bg-[#0A0A0A] text-neutral-900 dark:text-white font-sans antialiased bg-grid-pattern transition-colors duration-300">
+<body id="top" class="bg-white dark:bg-obsidian-base text-slate-900 dark:text-slate-100 font-sans antialiased bg-grid-pattern transition-colors duration-300">
 
   <!-- GLOBAL THEME RIPPLE OVERLAY -->
   <div id="os-theme-ripple"></div>
@@ -761,70 +794,70 @@
   <div id="custom-cursor"></div>
 
   <!-- TOAST NOTIFICATION -->
-  <div id="toast" class="fixed bottom-8 right-8 z-50 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 px-6 py-3 rounded-xl font-mono text-xs font-bold shadow-2xl border border-neutral-700 dark:border-neutral-200 opacity-0 pointer-events-none translate-y-4">
+  <div id="toast" class="fixed bottom-16 sm:bottom-8 right-4 sm:right-8 z-50 bg-slate-900 dark:bg-slate-100 text-white dark:text-obsidian-base px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-mono text-xs font-bold shadow-2xl border border-slate-700 dark:border-slate-300 opacity-0 pointer-events-none translate-y-4">
     ✓ Email successfully copied to clipboard!
   </div>
 
   <!-- BACK TO TOP FLOATING BUTTON -->
-  <button id="back-to-top" onclick="goToPage(0)" class="fixed bottom-6 right-6 z-50 p-3.5 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-full shadow-2xl border border-neutral-700 dark:border-neutral-200 opacity-0 pointer-events-none translate-y-4 transition-all duration-300 flex items-center justify-center hover:scale-110 hover-trigger" title="Back to Top">
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+  <button id="back-to-top" onclick="goToPage(0)" class="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 p-3 sm:p-3.5 bg-slate-900 dark:bg-slate-100 text-white dark:text-obsidian-base rounded-full shadow-2xl border border-slate-700 dark:border-slate-300 opacity-0 pointer-events-none translate-y-4 transition-all duration-300 flex items-center justify-center hover:scale-110 hover-trigger" title="Back to Top">
+    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
     </svg>
   </button>
 
   <!-- FLOATING PAGE COUNTER -->
-  <div class="fixed left-6 bottom-6 z-40 font-mono text-xs font-bold tracking-widest text-neutral-400 dark:text-neutral-600 flex items-center gap-2">
-    <span id="current-page-num" class="text-neutral-900 dark:text-white text-sm">01</span>
+  <div class="fixed left-4 sm:left-6 bottom-4 sm:bottom-6 z-40 font-mono text-xs font-bold tracking-widest text-slate-400 dark:text-slate-500 flex items-center gap-1.5 sm:gap-2 bg-white/80 dark:bg-obsidian-surface/85 backdrop-blur-md px-2.5 py-1 rounded-full border border-slate-200/70 dark:border-obsidian-border lg:bg-transparent lg:dark:bg-transparent lg:border-0 lg:px-0 lg:py-0 lg:backdrop-blur-none">
+    <span id="current-page-num" class="text-slate-900 dark:text-slate-100 text-xs sm:text-sm">01</span>
     <span>/</span>
     <span>08</span>
   </div>
 
   <!-- SIDE SLIDE INDICATOR -->
   <div class="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-3 items-center">
-    <button onclick="goToPage(0)" class="nav-dot active bg-neutral-900 dark:bg-white hover-trigger" title="Hero"></button>
-    <button onclick="goToPage(1)" class="nav-dot bg-neutral-400 dark:bg-neutral-600 hover-trigger" title="Achievements"></button>
-    <button onclick="goToPage(2)" class="nav-dot bg-neutral-400 dark:bg-neutral-600 hover-trigger" title="Hall of Fame"></button>
-    <button onclick="goToPage(3)" class="nav-dot bg-neutral-400 dark:bg-neutral-600 hover-trigger" title="Photo Retouching"></button>
-    <button onclick="goToPage(4)" class="nav-dot bg-neutral-400 dark:bg-neutral-600 hover-trigger" title="Graphic Assets"></button>
-    <button onclick="goToPage(5)" class="nav-dot bg-neutral-400 dark:bg-neutral-600 hover-trigger" title="Short Video"></button>
-    <button onclick="goToPage(6)" class="nav-dot bg-neutral-400 dark:bg-neutral-600 hover-trigger" title="Workflow"></button>
-    <button onclick="goToPage(7)" class="nav-dot bg-neutral-400 dark:bg-neutral-600 hover-trigger" title="Contact"></button>
+    <button onclick="goToPage(0)" class="nav-dot active bg-slate-900 dark:bg-slate-100 hover-trigger" title="Hero"></button>
+    <button onclick="goToPage(1)" class="nav-dot bg-slate-400 dark:bg-slate-600 hover-trigger" title="Achievements"></button>
+    <button onclick="goToPage(2)" class="nav-dot bg-slate-400 dark:bg-slate-600 hover-trigger" title="Hall of Fame"></button>
+    <button onclick="goToPage(3)" class="nav-dot bg-slate-400 dark:bg-slate-600 hover-trigger" title="Photo Retouching"></button>
+    <button onclick="goToPage(4)" class="nav-dot bg-slate-400 dark:bg-slate-600 hover-trigger" title="Graphic Assets"></button>
+    <button onclick="goToPage(5)" class="nav-dot bg-slate-400 dark:bg-slate-600 hover-trigger" title="Short Video"></button>
+    <button onclick="goToPage(6)" class="nav-dot bg-slate-400 dark:bg-slate-600 hover-trigger" title="Workflow"></button>
+    <button onclick="goToPage(7)" class="nav-dot bg-slate-400 dark:bg-slate-600 hover-trigger" title="Contact"></button>
   </div>
 
   <!-- IMAGE LIGHTBOX MODAL -->
-  <div id="lightbox" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300" onclick="closeLightbox()">
-    <div class="relative max-w-5xl w-full max-h-[90vh] bg-neutral-900 border border-neutral-800 rounded-2xl p-4 flex flex-col items-center justify-center overflow-hidden" onclick="event.stopPropagation()">
-      <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white hover:text-neutral-400 font-mono text-xl z-10 hover-trigger">✕</button>
-      <div class="w-full h-[75vh] flex items-center justify-center overflow-hidden rounded-xl bg-neutral-950 border border-neutral-800 p-2">
+  <div id="lightbox" class="fixed inset-0 z-50 bg-[#070A10]/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300" onclick="closeLightbox()">
+    <div class="relative max-w-5xl w-full max-h-[90vh] bg-obsidian-surface border border-obsidian-border rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-center overflow-hidden" onclick="event.stopPropagation()">
+      <button onclick="closeLightbox()" class="absolute top-3 right-3 sm:top-4 sm:right-4 text-slate-100 hover:text-slate-400 font-mono text-xl z-10 hover-trigger">✕</button>
+      <div class="w-full h-[70vh] sm:h-[75vh] flex items-center justify-center overflow-hidden rounded-xl bg-obsidian-deep border border-obsidian-border p-2">
         <img id="lightbox-img" src="https://res.cloudinary.com/cbraep73/image/upload/v1793451729/Window_Signage_MockUp_2.webp" class="max-h-full max-w-full w-auto h-auto object-contain rounded-lg" alt="Zoomed View" />
       </div>
-      <p class="text-xs font-mono text-neutral-400 mt-3" id="lightbox-title">Window Signage MockUp</p>
+      <p class="text-xs font-mono text-slate-400 mt-3" id="lightbox-title">Window Signage MockUp</p>
     </div>
   </div>
 
   <!-- NAVIGATION BAR -->
-  <nav class="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-[#0A0A0A]/80 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800 transition-colors duration-300">
-    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+  <nav class="fixed top-0 left-0 w-full z-50 bg-white/85 dark:bg-obsidian-base/85 backdrop-blur-md border-b border-slate-200 dark:border-obsidian-border transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
       
       <!-- GRAFFITI LOGO -->
-      <button onclick="goToPage(0)" class="font-graffiti text-3xl tracking-wide text-neutral-900 dark:text-white hover:opacity-70 transition hover-trigger">
-        HIY<span class="text-neutral-400">.</span>
+      <button onclick="goToPage(0)" class="font-graffiti text-2xl sm:text-3xl tracking-wide text-slate-900 dark:text-slate-100 hover:opacity-70 transition hover-trigger">
+        HIY<span class="text-slate-400">.</span>
       </button>
 
       <!-- NAV LINKS & CONTROLS -->
-      <div class="flex items-center gap-6 text-sm font-semibold">
-        <button onclick="goToPage(1)" class="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition hover-trigger">Featured</button>
-        <button onclick="goToPage(3)" class="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition hover-trigger">Specialties</button>
-        <button onclick="goToPage(6)" class="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition hover-trigger">Workflow</button>
+      <div class="flex items-center gap-2.5 sm:gap-6 text-sm font-semibold">
+        <button onclick="goToPage(1)" class="hidden md:inline-block text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-slate-100 transition hover-trigger">Featured</button>
+        <button onclick="goToPage(3)" class="hidden md:inline-block text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-slate-100 transition hover-trigger">Specialties</button>
+        <button onclick="goToPage(6)" class="hidden md:inline-block text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-slate-100 transition hover-trigger">Workflow</button>
         
-        <!-- Monochrome Theme Switcher (Black Moon / White Sun) -->
-        <button id="theme-toggle" class="w-10 h-10 rounded-full border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition flex items-center justify-center hover-trigger" title="Switch Theme" aria-label="Switch Theme">
-          <!-- Black Moon (Shown in Light Mode) -->
-          <svg id="icon-moon" class="w-4 h-4 text-[#0A0A0A] block dark:hidden" viewBox="0 0 24 24" fill="currentColor">
+        <!-- Monochrome Theme Switcher (Moon / Sun) -->
+        <button id="theme-toggle" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-obsidian-elevated transition flex items-center justify-center hover-trigger" title="Switch Theme" aria-label="Switch Theme">
+          <!-- Moon (Shown in Light Mode) -->
+          <svg id="icon-moon" class="w-4 h-4 text-slate-900 block dark:hidden" viewBox="0 0 24 24" fill="currentColor">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
           </svg>
-          <!-- White Sun (Shown in Dark Mode) -->
-          <svg id="icon-sun" class="w-4 h-4 text-white hidden dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Sun (Shown in Dark Mode) -->
+          <svg id="icon-sun" class="w-4 h-4 text-slate-100 hidden dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="4.5" fill="currentColor"/>
             <line x1="12" y1="2" x2="12" y2="4.5"/>
             <line x1="12" y1="19.5" x2="12" y2="22"/>
@@ -837,7 +870,7 @@
           </svg>
         </button>
 
-        <button onclick="goToPage(7)" class="px-5 py-2.5 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-full font-bold hover:opacity-90 transition shadow-md hover-trigger">
+        <button onclick="goToPage(7)" class="px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm bg-slate-900 dark:bg-slate-100 text-white dark:text-obsidian-base rounded-full font-bold hover:opacity-90 transition shadow-md hover-trigger">
           Let's Talk
         </button>
       </div>
@@ -845,67 +878,67 @@
   </nav>
 
   <!-- PAGE 0: HERO SECTION -->
-  <section class="page-slide active px-6">
-    <div class="max-w-6xl w-full mx-auto flex flex-col lg:flex-row items-center justify-between gap-10">
+  <section class="page-slide active px-4 sm:px-6">
+    <div class="max-w-6xl w-full mx-auto flex flex-col lg:flex-row items-center justify-between gap-7 lg:gap-10">
       
       <!-- Left Content -->
-      <div class="max-w-2xl">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-xs font-semibold mb-6 hover-trigger">
+      <div class="max-w-2xl w-full">
+        <div class="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-obsidian-surface border border-slate-300 dark:border-obsidian-border text-[11px] sm:text-xs font-semibold mb-4 sm:mb-6 hover-trigger">
           <span class="relative flex h-2 w-2">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
           </span>
-          <span class="text-neutral-600 dark:text-neutral-400">Available for Full-Time & Freelance</span>
+          <span class="text-slate-600 dark:text-slate-400">Available for Full-Time & Freelance</span>
         </div>
         
         <!-- KINETIC TITLE -->
-        <h1 class="font-heading text-5xl lg:text-7xl font-black leading-[1.05] tracking-tight mb-6 hover-trigger">
+        <h1 class="font-heading text-4xl sm:text-5xl lg:text-7xl font-black leading-[1.05] tracking-tight mb-4 sm:mb-6 hover-trigger">
           <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.1s">Hatiful</span></span> 
           <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.2s">Ihsan</span></span> 
-          <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.3s">Yosa</span></span><span class="text-neutral-400">.</span>
+          <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.3s">Yosa</span></span><span class="text-slate-400">.</span>
         </h1>
         
-        <p class="text-base lg:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8">
+        <p class="text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-5 sm:mb-8">
           Visual Specialist focusing on visual assets, photo retouching, graphic design, and social media creative execution.
         </p>
 
         <!-- AUTOMATIC LOOPING FLIP BADGE -->
-        <div class="mb-8 flip-container h-16 w-full max-w-md hover-trigger">
+        <div class="mb-6 sm:mb-8 flip-container h-16 w-full max-w-md hover-trigger">
           <div id="badge-flipper" class="flip-inner relative w-full h-full">
-            <div class="flip-front absolute inset-0 bg-neutral-100 dark:bg-neutral-900/90 border border-neutral-200 dark:border-neutral-800 rounded-xl p-4 flex items-center gap-3 smooth-glow">
-              <span class="px-2.5 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded text-xs font-mono font-bold whitespace-nowrap">META ADS</span>
-              <p class="text-xs font-medium text-neutral-700 dark:text-neutral-300">Experienced in designing conversion visuals and managing Meta Ads campaign setup.</p>
+            <div class="flip-front absolute inset-0 bg-slate-100 dark:bg-obsidian-surface border border-slate-200 dark:border-obsidian-border rounded-xl p-3 sm:p-4 flex items-center gap-3 smooth-glow">
+              <span class="px-2.5 py-1 bg-slate-900 dark:bg-slate-100 text-white dark:text-obsidian-base rounded text-[11px] sm:text-xs font-mono font-bold whitespace-nowrap">META ADS</span>
+              <p class="text-[11px] sm:text-xs font-medium text-slate-700 dark:text-slate-300 leading-snug">Experienced in designing conversion visuals and managing Meta Ads campaign setup.</p>
             </div>
-            <div class="flip-back absolute inset-0 bg-neutral-100 dark:bg-neutral-900/90 border border-neutral-200 dark:border-neutral-800 rounded-xl p-4 flex items-center gap-3 smooth-glow">
-              <span class="px-2.5 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded text-xs font-mono font-bold whitespace-nowrap">4+ YEARS EXP</span>
-              <p class="text-xs font-medium text-neutral-700 dark:text-neutral-300">4+ years of experience in visual design & digital content creation.</p>
+            <div class="flip-back absolute inset-0 bg-slate-100 dark:bg-obsidian-surface border border-slate-200 dark:border-obsidian-border rounded-xl p-3 sm:p-4 flex items-center gap-3 smooth-glow">
+              <span class="px-2.5 py-1 bg-slate-900 dark:bg-slate-100 text-white dark:text-obsidian-base rounded text-[11px] sm:text-xs font-mono font-bold whitespace-nowrap">4+ YEARS EXP</span>
+              <p class="text-[11px] sm:text-xs font-medium text-slate-700 dark:text-slate-300 leading-snug">4+ years of experience in visual design & digital content creation.</p>
             </div>
           </div>
         </div>
         
-        <div class="flex flex-wrap items-center gap-4">
-          <button onclick="goToPage(7)" class="px-8 py-4 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-bold rounded-xl hover:opacity-90 transition shadow-lg hover-trigger smooth-glow">
+        <div class="flex flex-wrap items-center gap-3 sm:gap-4">
+          <button onclick="goToPage(7)" class="px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base bg-slate-900 dark:bg-slate-100 text-white dark:text-obsidian-base font-bold rounded-xl hover:opacity-90 transition shadow-lg hover-trigger smooth-glow">
             Let's Talk
           </button>
-          <a href="https://drive.google.com/file/d/1rADWvJCyjYCi31l62MnO11QYpsrbBphc/view?usp=drive_link" target="_blank" class="px-8 py-4 bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-white font-bold rounded-xl border border-neutral-300 dark:border-neutral-800 hover:border-neutral-900 dark:hover:border-white transition hover-trigger smooth-glow">
+          <a href="https://drive.google.com/file/d/1rADWvJCyjYCi31l62MnO11QYpsrbBphc/view?usp=drive_link" target="_blank" class="px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base bg-slate-100 dark:bg-obsidian-surface text-slate-900 dark:text-slate-100 font-bold rounded-xl border border-slate-300 dark:border-obsidian-border hover:border-slate-900 dark:hover:border-slate-300 transition hover-trigger smooth-glow">
             Download CV
           </a>
         </div>
       </div>
 
       <!-- Right Photo Card -->
-      <div class="relative w-72 h-96 hover-trigger tilt-card group">
+      <div class="relative w-64 h-80 sm:w-72 sm:h-96 hover-trigger tilt-card group shrink-0">
         <div class="running-border-card w-full h-full">
-          <div class="running-border-content bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 p-4 flex flex-col justify-between shadow-2xl">
-            <div class="w-full h-72 bg-neutral-200 dark:bg-neutral-800 rounded-xl overflow-hidden relative border border-neutral-300 dark:border-neutral-700">
-              <img src="https://res.cloudinary.com/cbraep73/image/upload/v1793451039/Foto_Informal_2.webp" alt="Hatiful Ihsan Yosa" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500 scale-100 group-hover:scale-105" />
-              <div class="absolute bottom-3 left-3 px-3 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-md text-[10px] font-mono">
+          <div class="running-border-content bg-slate-100 dark:bg-obsidian-surface border border-slate-300 dark:border-obsidian-border p-3.5 sm:p-4 flex flex-col justify-between shadow-2xl">
+            <div class="w-full h-56 sm:h-72 bg-slate-200 dark:bg-obsidian-elevated rounded-xl overflow-hidden relative border border-slate-300 dark:border-slate-700">
+              <img src="https://res.cloudinary.com/cbraep73/image/upload/v1794745881/Pas_Foto_Biru.webp" alt="Hatiful Ihsan Yosa" class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition duration-500 scale-100 group-hover:scale-105" />
+              <div class="absolute bottom-2.5 left-2.5 sm:bottom-3 sm:left-3 px-2.5 py-1 bg-slate-900 dark:bg-slate-100 text-white dark:text-obsidian-base rounded-md text-[10px] font-mono font-semibold">
                 Yogyakarta, ID
               </div>
             </div>
             <div class="mt-2">
               <h4 class="font-heading font-bold text-sm">Hatiful Ihsan Yosa</h4>
-              <p class="text-xs text-neutral-500">Visual Specialist & Content Creator</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Visual Specialist & Content Creator</p>
             </div>
           </div>
         </div>
@@ -915,25 +948,25 @@
   </section>
 
   <!-- PAGE 1: PROOF METRIC STRIP & RUNNING MARQUEE -->
-  <section class="page-slide px-6">
+  <section class="page-slide px-4 sm:px-6">
     <div class="max-w-6xl w-full mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left mb-10">
-        <div class="p-6 bg-neutral-100 dark:bg-neutral-900/90 border border-neutral-200 dark:border-neutral-800 rounded-2xl smooth-glow hover-trigger">
-          <p class="font-heading text-5xl font-black mb-2">2x Winner</p>
-          <p class="text-xs text-neutral-500 uppercase tracking-wider font-bold">Freelancer.com Contest Winner</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 text-center md:text-left mb-6 sm:mb-10">
+        <div class="p-5 sm:p-6 bg-slate-100 dark:bg-obsidian-surface border border-slate-200 dark:border-obsidian-border rounded-2xl smooth-glow hover-trigger">
+          <p class="font-heading text-3xl sm:text-5xl font-black mb-1.5 sm:mb-2">2x Winner</p>
+          <p class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-bold">Freelancer.com Contest Winner</p>
         </div>
-        <div class="p-6 bg-neutral-100 dark:bg-neutral-900/90 border border-neutral-200 dark:border-neutral-800 rounded-2xl smooth-glow hover-trigger">
-          <p class="font-heading text-5xl font-black mb-2">Editor's Choice</p>
-          <p class="text-xs text-neutral-500 uppercase tracking-wider font-bold">Pixabay Active Contributor</p>
+        <div class="p-5 sm:p-6 bg-slate-100 dark:bg-obsidian-surface border border-slate-200 dark:border-obsidian-border rounded-2xl smooth-glow hover-trigger">
+          <p class="font-heading text-3xl sm:text-5xl font-black mb-1.5 sm:mb-2">Editor's Choice</p>
+          <p class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-bold">Pixabay Active Contributor</p>
         </div>
-        <div class="p-6 bg-neutral-100 dark:bg-neutral-900/90 border border-neutral-200 dark:border-neutral-800 rounded-2xl smooth-glow hover-trigger">
-          <p class="font-heading text-5xl font-black mb-2">Featured</p>
-          <p class="text-xs text-neutral-500 uppercase tracking-wider font-bold">UXDesign.cc & Unsplash</p>
+        <div class="p-5 sm:p-6 bg-slate-100 dark:bg-obsidian-surface border border-slate-200 dark:border-obsidian-border rounded-2xl smooth-glow hover-trigger">
+          <p class="font-heading text-3xl sm:text-5xl font-black mb-1.5 sm:mb-2">Featured</p>
+          <p class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-bold">UXDesign.cc & Unsplash</p>
         </div>
       </div>
 
       <!-- SOLID FULL VISIBILITY RUNNING MARQUEE -->
-      <div class="overflow-hidden whitespace-nowrap py-6 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-heading font-black text-lg tracking-widest uppercase rounded-2xl shadow-xl hover-trigger">
+      <div class="overflow-hidden whitespace-nowrap py-4 sm:py-6 bg-slate-900 dark:bg-slate-100 text-white dark:text-obsidian-base font-heading font-black text-sm sm:text-lg tracking-widest uppercase rounded-2xl shadow-xl hover-trigger">
         <div class="animate-kinetic-marquee gap-8">
           <span>• VISUAL DESIGN • PHOTO RETOUCHING • 3D RENDER • BRAND IDENTITY • META ADS • ARTIFICIAL INTELLIGENCE • CONTENT STRATEGY</span>
           <span>• VISUAL DESIGN • PHOTO RETOUCHING • 3D RENDER • BRAND IDENTITY • META ADS • ARTIFICIAL INTELLIGENCE • CONTENT STRATEGY</span>
@@ -943,39 +976,39 @@
   </section>
 
   <!-- PAGE 2: HALL OF FAME -->
-  <section class="page-slide px-6">
+  <section class="page-slide px-4 sm:px-6">
     <div class="max-w-6xl w-full mx-auto">
-      <div class="mb-8">
-        <h2 class="font-heading text-4xl lg:text-5xl font-extrabold mb-2 hover-trigger">
+      <div class="mb-5 sm:mb-8">
+        <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-1.5 sm:mb-2 hover-trigger">
           <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.1s">Hall</span></span> 
           <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.2s">of</span></span> 
-          <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.3s">Fame</span></span><span class="text-neutral-400">.</span>
+          <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.3s">Fame</span></span><span class="text-slate-400">.</span>
         </h2>
-        <p class="text-neutral-500 text-xs">Featured work, contest wins, and visual highlights. (Hover card for details).</p>
+        <p class="text-slate-500 dark:text-slate-400 text-xs">Featured work, contest wins, and visual highlights. (Hover card for details, tap to zoom).</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
         
         <!-- Card 1: Pixabay Editor's Choice -->
-        <div onclick="openLightboxImage('https://res.cloudinary.com/cbraep73/image/upload/v1793451944/Editors_Choice_Pixabay.jpg', 'Pixabay Editor\'s Choice')" class="group perspective-1000 h-[360px] hover-trigger cursor-pointer">
+        <div onclick="openLightboxImage('https://res.cloudinary.com/cbraep73/image/upload/v1793451944/Editors_Choice_Pixabay.jpg', 'Pixabay Editor\'s Choice')" class="group perspective-1000 h-[270px] sm:h-[360px] hover-trigger cursor-pointer">
           <div class="relative w-full h-full duration-700 transform-style-3d group-hover-rotate-y-180">
-            <div class="absolute inset-0 w-full h-full bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-6 flex flex-col justify-between backface-hidden shadow-md smooth-glow">
+            <div class="absolute inset-0 w-full h-full bg-slate-100 dark:bg-obsidian-surface border-2 border-slate-300 dark:border-obsidian-border rounded-2xl p-5 sm:p-6 flex flex-col justify-between backface-hidden shadow-md smooth-glow">
               <div>
-                <span class="inline-block px-3 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-[10px] font-bold uppercase rounded-full mb-3">★ Editor's Choice</span>
-                <h3 class="font-heading text-2xl font-bold mb-1">Pixabay Featured</h3>
-                <p class="text-xs text-neutral-500 leading-relaxed">Selected as Pixabay Editor's Choice with thousands of downloads by global creators.</p>
+                <span class="inline-block px-3 py-1 bg-slate-900 dark:bg-slate-100 text-white dark:text-obsidian-base text-[10px] font-bold uppercase rounded-full mb-2.5 sm:mb-3">★ Editor's Choice</span>
+                <h3 class="font-heading text-xl sm:text-2xl font-bold mb-1">Pixabay Featured</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Selected as Pixabay Editor's Choice with thousands of downloads by global creators.</p>
               </div>
-              <div class="h-36 bg-neutral-200 dark:bg-neutral-800 rounded-xl overflow-hidden border border-neutral-300 dark:border-neutral-700">
+              <div class="h-28 sm:h-36 bg-slate-200 dark:bg-obsidian-elevated rounded-xl overflow-hidden border border-slate-300 dark:border-slate-700">
                 <img src="https://res.cloudinary.com/cbraep73/image/upload/v1793451944/Editors_Choice_Pixabay.jpg" class="w-full h-full object-cover" alt="Pixabay Editor Choice" />
               </div>
             </div>
-            <div class="absolute inset-0 w-full h-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-2xl p-6 flex flex-col justify-between rotate-y-180 backface-hidden shadow-2xl">
+            <div class="absolute inset-0 w-full h-full bg-slate-900 dark:bg-slate-100 text-white dark:text-obsidian-base rounded-2xl p-5 sm:p-6 flex flex-col justify-between rotate-y-180 backface-hidden shadow-2xl">
               <div>
-                <span class="inline-block px-3 py-1 bg-neutral-700 dark:bg-neutral-200 text-white dark:text-black text-xs font-bold rounded-full mb-3">Pixabay Highlight</span>
-                <h3 class="font-heading text-2xl font-bold mb-2">Achievement Details</h3>
-                <p class="text-xs leading-relaxed mb-4 text-neutral-300 dark:text-neutral-700">Selected as Pixabay Editor's Choice with thousands of downloads by global creators.</p>
+                <span class="inline-block px-3 py-1 bg-slate-700 dark:bg-slate-200 text-white dark:text-slate-900 text-xs font-bold rounded-full mb-3">Pixabay Highlight</span>
+                <h3 class="font-heading text-xl sm:text-2xl font-bold mb-2">Achievement Details</h3>
+                <p class="text-xs leading-relaxed mb-4 text-slate-300 dark:text-slate-700">Selected as Pixabay Editor's Choice with thousands of downloads by global creators.</p>
               </div>
-              <div class="border-t border-neutral-700 dark:border-neutral-300 pt-3 text-xs font-mono text-neutral-400 dark:text-neutral-600">
+              <div class="border-t border-slate-700 dark:border-slate-300 pt-3 text-xs font-mono text-slate-400 dark:text-slate-600">
                 Tools: Illustrator
               </div>
             </div>
@@ -983,25 +1016,25 @@
         </div>
 
         <!-- Card 2: Featured Article / UXDesign.cc -->
-        <div onclick="openLightboxImage('https://res.cloudinary.com/cbraep73/image/upload/v1793451789/Featured_Article.jpg', 'Publication Spotlight')" class="group perspective-1000 h-[360px] hover-trigger cursor-pointer">
+        <div onclick="openLightboxImage('https://res.cloudinary.com/cbraep73/image/upload/v1793451789/Featured_Article.jpg', 'Publication Spotlight')" class="group perspective-1000 h-[270px] sm:h-[360px] hover-trigger cursor-pointer">
           <div class="relative w-full h-full duration-700 transform-style-3d group-hover-rotate-y-180">
-            <div class="absolute inset-0 w-full h-full bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-6 flex flex-col justify-between backface-hidden shadow-md smooth-glow">
+            <div class="absolute inset-0 w-full h-full bg-slate-100 dark:bg-obsidian-surface border-2 border-slate-300 dark:border-obsidian-border rounded-2xl p-5 sm:p-6 flex flex-col justify-between backface-hidden shadow-md smooth-glow">
               <div>
-                <span class="inline-block px-3 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-[10px] font-bold uppercase rounded-full mb-3">Featured Publication</span>
-                <h3 class="font-heading text-2xl font-bold mb-1">Featured Article</h3>
-                <p class="text-xs text-neutral-500 leading-relaxed">Visual render sample featured in international design articles.</p>
+                <span class="inline-block px-3 py-1 bg-slate-900 dark:bg-slate-100 text-white dark:text-obsidian-base text-[10px] font-bold uppercase rounded-full mb-2.5 sm:mb-3">Featured Publication</span>
+                <h3 class="font-heading text-xl sm:text-2xl font-bold mb-1">Featured Article</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Visual render sample featured in international design articles.</p>
               </div>
-              <div class="h-36 bg-neutral-200 dark:bg-neutral-800 rounded-xl overflow-hidden border border-neutral-300 dark:border-neutral-700">
+              <div class="h-28 sm:h-36 bg-slate-200 dark:bg-obsidian-elevated rounded-xl overflow-hidden border border-slate-300 dark:border-slate-700">
                 <img src="https://res.cloudinary.com/cbraep73/image/upload/v1793451789/Featured_Article.jpg" class="w-full h-full object-cover" alt="Featured Article" />
               </div>
             </div>
-            <div class="absolute inset-0 w-full h-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-2xl p-6 flex flex-col justify-between rotate-y-180 backface-hidden shadow-2xl">
+            <div class="absolute inset-0 w-full h-full bg-slate-900 dark:bg-slate-100 text-white dark:text-obsidian-base rounded-2xl p-5 sm:p-6 flex flex-col justify-between rotate-y-180 backface-hidden shadow-2xl">
               <div>
-                <span class="inline-block px-3 py-1 bg-neutral-700 dark:bg-neutral-200 text-white dark:text-black text-xs font-bold rounded-full mb-3">UXDesign.cc</span>
-                <h3 class="font-heading text-2xl font-bold mb-2">Publication Spotlight</h3>
-                <p class="text-xs leading-relaxed mb-4 text-neutral-300 dark:text-neutral-700">Visual render sample featured in international design articles.</p>
+                <span class="inline-block px-3 py-1 bg-slate-700 dark:bg-slate-200 text-white dark:text-slate-900 text-xs font-bold rounded-full mb-3">UXDesign.cc</span>
+                <h3 class="font-heading text-xl sm:text-2xl font-bold mb-2">Publication Spotlight</h3>
+                <p class="text-xs leading-relaxed mb-4 text-slate-300 dark:text-slate-700">Visual render sample featured in international design articles.</p>
               </div>
-              <div class="border-t border-neutral-700 dark:border-neutral-300 pt-3 text-xs font-mono text-neutral-400 dark:text-neutral-600">
+              <div class="border-t border-slate-700 dark:border-slate-300 pt-3 text-xs font-mono text-slate-400 dark:text-slate-600">
                 Tools: Illustrator
               </div>
             </div>
@@ -1009,25 +1042,25 @@
         </div>
 
         <!-- Card 3: 2x Freelancer Contest Winner -->
-        <div onclick="openLightboxImage('https://res.cloudinary.com/cbraep73/image/upload/v1793451897/Menang_freelancer.jpg', 'Freelancer.com Winner')" class="group perspective-1000 h-[360px] hover-trigger cursor-pointer">
+        <div onclick="openLightboxImage('https://res.cloudinary.com/cbraep73/image/upload/v1793451897/Menang_freelancer.jpg', 'Freelancer.com Winner')" class="group perspective-1000 h-[270px] sm:h-[360px] hover-trigger cursor-pointer">
           <div class="relative w-full h-full duration-700 transform-style-3d group-hover-rotate-y-180">
-            <div class="absolute inset-0 w-full h-full bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-6 flex flex-col justify-between backface-hidden shadow-md smooth-glow">
+            <div class="absolute inset-0 w-full h-full bg-slate-100 dark:bg-obsidian-surface border-2 border-slate-300 dark:border-obsidian-border rounded-2xl p-5 sm:p-6 flex flex-col justify-between backface-hidden shadow-md smooth-glow">
               <div>
-                <span class="inline-block px-3 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-[10px] font-bold uppercase rounded-full mb-3">2x Contest Winner</span>
-                <h3 class="font-heading text-2xl font-bold mb-1">Freelancer Winner</h3>
-                <p class="text-xs text-neutral-500 leading-relaxed">1st Place winner in two international visual branding contests.</p>
+                <span class="inline-block px-3 py-1 bg-slate-900 dark:bg-slate-100 text-white dark:text-obsidian-base text-[10px] font-bold uppercase rounded-full mb-2.5 sm:mb-3">2x Contest Winner</span>
+                <h3 class="font-heading text-xl sm:text-2xl font-bold mb-1">Freelancer Winner</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">1st Place winner in two international visual branding contests.</p>
               </div>
-              <div class="h-36 bg-neutral-200 dark:bg-neutral-800 rounded-xl overflow-hidden border border-neutral-300 dark:border-neutral-700">
+              <div class="h-28 sm:h-36 bg-slate-200 dark:bg-obsidian-elevated rounded-xl overflow-hidden border border-slate-300 dark:border-slate-700">
                 <img src="https://res.cloudinary.com/cbraep73/image/upload/v1793451897/Menang_freelancer.jpg" class="w-full h-full object-cover" alt="Freelancer Contest Winner" />
               </div>
             </div>
-            <div class="absolute inset-0 w-full h-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-2xl p-6 flex flex-col justify-between rotate-y-180 backface-hidden shadow-2xl">
+            <div class="absolute inset-0 w-full h-full bg-slate-900 dark:bg-slate-100 text-white dark:text-obsidian-base rounded-2xl p-5 sm:p-6 flex flex-col justify-between rotate-y-180 backface-hidden shadow-2xl">
               <div>
-                <span class="inline-block px-3 py-1 bg-neutral-700 dark:bg-neutral-200 text-white dark:text-black text-xs font-bold rounded-full mb-3">Freelancer.com</span>
-                <h3 class="font-heading text-2xl font-bold mb-2">Contest Winner</h3>
-                <p class="text-xs leading-relaxed mb-4 text-neutral-300 dark:text-neutral-700">1st Place winner in two international visual branding contests.</p>
+                <span class="inline-block px-3 py-1 bg-slate-700 dark:bg-slate-200 text-white dark:text-slate-900 text-xs font-bold rounded-full mb-3">Freelancer.com</span>
+                <h3 class="font-heading text-xl sm:text-2xl font-bold mb-2">Contest Winner</h3>
+                <p class="text-xs leading-relaxed mb-4 text-slate-300 dark:text-slate-700">1st Place winner in two international visual branding contests.</p>
               </div>
-              <div class="border-t border-neutral-700 dark:border-neutral-300 pt-3 text-xs font-mono text-neutral-400 dark:text-neutral-600">
+              <div class="border-t border-slate-700 dark:border-slate-300 pt-3 text-xs font-mono text-slate-400 dark:text-slate-600">
                 Tools: Illustrator & Photoshop
               </div>
             </div>
@@ -1039,58 +1072,58 @@
   </section>
 
   <!-- PAGE 3: SPECIALIZED WORKS - 01. PHOTO RETOUCHING (GPU CLIP-PATH OPTIMIZED) -->
-  <section class="page-slide px-6">
+  <section class="page-slide px-4 sm:px-6">
     <div class="max-w-6xl w-full mx-auto">
       
-      <div class="mb-4 flex flex-col sm:flex-row sm:items-end justify-between border-b border-neutral-200 dark:border-neutral-800 pb-2.5 gap-2">
+      <div class="mb-4 flex flex-col sm:flex-row sm:items-end justify-between border-b border-slate-200 dark:border-obsidian-border pb-2.5 gap-1.5 sm:gap-2">
         <div>
-          <h2 class="font-heading text-4xl lg:text-5xl font-extrabold mb-1 hover-trigger">
+          <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-1 hover-trigger">
             <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.1s">Specialized</span></span> 
-            <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.25s">Works</span></span><span class="text-neutral-400">.</span>
+            <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.25s">Works</span></span><span class="text-slate-400">.</span>
           </h2>
-          <p class="text-xs text-neutral-500">Interactive slider showing before & after photo retouching details.</p>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Interactive slider showing before & after photo retouching details.</p>
         </div>
-        <span class="text-xs font-mono font-bold uppercase tracking-widest text-neutral-400">01 / Photo Retouching</span>
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-slate-400">01 / Photo Retouching</span>
       </div>
 
-      <div class="bg-neutral-50 dark:bg-neutral-900/90 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-5 shadow-sm smooth-glow hover-trigger">
+      <div class="bg-slate-50 dark:bg-obsidian-surface border border-slate-200 dark:border-obsidian-border rounded-2xl p-4 sm:p-5 shadow-sm smooth-glow hover-trigger">
         <div class="mb-3 flex items-center justify-between">
-          <h3 class="font-heading text-lg font-bold" id="retouch-title">Photo 1</h3>
-          <span class="px-3 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-xs font-mono rounded-md">Interactive Slider</span>
+          <h3 class="font-heading text-base sm:text-lg font-bold" id="retouch-title">Photo 1</h3>
+          <span class="px-2.5 sm:px-3 py-1 bg-slate-900 dark:bg-slate-100 text-white dark:text-obsidian-base text-[11px] sm:text-xs font-mono font-semibold rounded-md">Interactive Slider</span>
         </div>
 
-        <div class="flex flex-wrap items-center gap-2 mb-3">
-          <button onclick="selectRetouchPhoto(1)" id="retouch-tab-1" class="retouch-tab px-3.5 py-1.5 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-xs font-mono font-bold rounded-lg transition hover-trigger">Photo 1</button>
-          <button onclick="selectRetouchPhoto(2)" id="retouch-tab-2" class="retouch-tab px-3.5 py-1.5 bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-xs font-mono font-bold rounded-lg transition hover-trigger">Photo 2</button>
-          <button onclick="selectRetouchPhoto(3)" id="retouch-tab-3" class="retouch-tab px-3.5 py-1.5 bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-xs font-mono font-bold rounded-lg transition hover-trigger">Photo 3</button>
-          <button onclick="selectRetouchPhoto(4)" id="retouch-tab-4" class="retouch-tab px-3.5 py-1.5 bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-xs font-mono font-bold rounded-lg transition hover-trigger">Photo 4</button>
-          <button onclick="selectRetouchPhoto(5)" id="retouch-tab-5" class="retouch-tab px-3.5 py-1.5 bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-xs font-mono font-bold rounded-lg transition hover-trigger">Photo 5</button>
+        <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-3">
+          <button onclick="selectRetouchPhoto(1)" id="retouch-tab-1" class="retouch-tab px-3 sm:px-3.5 py-1.5 bg-slate-900 dark:bg-slate-100 text-white dark:text-obsidian-base text-xs font-mono font-bold rounded-lg transition hover-trigger">Photo 1</button>
+          <button onclick="selectRetouchPhoto(2)" id="retouch-tab-2" class="retouch-tab px-3 sm:px-3.5 py-1.5 bg-slate-200 dark:bg-obsidian-elevated text-slate-700 dark:text-slate-300 text-xs font-mono font-bold rounded-lg transition hover-trigger">Photo 2</button>
+          <button onclick="selectRetouchPhoto(3)" id="retouch-tab-3" class="retouch-tab px-3 sm:px-3.5 py-1.5 bg-slate-200 dark:bg-obsidian-elevated text-slate-700 dark:text-slate-300 text-xs font-mono font-bold rounded-lg transition hover-trigger">Photo 3</button>
+          <button onclick="selectRetouchPhoto(4)" id="retouch-tab-4" class="retouch-tab px-3 sm:px-3.5 py-1.5 bg-slate-200 dark:bg-obsidian-elevated text-slate-700 dark:text-slate-300 text-xs font-mono font-bold rounded-lg transition hover-trigger">Photo 4</button>
+          <button onclick="selectRetouchPhoto(5)" id="retouch-tab-5" class="retouch-tab px-3 sm:px-3.5 py-1.5 bg-slate-200 dark:bg-obsidian-elevated text-slate-700 dark:text-slate-300 text-xs font-mono font-bold rounded-lg transition hover-trigger">Photo 5</button>
         </div>
 
         <!-- AREA PREVIEW SLIDER GAMBAR REAL (ZERO-REFLOW CLIP-PATH) -->
-        <div class="relative w-full h-80 sm:h-[400px] rounded-xl overflow-hidden select-none border border-neutral-300 dark:border-neutral-700 hover-trigger mb-3" id="beforeAfterSlider">
+        <div class="relative w-full h-60 sm:h-80 lg:h-[400px] rounded-xl overflow-hidden select-none border border-slate-300 dark:border-slate-700 hover-trigger mb-3" id="beforeAfterSlider">
           <!-- AFTER IMAGE (BOTTOM LAYER) -->
           <img id="retouch-after-img" src="https://res.cloudinary.com/cbraep73/image/upload/v1793447544/Kamar_Anak_After.webp" decoding="async" class="absolute inset-0 w-full h-full object-cover" alt="After Retouch" />
-          <span class="absolute bottom-3 right-3 px-3 py-1 bg-neutral-900/90 text-white text-[10px] font-mono font-bold rounded-md z-10 pointer-events-none">AFTER</span>
+          <span class="absolute bottom-3 right-3 px-3 py-1 bg-obsidian-base/90 text-slate-100 text-[10px] font-mono font-bold rounded-md z-10 pointer-events-none">AFTER</span>
 
           <!-- BEFORE IMAGE (TOP LAYER CLIPPED BY GPU CLIP-PATH) -->
           <div id="beforeLayer" class="absolute inset-0 z-10 pointer-events-none">
             <img id="retouch-before-img" src="https://res.cloudinary.com/cbraep73/image/upload/v1793447544/Kamar_Anak_Before.webp" decoding="async" class="w-full h-full object-cover" alt="Before Retouch" />
-            <span class="absolute bottom-3 left-3 px-3 py-1 bg-neutral-900/90 text-white text-[10px] font-mono font-bold rounded-md z-20">BEFORE</span>
+            <span class="absolute bottom-3 left-3 px-3 py-1 bg-obsidian-base/90 text-slate-100 text-[10px] font-mono font-bold rounded-md z-20">BEFORE</span>
           </div>
 
           <!-- DIVIDER LINE -->
-          <div id="sliderDivider" class="absolute top-0 bottom-0 w-1 bg-white dark:bg-neutral-900 shadow-[0_0_8px_rgba(0,0,0,0.45)] z-20 pointer-events-none -translate-x-1/2"></div>
+          <div id="sliderDivider" class="absolute top-0 bottom-0 w-1 bg-white dark:bg-slate-200 shadow-[0_0_8px_rgba(0,0,0,0.45)] z-20 pointer-events-none -translate-x-1/2"></div>
 
           <input type="range" min="0" max="100" value="50" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30 hover-trigger" oninput="document.getElementById('beforeAfterSlider').style.setProperty('--split', this.value + '%')" />
         </div>
 
         <!-- TOMBOL VIEW BEFORE & VIEW AFTER DI BAWAH SLIDER INTERAKTIF -->
         <div class="flex items-center justify-end gap-2">
-          <button onclick="openCurrentRetouchBefore()" class="px-3.5 py-1.5 bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-300 dark:hover:bg-neutral-700 text-neutral-800 dark:text-neutral-200 text-xs font-mono font-bold rounded-lg transition hover-trigger flex items-center gap-1.5">
+          <button onclick="openCurrentRetouchBefore()" class="px-3 sm:px-3.5 py-1.5 bg-slate-200 dark:bg-obsidian-elevated hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-mono font-bold rounded-lg transition hover-trigger flex items-center gap-1.5">
             <span>🔍 View Before</span>
           </button>
-          <button onclick="openCurrentRetouchAfter()" class="px-3.5 py-1.5 bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-300 dark:hover:bg-neutral-700 text-neutral-800 dark:text-neutral-200 text-xs font-mono font-bold rounded-lg transition hover-trigger flex items-center gap-1.5">
+          <button onclick="openCurrentRetouchAfter()" class="px-3 sm:px-3.5 py-1.5 bg-slate-200 dark:bg-obsidian-elevated hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-mono font-bold rounded-lg transition hover-trigger flex items-center gap-1.5">
             <span>🔍 View After</span>
           </button>
         </div>
@@ -1099,59 +1132,59 @@
   </section>
 
   <!-- PAGE 4: SPECIALIZED WORKS - 02. GRAPHIC & BRANDING -->
-  <section class="page-slide px-6">
+  <section class="page-slide px-4 sm:px-6">
     <div class="max-w-6xl w-full mx-auto">
       
-      <div class="mb-4 flex flex-col sm:flex-row sm:items-end justify-between border-b border-neutral-200 dark:border-neutral-800 pb-2.5 gap-2">
+      <div class="mb-4 flex flex-col sm:flex-row sm:items-end justify-between border-b border-slate-200 dark:border-obsidian-border pb-2.5 gap-1.5 sm:gap-2">
         <div>
-          <h2 class="font-heading text-4xl lg:text-5xl font-extrabold mb-1 hover-trigger">
+          <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-1 hover-trigger">
             <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.1s">Specialized</span></span> 
-            <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.25s">Works</span></span><span class="text-neutral-400">.</span>
+            <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.25s">Works</span></span><span class="text-slate-400">.</span>
           </h2>
-          <p class="text-xs text-neutral-500">Click or hover list items on the left to switch display image.</p>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Tap or hover list items to switch display image.</p>
         </div>
-        <span class="text-xs font-mono font-bold uppercase tracking-widest text-neutral-400">02 / Graphic & Branding</span>
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-slate-400">02 / Graphic & Branding</span>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
-        <div class="lg:col-span-5 flex flex-col gap-2">
-          <div onclick="switchDesign(1)" onmouseenter="switchDesign(1)" class="design-item p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger smooth-glow">
-            <span class="text-xs font-mono text-neutral-500 uppercase tracking-widest block mb-0.5">01 / Mockup</span>
-            <h4 class="font-heading font-bold text-sm">Window Signage MockUp</h4>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-stretch">
+        <div class="lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 lg:flex lg:flex-col gap-2 order-last lg:order-first">
+          <div onclick="switchDesign(1)" onmouseenter="switchDesign(1)" class="design-item p-3 sm:p-3.5 bg-slate-100 dark:bg-obsidian-surface border border-slate-300 dark:border-obsidian-border rounded-xl transition cursor-pointer hover-trigger smooth-glow">
+            <span class="text-[10px] sm:text-xs font-mono text-slate-500 dark:text-slate-400 uppercase tracking-widest block mb-0.5">01 / Mockup</span>
+            <h4 class="font-heading font-bold text-xs sm:text-sm">Window Signage MockUp</h4>
           </div>
 
-          <div onclick="switchDesign(2)" onmouseenter="switchDesign(2)" class="design-item p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger smooth-glow">
-            <span class="text-xs font-mono text-neutral-500 uppercase tracking-widest block mb-0.5">02 / Promotional</span>
-            <h4 class="font-heading font-bold text-sm">Graphic Artwork Asset</h4>
+          <div onclick="switchDesign(2)" onmouseenter="switchDesign(2)" class="design-item p-3 sm:p-3.5 bg-slate-100 dark:bg-obsidian-surface border border-slate-300 dark:border-obsidian-border rounded-xl transition cursor-pointer hover-trigger smooth-glow">
+            <span class="text-[10px] sm:text-xs font-mono text-slate-500 dark:text-slate-400 uppercase tracking-widest block mb-0.5">02 / Promotional</span>
+            <h4 class="font-heading font-bold text-xs sm:text-sm">Graphic Artwork Asset</h4>
           </div>
 
-          <div onclick="switchDesign(3)" onmouseenter="switchDesign(3)" class="design-item p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger smooth-glow">
-            <span class="text-xs font-mono text-neutral-500 uppercase tracking-widest block mb-0.5">03 / Concept</span>
-            <h4 class="font-heading font-bold text-sm">Moodboard Design</h4>
+          <div onclick="switchDesign(3)" onmouseenter="switchDesign(3)" class="design-item p-3 sm:p-3.5 bg-slate-100 dark:bg-obsidian-surface border border-slate-300 dark:border-obsidian-border rounded-xl transition cursor-pointer hover-trigger smooth-glow">
+            <span class="text-[10px] sm:text-xs font-mono text-slate-500 dark:text-slate-400 uppercase tracking-widest block mb-0.5">03 / Concept</span>
+            <h4 class="font-heading font-bold text-xs sm:text-sm">Moodboard Design</h4>
           </div>
 
-          <div onclick="switchDesign(4)" onmouseenter="switchDesign(4)" class="design-item p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger smooth-glow">
-            <span class="text-xs font-mono text-neutral-500 uppercase tracking-widest block mb-0.5">04 / Illustration</span>
-            <h4 class="font-heading font-bold text-sm">Vintage Car Visual</h4>
+          <div onclick="switchDesign(4)" onmouseenter="switchDesign(4)" class="design-item p-3 sm:p-3.5 bg-slate-100 dark:bg-obsidian-surface border border-slate-300 dark:border-obsidian-border rounded-xl transition cursor-pointer hover-trigger smooth-glow">
+            <span class="text-[10px] sm:text-xs font-mono text-slate-500 dark:text-slate-400 uppercase tracking-widest block mb-0.5">04 / Illustration</span>
+            <h4 class="font-heading font-bold text-xs sm:text-sm">Vintage Car Visual</h4>
           </div>
 
-          <div onclick="switchDesign(5)" onmouseenter="switchDesign(5)" class="design-item p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger smooth-glow">
-            <span class="text-xs font-mono text-neutral-500 uppercase tracking-widest block mb-0.5">05 / Identity</span>
-            <h4 class="font-heading font-bold text-sm">Brand Identity Asset</h4>
+          <div onclick="switchDesign(5)" onmouseenter="switchDesign(5)" class="design-item col-span-2 sm:col-span-1 p-3 sm:p-3.5 bg-slate-100 dark:bg-obsidian-surface border border-slate-300 dark:border-obsidian-border rounded-xl transition cursor-pointer hover-trigger smooth-glow">
+            <span class="text-[10px] sm:text-xs font-mono text-slate-500 dark:text-slate-400 uppercase tracking-widest block mb-0.5">05 / Identity</span>
+            <h4 class="font-heading font-bold text-xs sm:text-sm">Brand Identity Asset</h4>
           </div>
         </div>
 
         <!-- MAIN DISPLAY CONTAINER -->
-        <div class="lg:col-span-7 bg-neutral-100 dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-800 rounded-2xl p-4 flex flex-col justify-between hover-trigger smooth-glow group overflow-hidden cursor-pointer" onclick="openLightbox()">
-          <div class="w-full h-80 sm:h-[400px] bg-neutral-950 rounded-xl flex items-center justify-center border border-neutral-300 dark:border-neutral-700 overflow-hidden relative">
+        <div class="lg:col-span-7 order-first lg:order-last bg-slate-100 dark:bg-obsidian-surface border-2 border-slate-300 dark:border-obsidian-border rounded-2xl p-3.5 sm:p-4 flex flex-col justify-between hover-trigger smooth-glow group overflow-hidden cursor-pointer" onclick="openLightbox()">
+          <div class="w-full h-56 sm:h-80 lg:h-[400px] bg-obsidian-deep rounded-xl flex items-center justify-center border border-slate-300 dark:border-slate-700 overflow-hidden relative">
             <img id="design-display-img" src="https://res.cloudinary.com/cbraep73/image/upload/v1793451729/Window_Signage_MockUp_2.webp" class="w-full h-full object-contain p-2 preview-zoom-pan" alt="Graphic Preview" />
           </div>
-          <div class="mt-2.5 flex items-center justify-between border-t border-neutral-200 dark:border-neutral-800 pt-2.5">
+          <div class="mt-2.5 flex items-center justify-between border-t border-slate-200 dark:border-obsidian-border pt-2.5 gap-2">
             <div>
               <h4 class="font-heading font-bold text-xs" id="design-display-title">Window Signage MockUp</h4>
-              <p class="text-[11px] font-mono text-neutral-500" id="design-display-desc">Click image to expand full view.</p>
+              <p class="text-[11px] font-mono text-slate-500 dark:text-slate-400" id="design-display-desc">Click image to expand full view.</p>
             </div>
-            <span class="text-xs font-bold tracking-wider">Full View 🔍</span>
+            <span class="text-xs font-bold tracking-wider whitespace-nowrap">Full View 🔍</span>
           </div>
         </div>
       </div>
@@ -1159,25 +1192,25 @@
   </section>
 
   <!-- PAGE 5: SPECIALIZED WORKS - 03. SHORT VIDEO -->
-  <section class="page-slide px-6">
+  <section class="page-slide px-4 sm:px-6">
     <div class="max-w-6xl w-full mx-auto">
       
-      <div class="mb-4 flex flex-col sm:flex-row sm:items-end justify-between border-b border-neutral-200 dark:border-neutral-800 pb-2.5 gap-2">
+      <div class="mb-4 flex flex-col sm:flex-row sm:items-end justify-between border-b border-slate-200 dark:border-obsidian-border pb-2.5 gap-1.5 sm:gap-2">
         <div>
-          <h2 class="font-heading text-4xl lg:text-5xl font-extrabold mb-1 hover-trigger">
+          <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-1 hover-trigger">
             <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.1s">Specialized</span></span> 
-            <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.25s">Works</span></span><span class="text-neutral-400">.</span>
+            <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.25s">Works</span></span><span class="text-slate-400">.</span>
           </h2>
-          <p class="text-xs text-neutral-500">Select a video on the right to play in the main player.</p>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Select a video to play in the main player.</p>
         </div>
-        <span class="text-xs font-mono font-bold uppercase tracking-widest text-neutral-400">03 / Short Video</span>
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-slate-400">03 / Short Video</span>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-start">
 
         <!-- STUDIO PLAYER UTAMA -->
-        <div class="lg:col-span-6 bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-white rounded-2xl p-4 border border-neutral-300 dark:border-neutral-800 shadow-md dark:shadow-2xl smooth-glow flex flex-col items-center hover-trigger">
-          <div class="w-full flex items-center justify-between mb-2.5 border-b border-neutral-200 dark:border-neutral-800 pb-2 text-xs font-mono">
+        <div class="lg:col-span-6 bg-slate-100 dark:bg-obsidian-surface text-slate-900 dark:text-slate-100 rounded-2xl p-3.5 sm:p-4 border border-slate-300 dark:border-obsidian-border shadow-md dark:shadow-2xl smooth-glow flex flex-col items-center hover-trigger">
+          <div class="w-full flex items-center justify-between mb-2.5 border-b border-slate-200 dark:border-obsidian-border pb-2 text-xs font-mono">
             <span class="flex items-center gap-2">
               <span class="relative flex h-2 w-2">
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
@@ -1185,14 +1218,14 @@
               </span>
               STUDIO PLAYER (9:16)
             </span>
-            <span id="video-now-playing" class="text-neutral-500 dark:text-neutral-400 truncate max-w-[180px]">AI-Assisted Commercial</span>
+            <span id="video-now-playing" class="text-slate-500 dark:text-slate-400 truncate max-w-[150px] sm:max-w-[180px]">AI-Assisted Commercial</span>
           </div>
           
-          <div class="w-64 h-[400px] sm:w-72 sm:h-[460px] bg-neutral-200 dark:bg-neutral-950 rounded-xl overflow-hidden border border-neutral-300 dark:border-neutral-800 shadow-inner relative" id="video-screen">
+          <div class="w-56 h-[340px] sm:w-72 sm:h-[460px] bg-slate-200 dark:bg-obsidian-deep rounded-xl overflow-hidden border border-slate-300 dark:border-obsidian-border shadow-inner relative" id="video-screen">
             <iframe id="youtube-player" class="w-full h-full" src="https://www.youtube-nocookie.com/embed/M6YhQTPxjfU?enablejsapi=1&autoplay=1&controls=1&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
           </div>
 
-          <a id="youtube-direct-link" href="https://www.youtube.com/watch?v=M6YhQTPxjfU" target="_blank" class="mt-3 px-4 py-2 bg-neutral-900 dark:bg-neutral-800 hover:bg-neutral-800 dark:hover:bg-neutral-700 text-white border border-neutral-800 dark:border-neutral-700 rounded-xl text-xs font-mono font-bold transition flex items-center gap-2 hover-trigger">
+          <a id="youtube-direct-link" href="https://www.youtube.com/watch?v=M6YhQTPxjfU" target="_blank" class="mt-3 px-4 py-2 bg-slate-900 dark:bg-obsidian-elevated hover:bg-slate-800 dark:hover:bg-slate-700 text-slate-100 border border-slate-800 dark:border-slate-700 rounded-xl text-xs font-mono font-bold transition flex items-center gap-2 hover-trigger">
             <span>↗ Open Original YouTube</span>
           </a>
         </div>
@@ -1200,44 +1233,44 @@
         <!-- DAFTAR PILIHAN VIDEO -->
         <div class="lg:col-span-6 flex flex-col gap-2">
           
-          <div onclick="playVideo('M6YhQTPxjfU', 'AI-Assisted Commercial')" class="p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger flex items-center justify-between smooth-glow">
+          <div onclick="playVideo('M6YhQTPxjfU', 'AI-Assisted Commercial')" class="p-3 sm:p-3.5 bg-slate-100 dark:bg-obsidian-surface border border-slate-300 dark:border-obsidian-border rounded-xl transition cursor-pointer hover-trigger flex items-center justify-between smooth-glow">
             <div>
-              <span class="text-xs font-mono text-neutral-500 block mb-0.5">YouTube Shorts • 9:16</span>
-              <h4 class="font-heading font-bold text-sm">AI-Assisted Commercial (Parfume Test)</h4>
+              <span class="text-xs font-mono text-slate-500 dark:text-slate-400 block mb-0.5">YouTube Shorts • 9:16</span>
+              <h4 class="font-heading font-bold text-xs sm:text-sm">AI-Assisted Commercial (Parfume Test)</h4>
             </div>
-            <span class="text-xs font-mono font-bold px-3 py-1.5 bg-neutral-200 dark:bg-neutral-800 rounded-lg whitespace-nowrap ml-2">▶ Play</span>
+            <span class="text-xs font-mono font-bold px-3 py-1.5 bg-slate-200 dark:bg-obsidian-elevated rounded-lg whitespace-nowrap ml-2">▶ Play</span>
           </div>
 
-          <div onclick="playVideo('6sixBXrvyuU', 'AI-Assisted Commercial')" class="p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger flex items-center justify-between smooth-glow">
+          <div onclick="playVideo('6sixBXrvyuU', 'AI-Assisted Commercial')" class="p-3 sm:p-3.5 bg-slate-100 dark:bg-obsidian-surface border border-slate-300 dark:border-obsidian-border rounded-xl transition cursor-pointer hover-trigger flex items-center justify-between smooth-glow">
             <div>
-              <span class="text-xs font-mono text-neutral-500 block mb-0.5">YouTube Shorts • 9:16</span>
-              <h4 class="font-heading font-bold text-sm">AI-Assisted Commercial (Helmet Test)</h4>
+              <span class="text-xs font-mono text-slate-500 dark:text-slate-400 block mb-0.5">YouTube Shorts • 9:16</span>
+              <h4 class="font-heading font-bold text-xs sm:text-sm">AI-Assisted Commercial (Helmet Test)</h4>
             </div>
-            <span class="text-xs font-mono font-bold px-3 py-1.5 bg-neutral-200 dark:bg-neutral-800 rounded-lg whitespace-nowrap ml-2">▶ Play</span>
+            <span class="text-xs font-mono font-bold px-3 py-1.5 bg-slate-200 dark:bg-obsidian-elevated rounded-lg whitespace-nowrap ml-2">▶ Play</span>
           </div>
 
-          <div onclick="playVideo('zcnrjymP2HU', 'Contempo Interior')" class="p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger flex items-center justify-between smooth-glow">
+          <div onclick="playVideo('zcnrjymP2HU', 'Contempo Interior')" class="p-3 sm:p-3.5 bg-slate-100 dark:bg-obsidian-surface border border-slate-300 dark:border-obsidian-border rounded-xl transition cursor-pointer hover-trigger flex items-center justify-between smooth-glow">
             <div>
-              <span class="text-xs font-mono text-neutral-500 block mb-0.5">YouTube Shorts • 9:16</span>
-              <h4 class="font-heading font-bold text-sm">Contempo Interior Campaign</h4>
+              <span class="text-xs font-mono text-slate-500 dark:text-slate-400 block mb-0.5">YouTube Shorts • 9:16</span>
+              <h4 class="font-heading font-bold text-xs sm:text-sm">Contempo Interior Campaign</h4>
             </div>
-            <span class="text-xs font-mono font-bold px-3 py-1.5 bg-neutral-200 dark:bg-neutral-800 rounded-lg whitespace-nowrap ml-2">▶ Play</span>
+            <span class="text-xs font-mono font-bold px-3 py-1.5 bg-slate-200 dark:bg-obsidian-elevated rounded-lg whitespace-nowrap ml-2">▶ Play</span>
           </div>
 
-          <div onclick="playVideo('ASYCYRJcf_s', 'First Visit Experience')" class="p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger flex items-center justify-between smooth-glow">
+          <div onclick="playVideo('ASYCYRJcf_s', 'First Visit Experience')" class="p-3 sm:p-3.5 bg-slate-100 dark:bg-obsidian-surface border border-slate-300 dark:border-obsidian-border rounded-xl transition cursor-pointer hover-trigger flex items-center justify-between smooth-glow">
             <div>
-              <span class="text-xs font-mono text-neutral-500 block mb-0.5">YouTube Shorts • 9:16</span>
-              <h4 class="font-heading font-bold text-sm">First Visit Experience On Bravareka Showroom</h4>
+              <span class="text-xs font-mono text-slate-500 dark:text-slate-400 block mb-0.5">YouTube Shorts • 9:16</span>
+              <h4 class="font-heading font-bold text-xs sm:text-sm">First Visit Experience On Bravareka Showroom</h4>
             </div>
-            <span class="text-xs font-mono font-bold px-3 py-1.5 bg-neutral-200 dark:bg-neutral-800 rounded-lg whitespace-nowrap ml-2">▶ Play</span>
+            <span class="text-xs font-mono font-bold px-3 py-1.5 bg-slate-200 dark:bg-obsidian-elevated rounded-lg whitespace-nowrap ml-2">▶ Play</span>
           </div>
 
-          <div onclick="playVideo('4rTqqX3FgSA', 'Bravareka Interior')" class="p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl transition cursor-pointer hover-trigger flex items-center justify-between smooth-glow">
+          <div onclick="playVideo('4rTqqX3FgSA', 'Bravareka Interior')" class="p-3 sm:p-3.5 bg-slate-100 dark:bg-obsidian-surface border border-slate-300 dark:border-obsidian-border rounded-xl transition cursor-pointer hover-trigger flex items-center justify-between smooth-glow">
             <div>
-              <span class="text-xs font-mono text-neutral-500 block mb-0.5">YouTube Shorts • 9:16</span>
-              <h4 class="font-heading font-bold text-sm">Bravareka Interior Campaign</h4>
+              <span class="text-xs font-mono text-slate-500 dark:text-slate-400 block mb-0.5">YouTube Shorts • 9:16</span>
+              <h4 class="font-heading font-bold text-xs sm:text-sm">Bravareka Interior Campaign</h4>
             </div>
-            <span class="text-xs font-mono font-bold px-3 py-1.5 bg-neutral-200 dark:bg-neutral-800 rounded-lg whitespace-nowrap ml-2">▶ Play</span>
+            <span class="text-xs font-mono font-bold px-3 py-1.5 bg-slate-200 dark:bg-obsidian-elevated rounded-lg whitespace-nowrap ml-2">▶ Play</span>
           </div>
 
         </div>
@@ -1247,65 +1280,65 @@
   </section>
 
   <!-- PAGE 6: WORKFLOW SECTION -->
-  <section class="page-slide px-6">
+  <section class="page-slide px-4 sm:px-6">
     <div class="max-w-6xl w-full mx-auto">
-      <div class="mb-8">
-        <h2 class="font-heading text-4xl lg:text-5xl font-extrabold mb-2 hover-trigger">
+      <div class="mb-6 sm:mb-8">
+        <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-1.5 sm:mb-2 hover-trigger">
           <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.1s">Creative</span></span> 
-          <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.25s">Workflow</span></span><span class="text-neutral-400">.</span>
+          <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.25s">Workflow</span></span><span class="text-slate-400">.</span>
         </h2>
-        <p class="text-neutral-500 text-xs">A systematic visual production pipeline from concept to final delivery.</p>
+        <p class="text-slate-500 dark:text-slate-400 text-xs">A systematic visual production pipeline from concept to final delivery.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="p-7 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl hover-trigger smooth-glow">
-          <span class="font-mono text-xl font-extrabold text-neutral-400 block mb-3">01.</span>
-          <h3 class="font-heading text-lg font-bold mb-2">Brief & Research</h3>
-          <p class="text-xs text-neutral-500 leading-relaxed">Analyzing brand needs, visual style references, and target audience before execution.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+        <div class="p-5 sm:p-7 bg-slate-100 dark:bg-obsidian-surface border border-slate-300 dark:border-obsidian-border rounded-2xl hover-trigger smooth-glow">
+          <span class="font-mono text-lg sm:text-xl font-extrabold text-slate-400 block mb-2.5 sm:mb-3">01.</span>
+          <h3 class="font-heading text-base sm:text-lg font-bold mb-2">Brief & Research</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Analyzing brand needs, visual style references, and target audience before execution.</p>
         </div>
 
-        <div class="p-7 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl hover-trigger smooth-glow">
-          <span class="font-mono text-xl font-extrabold text-neutral-400 block mb-3">02.</span>
-          <h3 class="font-heading text-lg font-bold mb-2">Hybrid Execution</h3>
-          <p class="text-xs text-neutral-500 leading-relaxed">Combining editing with hybrid workflows while utilizing AI tools if needed for fast and highly customizable visual output.</p>
+        <div class="p-5 sm:p-7 bg-slate-100 dark:bg-obsidian-surface border border-slate-300 dark:border-obsidian-border rounded-2xl hover-trigger smooth-glow">
+          <span class="font-mono text-lg sm:text-xl font-extrabold text-slate-400 block mb-2.5 sm:mb-3">02.</span>
+          <h3 class="font-heading text-base sm:text-lg font-bold mb-2">Hybrid Execution</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Combining editing with hybrid workflows while utilizing AI tools if needed for fast and highly customizable visual output.</p>
         </div>
 
-        <div class="p-7 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl hover-trigger smooth-glow">
-          <span class="font-mono text-xl font-extrabold text-neutral-400 block mb-3">03.</span>
-          <h3 class="font-heading text-lg font-bold mb-2">Campaign & Performance Setup</h3>
-          <p class="text-xs text-neutral-500 leading-relaxed">Configuring Meta Ads campaign parameters, and deploying pixel tracking for launch if required.</p>
+        <div class="p-5 sm:p-7 bg-slate-100 dark:bg-obsidian-surface border border-slate-300 dark:border-obsidian-border rounded-2xl hover-trigger smooth-glow">
+          <span class="font-mono text-lg sm:text-xl font-extrabold text-slate-400 block mb-2.5 sm:mb-3">03.</span>
+          <h3 class="font-heading text-base sm:text-lg font-bold mb-2">Campaign & Performance Setup</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Configuring Meta Ads campaign parameters, and deploying pixel tracking for launch if required.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- PAGE 7: CONTACT SECTION -->
-  <section class="page-slide px-6">
+  <section class="page-slide px-4 sm:px-6">
     <div class="max-w-4xl w-full mx-auto text-center">
-      <span class="px-4 py-1.5 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-xs font-mono rounded-full uppercase tracking-widest hover-trigger">Get In Touch</span>
+      <span class="px-4 py-1.5 bg-slate-900 dark:bg-slate-100 text-white dark:text-obsidian-base text-xs font-mono font-bold rounded-full uppercase tracking-widest hover-trigger">Get In Touch</span>
       
-      <h2 class="font-heading text-4xl lg:text-6xl font-extrabold my-5 tracking-tight hover-trigger">
+      <h2 class="font-heading text-3xl sm:text-4xl lg:text-6xl font-extrabold my-4 sm:my-5 tracking-tight hover-trigger">
         <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.1s">Let's</span></span> 
         <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.2s">create</span></span> 
         <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.3s">something</span></span> 
-        <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.4s">iconic</span></span><span class="text-neutral-400">.</span>
+        <span class="kinetic-wrapper"><span class="kinetic-word" style="transition-delay: 0.4s">iconic</span></span><span class="text-slate-400">.</span>
       </h2>
-      <p class="text-neutral-500 mb-8 max-w-md mx-auto text-xs sm:text-sm">
+      <p class="text-slate-500 dark:text-slate-400 mb-6 sm:mb-8 max-w-md mx-auto text-xs sm:text-sm">
         Open for full-time roles, freelance projects, and creative collaborations.
       </p>
       
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mb-10">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-2xl mx-auto mb-8 sm:mb-10">
         
-        <button onclick="copyEmail()" class="py-6 px-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl flex flex-col items-center justify-center gap-3 transition hover-trigger group smooth-glow">
-          <svg class="w-7 h-7 text-neutral-800 dark:text-neutral-200 group-hover:scale-110 transition duration-300" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+        <button onclick="copyEmail()" class="py-4 px-3 sm:py-6 sm:px-4 bg-slate-100 dark:bg-obsidian-surface border border-slate-300 dark:border-obsidian-border rounded-2xl flex flex-col items-center justify-center gap-2.5 sm:gap-3 transition hover-trigger group smooth-glow">
+          <svg class="w-6 h-6 sm:w-7 sm:h-7 text-slate-800 dark:text-slate-200 group-hover:scale-110 transition duration-300" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
             <rect x="3" y="5" width="18" height="14" rx="2"></rect>
             <path d="M3 7l9 6 9-6"></path>
           </svg>
           <span class="font-heading font-bold text-xs uppercase tracking-wider">EMAIL</span>
         </button>
 
-        <a href="https://instagram.com/hatifulihsanyosa" target="_blank" class="py-6 px-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl flex flex-col items-center justify-center gap-3 transition hover-trigger group smooth-glow">
-          <svg class="w-7 h-7 text-neutral-800 dark:text-neutral-200 group-hover:scale-110 transition duration-300" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+        <a href="https://instagram.com/hatifulihsanyosa" target="_blank" class="py-4 px-3 sm:py-6 sm:px-4 bg-slate-100 dark:bg-obsidian-surface border border-slate-300 dark:border-obsidian-border rounded-2xl flex flex-col items-center justify-center gap-2.5 sm:gap-3 transition hover-trigger group smooth-glow">
+          <svg class="w-6 h-6 sm:w-7 sm:h-7 text-slate-800 dark:text-slate-200 group-hover:scale-110 transition duration-300" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
             <rect x="2" y="2" width="20" height="20" rx="5"></rect>
             <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
@@ -1313,15 +1346,15 @@
           <span class="font-heading font-bold text-xs uppercase tracking-wider">INSTAGRAM</span>
         </a>
 
-        <a href="https://wa.me/6281393042247" target="_blank" class="py-6 px-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl flex flex-col items-center justify-center gap-3 transition hover-trigger group smooth-glow">
-          <svg class="w-7 h-7 text-neutral-800 dark:text-neutral-200 group-hover:scale-110 transition duration-300" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+        <a href="https://wa.me/6281393042247" target="_blank" class="py-4 px-3 sm:py-6 sm:px-4 bg-slate-100 dark:bg-obsidian-surface border border-slate-300 dark:border-obsidian-border rounded-2xl flex flex-col items-center justify-center gap-2.5 sm:gap-3 transition hover-trigger group smooth-glow">
+          <svg class="w-6 h-6 sm:w-7 sm:h-7 text-slate-800 dark:text-slate-200 group-hover:scale-110 transition duration-300" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
             <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
           </svg>
           <span class="font-heading font-bold text-xs uppercase tracking-wider">WHATSAPP</span>
         </a>
 
-        <a href="https://www.linkedin.com/in/hatiful-ihsan-yosa-4495b323b" target="_blank" class="py-6 px-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-2xl flex flex-col items-center justify-center gap-3 transition hover-trigger group smooth-glow">
-          <svg class="w-7 h-7 text-neutral-800 dark:text-neutral-200 group-hover:scale-110 transition duration-300" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+        <a href="https://www.linkedin.com/in/hatiful-ihsan-yosa-4495b323b" target="_blank" class="py-4 px-3 sm:py-6 sm:px-4 bg-slate-100 dark:bg-obsidian-surface border border-slate-300 dark:border-obsidian-border rounded-2xl flex flex-col items-center justify-center gap-2.5 sm:gap-3 transition hover-trigger group smooth-glow">
+          <svg class="w-6 h-6 sm:w-7 sm:h-7 text-slate-800 dark:text-slate-200 group-hover:scale-110 transition duration-300" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
             <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"></path>
             <rect x="2" y="9" width="4" height="12"></rect>
             <circle cx="4" cy="4" r="2"></circle>
@@ -1331,7 +1364,7 @@
 
       </div>
 
-      <div class="border-t border-neutral-200 dark:border-neutral-800 pt-5 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-3 font-mono">
+      <div class="border-t border-slate-200 dark:border-obsidian-border pt-4 sm:pt-5 flex flex-col sm:flex-row items-center justify-between text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 gap-2 sm:gap-3 font-mono">
         <p>© 2026 Hatiful Ihsan Yosa. All rights reserved.</p>
         <p>Designed by Me ❤️ • Built with AI-assisted code</p>
       </div>
@@ -1451,7 +1484,7 @@
       const isDarkNow = htmlEl.classList.contains('dark');
       osThemeRipple.style.left = (originX ?? window.innerWidth / 2) + 'px';
       osThemeRipple.style.top = (originY ?? window.innerHeight / 2) + 'px';
-      osThemeRipple.style.backgroundColor = isDarkNow ? '#0A0A0A' : '#FFFFFF';
+      osThemeRipple.style.backgroundColor = isDarkNow ? '#0B0F17' : '#FFFFFF';
       osThemeRipple.classList.remove('animate');
       void osThemeRipple.offsetWidth;
       osThemeRipple.classList.add('animate');
@@ -1516,13 +1549,13 @@
     function selectRetouchPhoto(photoIndex) {
       currentRetouchIndex = photoIndex;
       document.querySelectorAll('.retouch-tab').forEach(tab => {
-        tab.classList.remove('bg-neutral-900', 'dark:bg-white', 'text-white', 'dark:text-neutral-900');
-        tab.classList.add('bg-neutral-200', 'dark:bg-neutral-800', 'text-neutral-700', 'dark:text-neutral-300');
+        tab.classList.remove('bg-slate-900', 'dark:bg-slate-100', 'text-white', 'dark:text-obsidian-base');
+        tab.classList.add('bg-slate-200', 'dark:bg-obsidian-elevated', 'text-slate-700', 'dark:text-slate-300');
       });
       const activeTab = document.getElementById('retouch-tab-' + photoIndex);
       if (activeTab) {
-        activeTab.classList.remove('bg-neutral-200', 'dark:bg-neutral-800', 'text-neutral-700', 'dark:text-neutral-300');
-        activeTab.classList.add('bg-neutral-900', 'dark:bg-white', 'text-white', 'dark:text-neutral-900');
+        activeTab.classList.remove('bg-slate-200', 'dark:bg-obsidian-elevated', 'text-slate-700', 'dark:text-slate-300');
+        activeTab.classList.add('bg-slate-900', 'dark:bg-slate-100', 'text-white', 'dark:text-obsidian-base');
       }
 
       const item = retouchData[photoIndex];
@@ -1621,6 +1654,7 @@
         slide.classList.remove('active', 'prev');
         if (idx === currentSlide) {
           slide.classList.add('active');
+          slide.scrollTop = 0;
         } else if (idx < currentSlide) {
           slide.classList.add('prev');
         }
@@ -1628,11 +1662,11 @@
 
       navDots.forEach((dot, idx) => {
         if (idx === currentSlide) {
-          dot.classList.add('active', 'bg-neutral-900', 'dark:bg-white');
-          dot.classList.remove('bg-neutral-400', 'dark:bg-neutral-600');
+          dot.classList.add('active', 'bg-slate-900', 'dark:bg-slate-100');
+          dot.classList.remove('bg-slate-400', 'dark:bg-slate-600');
         } else {
-          dot.classList.remove('active', 'bg-neutral-900', 'dark:bg-white');
-          dot.classList.add('bg-neutral-400', 'dark:bg-neutral-600');
+          dot.classList.remove('active', 'bg-slate-900', 'dark:bg-slate-100');
+          dot.classList.add('bg-slate-400', 'dark:bg-slate-600');
         }
       });
 
@@ -2033,17 +2067,37 @@
       }
     }, { passive: true });
 
-    // Touch Swipe Controller for Mobile (Slides + Overscroll on Slide 08)
+    // Touch Swipe Controller for Mobile (Respects Tall Slide Internal Scroll + Overscroll on Slide 08)
     let touchStartY = 0;
+    let touchStartScrollTop = 0;
+    let touchStartedAtTop = true;
+    let touchStartedAtBottom = true;
+    let ignoreSlideTouch = false;
+
     window.addEventListener('touchstart', (e) => {
       if (isArchiveOpen || !e.touches.length) return;
+      if (e.target.closest('input[type="range"], #lightbox')) {
+        ignoreSlideTouch = true;
+        return;
+      }
+      ignoreSlideTouch = false;
       touchStartY = e.touches[0].clientY;
+
+      const activeSlide = slides[currentSlide];
+      if (activeSlide) {
+        touchStartScrollTop = activeSlide.scrollTop;
+        touchStartedAtTop = activeSlide.scrollTop <= 6;
+        touchStartedAtBottom = activeSlide.scrollTop + activeSlide.clientHeight >= activeSlide.scrollHeight - 6;
+      }
     }, { passive: true });
 
     window.addEventListener('touchmove', (e) => {
-      if (isArchiveOpen || isTransitioning || !e.touches.length) return;
+      if (isArchiveOpen || isTransitioning || ignoreSlideTouch || !e.touches.length) return;
       const diff = touchStartY - e.touches[0].clientY;
-      if (currentSlide === slides.length - 1 && diff > 0) {
+      const activeSlide = slides[currentSlide];
+      const atBottom = !activeSlide || (activeSlide.scrollTop + activeSlide.clientHeight >= activeSlide.scrollHeight - 6);
+
+      if (currentSlide === slides.length - 1 && diff > 0 && touchStartedAtBottom && atBottom) {
         updatePullUI(diff / 75);
       } else {
         updatePullUI(0);
@@ -2051,19 +2105,26 @@
     }, { passive: true });
 
     window.addEventListener('touchend', (e) => {
-      if (isArchiveOpen || isTransitioning) return;
+      if (isArchiveOpen || isTransitioning || ignoreSlideTouch || !e.changedTouches.length) {
+        ignoreSlideTouch = false;
+        return;
+      }
       updatePullUI(0);
       const touchEndY = e.changedTouches[0].clientY;
       const diff = touchStartY - touchEndY;
 
-      if (currentSlide === slides.length - 1 && diff > 55) {
+      const activeSlide = slides[currentSlide];
+      const atTop = !activeSlide || activeSlide.scrollTop <= 6;
+      const atBottom = !activeSlide || (activeSlide.scrollTop + activeSlide.clientHeight >= activeSlide.scrollHeight - 6);
+
+      if (currentSlide === slides.length - 1 && diff > 55 && touchStartedAtBottom && atBottom) {
         openArchive();
         return;
       }
 
-      if (diff > 40) {
+      if (diff > 45 && touchStartedAtBottom && atBottom) {
         goToPage(currentSlide + 1);
-      } else if (diff < -40) {
+      } else if (diff < -45 && touchStartedAtTop && atTop) {
         goToPage(currentSlide - 1);
       }
     }, { passive: true });
